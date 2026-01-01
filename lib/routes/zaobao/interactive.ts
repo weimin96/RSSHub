@@ -1,8 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
+import { logo } from './util';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
-
-import { logo } from './util';
 
 export const route: Route = {
     path: '/interactive-graphics',

@@ -1,6 +1,5 @@
+import { Route, DataItem } from '@/types';
 import { load } from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
 import puppeteer from '@/utils/puppeteer';
 

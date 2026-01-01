@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { apiRootUrl, ProcessThreads, rootUrl, types } from './utils';
+import { rootUrl, apiRootUrl, types, ProcessThreads } from './utils';
 
 export const route: Route = {
     path: '/category/:id?/:type?/:order?',

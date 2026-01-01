@@ -1,9 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
 const HOME_PAGE = 'http://www.jlwater.com/';
 
 export const route: Route = {
@@ -21,17 +19,17 @@ export const route: Route = {
     },
     radar: [
         {
-            source: ['jlwater.com/portal/10000015', 'jlwater.com/'],
+            source: ['jlwater.com/portal/10000013', 'jlwater.com/'],
         },
     ],
     name: '南京市',
-    maintainers: ['ocleo1', 'pseudoyu'],
+    maintainers: ['ocleo1'],
     handler,
-    url: 'jlwater.com/portal/10000015',
+    url: 'jlwater.com/portal/10000013',
 };
 
 async function handler() {
-    const url = `${HOME_PAGE}portal/10000015`;
+    const url = `${HOME_PAGE}portal/10000013`;
     const response = await got(url);
 
     const data = response.data;

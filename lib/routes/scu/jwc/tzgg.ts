@@ -1,9 +1,8 @@
-import { load } from 'cheerio'; // 可以使用类似 jQuery 的 API HTML 解析器
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio'; // 可以使用类似 jQuery 的 API HTML 解析器
 
 const baseUrl = 'https://jwc.scu.edu.cn/tzgg.htm';
 const baseIndexUrl = 'https://jwc.scu.edu.cn/';

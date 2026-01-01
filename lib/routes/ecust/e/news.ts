@@ -1,8 +1,8 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
 
 const baseUrl = 'https://e.ecust.edu.cn';
 

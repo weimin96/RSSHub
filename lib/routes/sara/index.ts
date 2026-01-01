@@ -1,7 +1,6 @@
-import { load } from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
+import { Route, DataItem } from '@/types';
 import cache from '@/utils/cache';
+import { load } from 'cheerio';
 import ofetch from '@/utils/ofetch';
 
 const typeMap = {

@@ -1,4 +1,4 @@
-import type { Data, Route } from '@/types';
+import { Route, Data } from '@/types';
 import got from '@/utils/got';
 
 export const route: Route = {

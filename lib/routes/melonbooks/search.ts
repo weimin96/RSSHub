@@ -1,12 +1,9 @@
-import querystring from 'node:querystring';
-
-import { load } from 'cheerio';
-import type { Context } from 'hono';
-
-import type { Data, Route } from '@/types';
+import { Data, Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
+import { load } from 'cheerio';
 import { parseItems } from './parser';
+import { Context } from 'hono';
+import querystring from 'node:querystring';
 
 export const handler = async (ctx: Context): Promise<Data | null> => {
     const baseUrl = 'https://www.melonbooks.co.jp';

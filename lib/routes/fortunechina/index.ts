@@ -1,10 +1,11 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import { PRESETS } from '@/utils/header-generator';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate, parseRelativeDate } from '@/utils/parse-date';
+import randUserAgent from '@/utils/rand-user-agent';
+
+const UA = randUserAgent({ browser: 'mobile safari', os: 'ios', device: 'mobile' });
 
 export const route: Route = {
     path: '/:category?',
@@ -61,7 +62,9 @@ async function handler(ctx) {
         items.map((item) =>
             cache.tryGet(item.link, async () => {
                 const detailResponse = await ofetch(item.link, {
-                    headerGeneratorOptions: PRESETS.MODERN_IOS,
+                    headers: {
+                        'User-Agent': UA,
+                    },
                 });
 
                 const content = load(detailResponse);

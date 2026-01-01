@@ -1,10 +1,8 @@
-import * as cheerio from 'cheerio';
 import CryptoJS from 'crypto-js';
-
 import ofetch from '@/utils/ofetch';
+import * as cheerio from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import type { PostData } from './types';
+import { PostData } from './types';
 
 const APP_SIGN_KEY = '4bTogwpz7RzNO2VTFtW7zcfRkAE97ox6ZSgcQi7FgYdqrHqKB7aGqEZ4o7yssa2aEXoV3bQwh12FFgVNlpyYk2Yjm9d2EZGeGu3';
 const phoneBaseUrl = 'https://3g.dxy.cn';
@@ -74,4 +72,4 @@ const getPost = (item, tryGet) =>
         return item;
     });
 
-export { generateNonce, getPost, phoneBaseUrl, sign, webBaseUrl };
+export { phoneBaseUrl, webBaseUrl, generateNonce, sign, getPost };

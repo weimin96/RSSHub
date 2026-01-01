@@ -1,12 +1,10 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
 import { finishArticleItem } from '@/utils/wechat-mp';
-
+import { load } from 'cheerio';
 import utils from './utils';
+import { config } from '@/config';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 export const route: Route = {
     path: '/wechat/:wxid',

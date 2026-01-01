@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Data, DataItem, Route } from '@/types';
-import ofetch from '@/utils/ofetch';
-
+import { Data, Route, DataItem } from '@/types';
 import { baseUrl } from './utils';
+
+import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 
 export const route: Route = {
     path: '/dailySummary',

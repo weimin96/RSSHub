@@ -1,14 +1,11 @@
-import { load } from 'cheerio';
-import dayjs from 'dayjs';
-import timezone from 'dayjs/plugin/timezone.js';
-import utc from 'dayjs/plugin/utc.js';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import got from '@/utils/got';
-import ofetch from '@/utils/ofetch';
 import parser from '@/utils/rss-parser';
-
+import { load } from 'cheerio';
+import got from '@/utils/got';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc.js';
+import timezone from 'dayjs/plugin/timezone.js';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -20,8 +17,7 @@ const baseUrl = 'https://www.phoronix.com';
 const rssUrl = `${baseUrl}/rss.php`;
 
 const feedFetch = async () => {
-    const feedStr = await ofetch(rssUrl);
-    const feed = await parser.parseString(feedStr);
+    const feed = await parser.parseURL(rssUrl);
     return {
         title: feed.title,
         link: feed.link,

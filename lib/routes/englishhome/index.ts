@@ -1,4 +1,4 @@
-import type { Data, Route } from '@/types';
+import { Route, type Data } from '@/types';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 

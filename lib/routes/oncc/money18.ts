@@ -1,13 +1,13 @@
-import { load } from 'cheerio';
-import dayjs from 'dayjs';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
+import dayjs from 'dayjs';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from './templates/money18';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const sections = {
     exp: '新聞總覽',
@@ -84,7 +84,7 @@ async function handler(ctx) {
             title: item.title,
             author: item.authorname,
             link: `${rootUrl}/finnews/content/${id}/${item.articleId}.html`,
-            description: renderDescription({
+            description: art(path.join(__dirname, 'templates/money18.art'), {
                 images: item.hasHdPhoto ? [`https://hk.on.cc/hk/bkn${item.hdEnlargeThumbnail}`] : undefined,
                 description: item.content,
             }),
@@ -118,7 +118,7 @@ async function handler(ctx) {
 
                     const content = load(detailResponse.data);
 
-                    item.description = renderDescription({
+                    item.description = art(path.join(__dirname, 'templates/money18.art'), {
                         images: content('.photo img')
                             .toArray()
                             .map((i) => content(i).attr('src')),

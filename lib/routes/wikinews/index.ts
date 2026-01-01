@@ -1,11 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-
+import { load } from 'cheerio';
 const currentURL = 'https://zh.wikinews.org/wiki/Special:%E6%96%B0%E9%97%BB%E8%AE%A2%E9%98%85';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/latest',

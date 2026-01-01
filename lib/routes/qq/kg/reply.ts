@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
-import { parseDate } from '@/utils/parse-date';
-
+import { Route } from '@/types';
 import cache from './cache';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/kg/reply/:playId',

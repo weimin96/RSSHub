@@ -1,8 +1,7 @@
-import * as cheerio from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
+import * as cheerio from 'cheerio';
+import cache from '@/utils/cache';
 
 const jjmhw = 'http://www.jjmhw.cc';
 

@@ -1,12 +1,12 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
+
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/:important?',
@@ -68,7 +68,10 @@ async function handler(ctx) {
 
         return {
             title,
-            description: renderDescription(content, item.data.pic),
+            description: art(path.join(__dirname, 'templates/description.art'), {
+                content,
+                pic: item.data.pic,
+            }),
             pubDate: timezone(parseDate(item.time), 8),
             link: item.data.link,
             guid: `jin10:index:${item.id}`,

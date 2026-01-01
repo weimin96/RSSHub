@@ -1,5 +1,5 @@
-import { config } from '@/config';
 import got from '@/utils/got';
+import { config } from '@/config';
 
 /**
  * docs: https://atproto.com/lexicons/app-bsky
@@ -78,4 +78,4 @@ const getFeedGenerator = (uri, tryGet) =>
         false
     );
 
-export { getAuthorFeed, getFeed, getFeedGenerator, getProfile, resolveHandle };
+export { resolveHandle, getProfile, getFeed, getAuthorFeed, getFeedGenerator };

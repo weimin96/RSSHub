@@ -1,7 +1,6 @@
-import { load } from 'cheerio';
 import { describe, expect, it } from 'vitest';
-
 import app from '@/app';
+import { load } from 'cheerio';
 
 process.env.NODE_NAME = 'mock';
 

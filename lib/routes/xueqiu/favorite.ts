@@ -1,10 +1,9 @@
-import queryString from 'query-string';
-
-import { parseToken } from '@/routes/xueqiu/cookies';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-import ofetch from '@/utils/ofetch';
+import queryString from 'query-string';
 import { parseDate } from '@/utils/parse-date';
+import { parseToken } from '@/routes/xueqiu/cookies';
+import ofetch from '@/utils/ofetch';
 
 export const route: Route = {
     path: '/favorite/:id',

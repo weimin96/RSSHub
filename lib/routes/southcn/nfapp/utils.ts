@@ -1,6 +1,5 @@
-import { load } from 'cheerio';
-
 import got from '@/utils/got';
+import { load } from 'cheerio';
 
 const parseArticle = (item, tryGet) =>
     tryGet(item.link, async () => {

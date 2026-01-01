@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
+import { config } from '@/config';
+import { load } from 'cheerio';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';

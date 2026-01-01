@@ -1,12 +1,13 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
-import { renderDescription } from './templates/description';
-import { getSearchParams, rootUrl } from './utils';
+import { rootUrl, getSearchParams } from './utils';
 
 export const handler = async (ctx) => {
     const { id = '1103' } = ctx.req.param();
@@ -23,7 +24,7 @@ export const handler = async (ctx) => {
 
     let items = response.data.slice(0, limit).map((item) => {
         const title = item.article_title;
-        const description = renderDescription({
+        const description = art(path.join(__dirname, 'templates/description.art'), {
             intro: item.article_brief,
         });
         const guid = `cls-${item.article_id}`;
@@ -61,7 +62,7 @@ export const handler = async (ctx) => {
                 }
 
                 const title = data.title;
-                const description = renderDescription({
+                const description = art(path.join(__dirname, 'templates/description.art'), {
                     images: data.images.map((i) => ({
                         src: i,
                         alt: title,

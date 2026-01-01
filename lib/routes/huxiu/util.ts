@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-import CryptoJS from 'crypto-js';
-
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
+import CryptoJS from 'crypto-js';
 
 const domain = 'huxiu.com';
 const rootUrl = `https://www.${domain}`;
@@ -30,7 +29,7 @@ const cleanUpHTML = (data) => {
         e = $(e);
         if ((e.prop('src') ?? e.prop('_src')) !== undefined) {
             e.parent().replaceWith(
-                renderDescription({
+                art(path.join(__dirname, 'templates/description.art'), {
                     image: {
                         src: (e.prop('src') ?? e.prop('_src')).split(/\?/)[0],
                         width: e.prop('data-w'),
@@ -203,7 +202,7 @@ const fetchItem = async (item) => {
     const { processed: video, processedItem: videoItem = {} } = processVideoInfo(data.video_info);
 
     item.title = data.title ?? item.title;
-    item.description = renderDescription({
+    item.description = art(path.join(__dirname, 'templates/description.art'), {
         image: {
             src: data.pic_path,
         },
@@ -335,9 +334,9 @@ const processItems = async (items, limit, tryGet) => {
             let guid = '';
             let link = '';
 
-            if (item.object_type === 8) {
-                guid = `huxiu-moment-${item.object_id}`;
-                link = item.url || new URL(`moment/${item.object_id}.html`, rootUrl).href;
+            if (item.moment_id) {
+                guid = `huxiu-moment-${item.moment_id}`;
+                link = item.url || new URL(`moment/${item.moment_id}.html`, rootUrl).href;
             } else if (item.brief_id || /huxiu\.com\/brief\//.test(item.url)) {
                 item.brief_id = item.brief_id ?? item.aid;
                 guid = `huxiu-brief-${item.brief_id}`;
@@ -366,7 +365,7 @@ const processItems = async (items, limit, tryGet) => {
                 ...videoItem,
                 title: (item.title ?? item.summary ?? item.content)?.replaceAll(/<\/?(?:em|br)?>/g, ''),
                 link,
-                description: renderDescription({
+                description: art(path.join(__dirname, 'templates/description.art'), {
                     image: {
                         src: item.origin_pic_path ?? item.pic_path ?? item.big_pic_path?.split(/\?/)[0] ?? undefined,
                     },
@@ -443,4 +442,4 @@ const processVideoInfo = (info) => {
     };
 };
 
-export { apiArticleRootUrl, apiBriefRootUrl, apiMemberRootUrl, apiMomentRootUrl, apiSearchRootUrl, fetchBriefColumnData, fetchClubData, fetchData, generateSignature, processItems, rootUrl };
+export { rootUrl, apiArticleRootUrl, apiBriefRootUrl, apiMemberRootUrl, apiMomentRootUrl, apiSearchRootUrl, fetchBriefColumnData, fetchClubData, fetchData, generateSignature, processItems };

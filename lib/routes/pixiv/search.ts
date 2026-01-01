@@ -1,14 +1,12 @@
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import cache from '@/utils/cache';
-import { parseDate } from '@/utils/parse-date';
-
-import searchIllust from './api/search-illust';
-import searchPopularIllust from './api/search-popular-illust';
 import { getToken } from './token';
+import searchPopularIllust from './api/search-popular-illust';
+import searchIllust from './api/search-illust';
+import { config } from '@/config';
 import pixivUtils from './utils';
+import { parseDate } from '@/utils/parse-date';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 export const route: Route = {
     path: '/search/:keyword/:order?/:mode?/:include_ai?',

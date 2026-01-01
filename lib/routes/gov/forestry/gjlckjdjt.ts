@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/forestry/gjlckjdjt/:category?',
@@ -57,7 +57,7 @@ async function handler(ctx) {
             return {
                 title,
                 link,
-                description: renderDescription({
+                description: art(path.join(__dirname, 'templates/description.art'), {
                     image: {
                         src: item.find('img').prop('src'),
                         alt: title,
@@ -88,7 +88,7 @@ async function handler(ctx) {
                     item.enclosure_url = item.enclosure_url ?? src;
 
                     e.replaceWith(
-                        renderDescription({
+                        art(path.join(__dirname, 'templates/description.art'), {
                             video: {
                                 src,
                             },

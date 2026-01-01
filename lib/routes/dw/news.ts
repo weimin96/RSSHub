@@ -1,9 +1,8 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
-import got from '@/utils/got';
-
+import { Route } from '@/types';
 import { processItems } from './utils';
+import got from '@/utils/got';
+import cache from '@/utils/cache';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/news/:lang?/:id?',

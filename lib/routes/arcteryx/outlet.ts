@@ -1,7 +1,8 @@
-import type { Route } from '@/types';
-import got from '@/utils/got';
+import { Route } from '@/types';
 
-import { renderProductDescription } from './templates/product-description';
+import got from '@/utils/got';
+import { art } from '@/utils/render';
+import path from 'node:path';
 import { generateRssData } from './utils';
 
 export const route: Route = {
@@ -68,7 +69,9 @@ async function handler(ctx) {
         item: items.map((item) => ({
             title: item.name,
             link: productUrl + item.slug,
-            description: renderProductDescription(item),
+            description: art(path.join(__dirname, 'templates/product-description.art'), {
+                item,
+            }),
         })),
     };
 }

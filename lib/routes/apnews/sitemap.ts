@@ -1,14 +1,10 @@
-import { load } from 'cheerio';
+import { Route, ViewType } from '@/types';
+import { fetchArticle } from './utils';
 import pMap from 'p-map';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
-import { fetchArticle } from './utils';
-
 const HOME_PAGE = 'https://apnews.com';
 
 export const route: Route = {

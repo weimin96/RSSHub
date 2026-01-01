@@ -1,8 +1,6 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
+import { load } from 'cheerio';
 import { baseUrl } from './utils';
 
 export const route: Route = {

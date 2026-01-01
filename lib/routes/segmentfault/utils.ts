@@ -1,9 +1,7 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
+import { config } from '@/config';
 import { getAcwScV2ByArg1 } from '../5eplay/utils';
 
 const host = 'https://segmentfault.com';
@@ -56,4 +54,4 @@ const parseItems = (cookie, item, tryGet) =>
         return item;
     });
 
-export { acw_sc__v2, host, parseItems, parseList };
+export { host, acw_sc__v2, parseList, parseItems };

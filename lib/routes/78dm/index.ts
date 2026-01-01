@@ -1,12 +1,12 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from './templates/description';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const handler = async (ctx) => {
     const { category = 'news' } = ctx.req.param();
@@ -32,7 +32,7 @@ export const handler = async (ctx) => {
             const src = item.find('a.card-image img').prop('data-src');
             const image = src?.startsWith('//') ? `https:${src}` : src;
 
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 images: image
                     ? [
                           {
@@ -82,7 +82,7 @@ export const handler = async (ctx) => {
                     const image = src?.startsWith('//') ? `https:${src}` : src;
 
                     el.parent().replaceWith(
-                        renderDescription({
+                        art(path.join(__dirname, 'templates/description.art'), {
                             images: image
                                 ? [
                                       {
@@ -98,8 +98,8 @@ export const handler = async (ctx) => {
                 const title = $$('h2.title').text();
                 const description =
                     item.description +
-                    renderDescription({
-                        description: $$('div.image-text-content').first().html() || undefined,
+                    art(path.join(__dirname, 'templates/description.art'), {
+                        description: $$('div.image-text-content').first().html(),
                     });
 
                 item.title = title;

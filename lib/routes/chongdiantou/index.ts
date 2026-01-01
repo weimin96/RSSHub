@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
-
+import { Route } from '@/types';
 import { namespace } from './namespace';
+import { load } from 'cheerio';
+import ofetch from '@/utils/ofetch';
+import cache from '@/utils/cache';
 
 export const route: Route = {
     path: '/',

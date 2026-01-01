@@ -1,9 +1,8 @@
+import { Route } from '@/types';
+import got from '@/utils/got';
 import { load } from 'cheerio';
 
-import type { Route } from '@/types';
-import got from '@/utils/got';
-
-import { getInfo, processItems, rootUrl } from './util';
+import { rootUrl, getInfo, processItems } from './util';
 
 export const route: Route = {
     path: '/rank/:range?',

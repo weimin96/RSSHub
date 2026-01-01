@@ -1,9 +1,6 @@
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import parser from '@/utils/rss-parser';
-
 import { fetchArticle } from './utils';
-
 const HOME_PAGE = 'https://apnews.com';
 
 export const route: Route = {

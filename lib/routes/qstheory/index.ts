@@ -1,9 +1,8 @@
-import * as cheerio from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
-
+import * as cheerio from 'cheerio';
+import cache from '@/utils/cache';
 import { baseUrl as rootUrl, getItem } from './utils';
 
 const config = {

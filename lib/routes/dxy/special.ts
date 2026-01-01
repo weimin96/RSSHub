@@ -1,11 +1,10 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
-
-import type { RecommendListData, SpecialBoardDetail } from './types';
-import { generateNonce, getPost, phoneBaseUrl, sign, webBaseUrl } from './utils';
+import { phoneBaseUrl, webBaseUrl, generateNonce, sign, getPost } from './utils';
+import { config } from '@/config';
+import { RecommendListData, SpecialBoardDetail } from './types';
 
 export const route: Route = {
     path: '/bbs/special/:specialId',

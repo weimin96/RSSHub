@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/channel/:channel',
@@ -83,7 +83,7 @@ async function handler(ctx) {
             const author = item.find('.meta a').text();
             return {
                 title,
-                description: renderDescription({
+                description: art(path.join(__dirname, 'templates/description.art'), {
                     videoUrl: item.find('.more').attr('href'),
                     vdescription: description[index] || '',
                 }),

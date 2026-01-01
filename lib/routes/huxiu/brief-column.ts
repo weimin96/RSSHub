@@ -1,8 +1,8 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 
-import { apiBriefRootUrl, fetchBriefColumnData, processItems } from './util';
+import { apiBriefRootUrl, processItems, fetchBriefColumnData } from './util';
 
 export const route: Route = {
     path: '/briefcolumn/:id',

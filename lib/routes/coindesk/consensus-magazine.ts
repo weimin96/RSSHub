@@ -1,11 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
+import cache from '@/utils/cache';
+import { load } from 'cheerio';
 import { parseItem } from './utils';
-
 const rootUrl = 'https://www.coindesk.com';
 
 export const route: Route = {

@@ -1,8 +1,8 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 
-import { apiMemberRootUrl, fetchData, processItems, rootUrl } from './util';
+import { rootUrl, apiMemberRootUrl, processItems, fetchData } from './util';
 
 export const route: Route = {
     path: ['/author/:id/:type?', '/member/:id/:type?'],

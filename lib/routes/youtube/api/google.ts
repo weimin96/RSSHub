@@ -1,19 +1,16 @@
+import { google } from 'googleapis';
+const { OAuth2 } = google.auth;
+import { config } from '@/config';
+import utils, { getVideoUrl } from '../utils';
+import cache from '@/utils/cache';
+import { parseDate } from '@/utils/parse-date';
+import ofetch from '@/utils/ofetch';
 import * as cheerio from 'cheerio';
+import NotFoundError from '@/errors/types/not-found';
+import { Data } from '@/types';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration.js';
-import { google } from 'googleapis';
-
-import { config } from '@/config';
-import NotFoundError from '@/errors/types/not-found';
-import type { Data } from '@/types';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
-
-import utils, { getVideoUrl } from '../utils';
 import { getSrtAttachmentBatch } from './subtitles';
-
-const { OAuth2 } = google.auth;
 
 dayjs.extend(duration);
 
@@ -55,7 +52,7 @@ if (config.youtube && config.youtube.clientId && config.youtube.clientSecret && 
     youtubeOAuth2Client.setCredentials({ refresh_token: config.youtube.refreshToken });
 }
 
-export { exec, youtubeOAuth2Client };
+export { youtubeOAuth2Client, exec };
 
 export const getDataByUsername = async ({ username, embed, filterShorts, isJsonFeed }: { username: string; embed: boolean; filterShorts: boolean; isJsonFeed: boolean }): Promise<Data> => {
     let userHandleData;

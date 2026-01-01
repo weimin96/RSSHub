@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import cache from '@/utils/cache';
 
 const siteUrl = 'https://xxgk.dhu.edu.cn';
 const baseUrl = 'https://xxgk.dhu.edu.cn/1737/list.htm';

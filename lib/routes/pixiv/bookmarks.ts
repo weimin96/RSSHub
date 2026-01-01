@@ -1,13 +1,12 @@
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import { parseDate } from '@/utils/parse-date';
-
+import { getToken } from './token';
 import getBookmarks from './api/get-bookmarks';
 import getUserDetail from './api/get-user-detail';
-import { getToken } from './token';
+import { config } from '@/config';
 import pixivUtils from './utils';
+import { parseDate } from '@/utils/parse-date';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 export const route: Route = {
     path: '/user/bookmarks/:id',

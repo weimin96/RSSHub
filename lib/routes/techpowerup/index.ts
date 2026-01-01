@@ -1,11 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { baseUrl, fixImages, headers, parseReviews } from './utils';
+import { baseUrl, headers, fixImages, parseReviews } from './utils';
 
 export const route: Route = {
     path: '/',

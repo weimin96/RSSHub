@@ -1,7 +1,6 @@
-import type { CheerioAPI } from 'cheerio';
-
-import type { DataItem } from '@/types';
+import { type DataItem } from '@/types';
 import { parseDate } from '@/utils/parse-date';
+import { CheerioAPI } from 'cheerio';
 
 export function parseItems($: CheerioAPI): DataItem[] {
     return $('div.top-post-list article')

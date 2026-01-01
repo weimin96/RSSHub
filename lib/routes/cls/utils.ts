@@ -15,4 +15,4 @@ const getSearchParams = (moreParams) => {
     return searchParams;
 };
 
-export { getSearchParams, rootUrl };
+export { rootUrl, getSearchParams };

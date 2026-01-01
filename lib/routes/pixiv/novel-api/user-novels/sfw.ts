@@ -1,9 +1,8 @@
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-
 import pixivUtils from '../../utils';
 import { getSFWNovelContent } from '../content/sfw';
-import type { NovelList, SFWNovelsResponse } from './types';
+import type { SFWNovelsResponse, NovelList } from './types';
 
 const baseUrl = 'https://www.pixiv.net';
 

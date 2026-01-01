@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { getDetails, getSimple, getTorrents } from './util';
+import { getSimple, getDetails, getTorrents } from './util';
 
 export const route: Route = {
     path: '/search/:keyword/:mode?',

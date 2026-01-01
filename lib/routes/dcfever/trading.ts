@@ -1,8 +1,6 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
+import { load } from 'cheerio';
 // import { parseRelativeDate } from '@/utils/parse-date';
 import { baseUrl, parseTradeItem } from './utils';
 

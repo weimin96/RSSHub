@@ -1,5 +1,4 @@
-import type { Route } from '@/types';
-
+import { Route } from '@/types';
 import { handler } from './common/review';
 
 export const route: Route = {

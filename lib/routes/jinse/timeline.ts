@@ -1,12 +1,11 @@
-import { load } from 'cheerio';
+import { Route, ViewType } from '@/types';
 
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/timeline/:category?',
@@ -76,7 +75,7 @@ async function handler(ctx) {
         return {
             title: item.title,
             link: item.jump_url,
-            description: renderDescription({
+            description: art(path.join(__dirname, 'templates/description.art'), {
                 images: item.cover
                     ? [
                           {
@@ -108,7 +107,7 @@ async function handler(ctx) {
 
                 const content = load(detailResponse);
 
-                item.description += renderDescription({
+                item.description += art(path.join(__dirname, 'templates/description.art'), {
                     description: content('section.js-article-content').html() || content('div.js-article').html(),
                 });
                 item.category = content('section.js-article-tag_state_1 a span')

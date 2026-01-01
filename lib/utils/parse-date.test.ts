@@ -1,7 +1,6 @@
-import MockDate from 'mockdate';
 import { describe, expect, it } from 'vitest';
-
 import { parseRelativeDate } from '@/utils/parse-date';
+import MockDate from 'mockdate';
 
 describe('parseRelativeDate', () => {
     const second = 1000;

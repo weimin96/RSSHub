@@ -1,11 +1,10 @@
-import { load } from 'cheerio';
-
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 
-import { ossUrl, ProcessFeed, rootUrl } from './utils';
+import { rootUrl, ossUrl, ProcessFeed } from './utils';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 
 export const route: Route = {
     path: '/thinktank/:id/:type?',

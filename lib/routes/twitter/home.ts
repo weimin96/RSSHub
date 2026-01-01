@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
-
-import api from './api';
+import { Route } from '@/types';
 import utils from './utils';
+import api from './api';
 
 export const route: Route = {
     path: '/home/:routeParams?',

@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/:category{.+}?',
@@ -71,7 +71,7 @@ async function handler(ctx) {
         const item = {
             title: i.title.children ?? i.title,
             link: i.link.startsWith('https://') ? i.link : new URL(i.link, rootUrl).href,
-            description: renderDescription({
+            description: art(path.join(__dirname, 'templates/description.art'), {
                 image: i.image
                     ? {
                           src: i.image.imgSrc.split(/\?/)[0],
@@ -110,7 +110,7 @@ async function handler(ctx) {
                             const element = content(this);
                             if (element.prop('tagName').toLowerCase() === 'figure') {
                                 element.replaceWith(
-                                    renderDescription({
+                                    art(path.join(__dirname, 'templates/description.art'), {
                                         image: {
                                             src: element.find('img').prop('src').split(/\?/)[0],
                                             alt: element.find('figcaption').text().trim(),
@@ -139,7 +139,7 @@ async function handler(ctx) {
                         item.enclosure_length = enclosureMatch[2];
                         item.enclosure_type = enclosureMatch[1];
 
-                        item.description = renderDescription({
+                        item.description = art(path.join(__dirname, 'templates/description.art'), {
                             enclosure: {
                                 src: item.enclosure_url,
                                 type: item.enclosure_type,
@@ -148,7 +148,7 @@ async function handler(ctx) {
                     }
 
                     item.description =
-                        renderDescription({
+                        art(path.join(__dirname, 'templates/description.art'), {
                             description: (content('div[data-component="FeatureMedia"]').html() || '') + (content('#body div[data-component="LayoutContainer"] div').first().html() || ''),
                         }) + item.description;
 

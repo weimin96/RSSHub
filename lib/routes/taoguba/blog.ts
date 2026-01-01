@@ -1,9 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
-import { renderPostDetail, rootUrl } from './util';
+import { load } from 'cheerio';
+import { rootUrl, renderPostDetail } from './util';
 
 export const route: Route = {
     path: '/blog/:id',

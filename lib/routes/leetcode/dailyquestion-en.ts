@@ -1,7 +1,8 @@
-import type { Route } from '@/types';
-import got from '@/utils/got';
+import { Route } from '@/types';
 
-import { renderQuestionDescription } from './templates/question-description';
+import got from '@/utils/got';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const host = 'https://leetcode.com';
 
@@ -109,7 +110,7 @@ async function handler() {
 
     const rssData = {
         title: question.frontedId + '.' + question.titleSlug,
-        description: renderQuestionDescription({
+        description: art(path.join(__dirname, 'templates/question-description.art'), {
             question,
         }),
         link: question.link,

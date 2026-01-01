@@ -1,4 +1,4 @@
-import type { ImageData } from './util';
+import { ImageData } from './util';
 
 function zaobao({ imageDataArray, articleBody }) {
     return (

@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const handler = async (ctx) => {
     const { conference } = ctx.req.param();
@@ -30,7 +30,7 @@ export const handler = async (ctx) => {
 
             const title = a.prop('title') || a.text().trim();
             const image = item.find('img.card__image').prop('src');
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 images: image
                     ? [
                           {
@@ -94,7 +94,7 @@ export const handler = async (ctx) => {
 
                 if (videoSrc) {
                     $$('div.player').replaceWith(
-                        renderDescription({
+                        art(path.join(__dirname, 'templates/description.art'), {
                             videos: [
                                 {
                                     src: videoSrc,
@@ -120,7 +120,7 @@ export const handler = async (ctx) => {
 
                 $$('div.article__content').nextAll().remove();
 
-                const description = renderDescription({
+                const description = art(path.join(__dirname, 'templates/description.art'), {
                     images: image
                         ? [
                               {

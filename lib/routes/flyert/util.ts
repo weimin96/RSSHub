@@ -1,9 +1,8 @@
-import type { CheerioAPI } from 'cheerio';
-
-import { parseDate } from '@/utils/parse-date';
+import { CheerioAPI } from 'cheerio';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from './templates/description';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const rootUrl = 'https://www.flyert.com.cn';
 
@@ -22,7 +21,7 @@ const parseArticleList = ($: CheerioAPI, limit: number) =>
 
             const title = item.find('div.wzbt').text().trim();
             const image = item.find('div.wzpic img').prop('src');
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 images: image
                     ? [
                           {
@@ -107,7 +106,7 @@ const parsePostList = ($: CheerioAPI, limit: number) =>
  */
 const parseArticle = ($$: CheerioAPI, item) => {
     const title = $$('h1.ph').text().trim();
-    const description = renderDescription({
+    const description = art(path.join(__dirname, 'templates/description.art'), {
         intro: $$('div.s').text() || undefined,
         description: $$('div#artMain').html(),
     });
@@ -145,7 +144,7 @@ const parsePost = ($$: CheerioAPI, item) => {
         el = $$(el);
 
         el.replaceWith(
-            renderDescription({
+            art(path.join(__dirname, 'templates/description.art'), {
                 images:
                     el.prop('zoomfile') || el.prop('file')
                         ? [
@@ -183,4 +182,4 @@ const parsePost = ($$: CheerioAPI, item) => {
     return item;
 };
 
-export { parseArticle, parseArticleList, parsePost, parsePostList, rootUrl };
+export { rootUrl, parseArticleList, parsePostList, parseArticle, parsePost };

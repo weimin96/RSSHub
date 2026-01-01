@@ -1,5 +1,4 @@
 import { load } from 'cheerio';
-
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
 
@@ -19,4 +18,4 @@ const ProcessFeed = (info, data) => {
     return info;
 };
 
-export { ProcessFeed, rootUrl };
+export { rootUrl, ProcessFeed };

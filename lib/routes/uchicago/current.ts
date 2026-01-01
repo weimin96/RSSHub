@@ -1,11 +1,10 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import logger from '@/utils/logger';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-import puppeteer from '@/utils/puppeteer';
 import { getCookies, setCookies } from '@/utils/puppeteer-utils';
+import logger from '@/utils/logger';
+import puppeteer from '@/utils/puppeteer';
 
 export const route: Route = {
     path: '/journals/current/:journal',

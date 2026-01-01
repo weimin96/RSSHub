@@ -1,8 +1,7 @@
-import * as cheerio from 'cheerio';
-
-import type { Data, DataItem, Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route, Data, DataItem } from '@/types';
 import ofetch from '@/utils/ofetch';
+import * as cheerio from 'cheerio';
+import cache from '@/utils/cache';
 
 const ROOT_URL = 'https://api-docs.deepseek.com/zh-cn';
 

@@ -1,4 +1,4 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import buildData from '@/utils/common-config';
 
 const baseUrl = 'https://oct0pu5.cn/';

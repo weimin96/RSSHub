@@ -1,10 +1,9 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-import { queryToBoolean } from '@/utils/readable-social';
-
 import cache from './cache';
 import utils from './utils';
+import { parseDate } from '@/utils/parse-date';
+import { queryToBoolean } from '@/utils/readable-social';
 
 const notFoundData = {
     title: '此 bilibili 频道不存在',

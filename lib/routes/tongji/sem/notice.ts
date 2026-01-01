@@ -1,8 +1,7 @@
 // Warning: The author still knows nothing about javascript!
-import type { Route } from '@/types';
+import { Route } from '@/types';
+import { getNotifByPage, getArticle } from './_utils';
 import cache from '@/utils/cache';
-
-import { getArticle, getNotifByPage } from './_utils';
 
 export const route: Route = {
     path: '/sem/:type?',

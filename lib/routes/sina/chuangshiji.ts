@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { getRollNewsList, parseArticle, parseRollNewsList } from './utils';
+import { getRollNewsList, parseRollNewsList, parseArticle } from './utils';
 
 export const route: Route = {
     path: '/csj',

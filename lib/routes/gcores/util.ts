@@ -1,12 +1,13 @@
-import type { CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
+import { type Data, type DataItem } from '@/types';
 
-import type { Data, DataItem } from '@/types';
+import { art } from '@/utils/render';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 
+import { type CheerioAPI, load } from 'cheerio';
+import path from 'node:path';
+
 import { parseContent } from './parser';
-import { renderDescription } from './templates/description';
 
 const baseUrl: string = 'https://www.gcores.com';
 const imageBaseUrl: string = 'https://image.gcores.com';
@@ -111,7 +112,7 @@ const processItems = async (limit: number, query: any, apiUrl: string, targetUrl
             };
         }
 
-        const description: string = renderDescription({
+        const description: string = art(path.join(__dirname, 'templates/description.art'), {
             images: attributes.cover
                 ? [
                       {
@@ -169,4 +170,4 @@ const processItems = async (limit: number, query: any, apiUrl: string, targetUrl
     };
 };
 
-export { audioBaseUrl, baseUrl, imageBaseUrl, processItems };
+export { baseUrl, imageBaseUrl, audioBaseUrl, processItems };

@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 
-import { apiRootUrl, processItems, rootUrl } from './util';
+import { rootUrl, apiRootUrl, processItems } from './util';
 
 export const route: Route = {
     path: '/daily',

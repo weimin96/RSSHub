@@ -1,11 +1,8 @@
-import MarkdownIt from 'markdown-it';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-
+import MarkdownIt from 'markdown-it';
 import { getUserInfoFromUID } from './utils';
-
 const md = MarkdownIt();
 
 export const route: Route = {

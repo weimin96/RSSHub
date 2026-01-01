@@ -1,9 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import got from '@/utils/got';
-
+import { Route } from '@/types';
 import { processItems } from './utils';
+import got from '@/utils/got';
+import { load } from 'cheerio';
 
 const host = 'http://www.pbc.gov.cn';
 

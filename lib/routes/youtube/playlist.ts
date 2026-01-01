@@ -1,9 +1,7 @@
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
-
-import { getDataByPlaylistId as getDataByPlaylistIdGoogle } from './api/google';
-import { getDataByPlaylistId as getDataByPlaylistIdYoutubei } from './api/youtubei';
+import { Route, ViewType } from '@/types';
 import { callApi } from './utils';
+import { getDataByPlaylistId as getDataByPlaylistIdYoutubei } from './api/youtubei';
+import { getDataByPlaylistId as getDataByPlaylistIdGoogle } from './api/google';
 
 export const route: Route = {
     path: '/playlist/:id/:embed?',

@@ -1,13 +1,11 @@
-import querystring from 'node:querystring';
-
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
+import querystring from 'node:querystring';
 import got from '@/utils/got';
-import { fallback, queryToBoolean } from '@/utils/readable-social';
-
+import { config } from '@/config';
 import weiboUtils from './utils';
+import { fallback, queryToBoolean } from '@/utils/readable-social';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 export const route: Route = {
     path: '/friends/:routeParams?',
@@ -74,8 +72,9 @@ async function handler(ctx) {
                 url: 'https://m.weibo.cn/api/config',
                 headers: {
                     Referer: `https://m.weibo.cn/`,
+                    'MWeibo-Pwa': 1,
+                    'X-Requested-With': 'XMLHttpRequest',
                     Cookie: config.weibo.cookies,
-                    ...weiboUtils.apiHeaders,
                 },
             });
             return _r.data.data.uid;
@@ -92,8 +91,9 @@ async function handler(ctx) {
                 url: `https://m.weibo.cn/api/container/getIndex?type=uid&value=${uid}`,
                 headers: {
                     Referer: `https://m.weibo.cn/u/${uid}`,
+                    'MWeibo-Pwa': 1,
+                    'X-Requested-With': 'XMLHttpRequest',
                     Cookie: config.weibo.cookies,
-                    ...weiboUtils.apiHeaders,
                 },
             });
             return _r.data;
@@ -113,8 +113,9 @@ async function handler(ctx) {
                 url: 'https://m.weibo.cn/feed/friends',
                 headers: {
                     Referer: `https://m.weibo.cn/`,
+                    'MWeibo-Pwa': 1,
+                    'X-Requested-With': 'XMLHttpRequest',
                     Cookie: config.weibo.cookies,
-                    ...weiboUtils.apiHeaders,
                 },
             });
             return _r.data.data;

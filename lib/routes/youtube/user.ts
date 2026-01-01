@@ -1,8 +1,6 @@
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
-
-import { getDataByUsername as getDataByUsernameGoogle } from './api/google';
+import { Route, ViewType } from '@/types';
 import { getDataByUsername as getDataByUsernameYoutubei } from './api/youtubei';
+import { getDataByUsername as getDataByUsernameGoogle } from './api/google';
 import { callApi } from './utils';
 
 export const route: Route = {

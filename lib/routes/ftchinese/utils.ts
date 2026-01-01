@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import parser from '@/utils/rss-parser';
+import { load } from 'cheerio';
 
 const ProcessFeed = (i, $, link) => {
     const title = $('h1').text();

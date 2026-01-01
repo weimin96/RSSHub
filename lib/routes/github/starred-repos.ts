@@ -1,6 +1,6 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { config } from '@/config';
 import md5 from '@/utils/md5';
 import { parseDate } from '@/utils/parse-date';
 

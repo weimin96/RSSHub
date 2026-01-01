@@ -1,4 +1,4 @@
-import type { Namespace } from '@/types';
+import { Namespace } from '@/types';
 
 export const namespace: Namespace = {
     name: 'Visual Studio',

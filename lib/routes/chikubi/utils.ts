@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
-import type { DataItem } from '@/types';
+import { DataItem } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 
 const CONTENT_TYPES = {

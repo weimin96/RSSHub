@@ -1,11 +1,12 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
+
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import path from 'node:path';
+import { art } from '@/utils/render';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/:handle',
@@ -69,7 +70,7 @@ async function handler(ctx) {
 
     const list = projects.data.map((item) => ({
         title: item.title,
-        description: renderDescription({
+        description: art(path.join(__dirname, 'templates/description.art'), {
             description: item.description,
             image: {
                 src: resolveImageUrl(item.cover.small_square_url),
@@ -96,7 +97,7 @@ async function handler(ctx) {
                         },
                     });
 
-                    item.description = renderDescription({
+                    item.description = art(path.join(__dirname, 'templates/description.art'), {
                         description: data.description,
                         assets: data.assets,
                     });

@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
-
-import { baseUrl, getAccountByUsername, getTimelineByAccountId, parseDescription } from './utils';
+import { getAccountByUsername, getTimelineByAccountId, parseDescription, baseUrl } from './utils';
 
 export const route: Route = {
     path: '/user/:username',

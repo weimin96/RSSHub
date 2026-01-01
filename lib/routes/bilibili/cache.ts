@@ -1,14 +1,12 @@
-import { load } from 'cheerio';
-import { JSDOM } from 'jsdom';
-import { RateLimiterMemory, RateLimiterQueue } from 'rate-limiter-flexible';
-
-import { config } from '@/config';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import utils from './utils';
+import { load } from 'cheerio';
+import { config } from '@/config';
 import logger from '@/utils/logger';
 import { getPuppeteerPage } from '@/utils/puppeteer';
-
-import utils from './utils';
+import { JSDOM } from 'jsdom';
+import { RateLimiterMemory, RateLimiterQueue } from 'rate-limiter-flexible';
 
 const subtitleLimiter = new RateLimiterMemory({
     points: 5,
@@ -42,7 +40,7 @@ const getCookie = (disableConfig = false) => {
             onBeforeLoad: (page) => {
                 waitForRequest = new Promise<string>((resolve) => {
                     page.on('requestfinished', async (request) => {
-                        if (request.url() === 'https://api.bilibili.com/x/web-interface/nav') {
+                        if (request.url() === 'https://api.bilibili.com/x/internal/gaia-gateway/ExClimbWuzhi') {
                             const cookies = await page.cookies();
                             let cookieString = cookies.map((cookie) => `${cookie.name}=${cookie.value}`).join('; ');
                             cookieString = cookieString.replace(/b_lsid=[0-9A-F]+_[0-9A-F]+/, `b_lsid=${utils.lsid()}`);

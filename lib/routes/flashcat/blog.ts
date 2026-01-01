@@ -1,7 +1,6 @@
-import { load } from 'cheerio';
-
-import type { Data, Route } from '@/types';
+import { Route, Data } from '@/types';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {

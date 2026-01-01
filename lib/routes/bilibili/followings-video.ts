@@ -1,11 +1,10 @@
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-import logger from '@/utils/logger';
-
 import cache from './cache';
+import { config } from '@/config';
 import utils from './utils';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
+import logger from '@/utils/logger';
 
 export const route: Route = {
     path: '/followings/video/:uid/:embed?',

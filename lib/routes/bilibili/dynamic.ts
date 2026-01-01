@@ -1,18 +1,15 @@
-import JSONbig from 'json-bigint';
-
-import { config } from '@/config';
-import CaptchaError from '@/errors/types/captcha';
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDuration } from '@/utils/helpers';
+import JSONbig from 'json-bigint';
+import utils, { getLiveUrl, getVideoUrl } from './utils';
 import { parseDate } from '@/utils/parse-date';
 import { fallback, queryToBoolean } from '@/utils/readable-social';
-
-import type { BilibiliWebDynamicResponse, Item2, Modules } from './api-interface';
 import cacheIn from './cache';
-import utils, { getLiveUrl, getVideoUrl } from './utils';
+import { BilibiliWebDynamicResponse, Item2, Modules } from './api-interface';
+import { parseDuration } from '@/utils/helpers';
+import { config } from '@/config';
+import CaptchaError from '@/errors/types/captcha';
 
 export const route: Route = {
     path: '/user/dynamic/:uid/:routeParams?',

@@ -53,4 +53,4 @@ const queryToFloat = (s) => {
     return Number.parseFloat(s);
 };
 
-export { fallback, queryToBoolean, queryToFloat, queryToInteger };
+export { fallback, queryToBoolean, queryToInteger, queryToFloat };

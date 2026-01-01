@@ -1,7 +1,6 @@
-import { load } from 'cheerio';
-
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 
 const processItems = (list) =>
     Promise.all(

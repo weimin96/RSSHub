@@ -1,10 +1,9 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-
-import { generateNonce, getPost, sign, webBaseUrl } from '../utils';
+import { webBaseUrl, generateNonce, sign, getPost } from '../utils';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/bbs/profile/thread/:userId',

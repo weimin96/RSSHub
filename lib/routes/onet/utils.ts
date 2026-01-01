@@ -1,4 +1,5 @@
-import { renderImage } from './templates/image';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const parseMainImage = ($) => {
     const mainImage = $('figure.mainPhoto');
@@ -6,7 +7,7 @@ const parseMainImage = ($) => {
     const author = mainImage.find('span.copyright');
     const caption = mainImage.find('span.imageDescription');
 
-    return renderImage({
+    return art(path.join(__dirname, 'templates/image.art'), {
         url: img.attr('src'),
         alt: img.attr('alt')?.trim(),
         author: author.text()?.trim(),
@@ -32,7 +33,7 @@ const parseArticleContent = ($) => {
         const img = $(el).find('img');
         const author = $(el).find('span.author');
         const caption = $(el).find('span.caption');
-        const html = renderImage({
+        const html = art(path.join(__dirname, 'templates/image.art'), {
             url: img.attr('src'),
             alt: img.attr('alt')?.trim(),
             caption: caption.text()?.trim(),

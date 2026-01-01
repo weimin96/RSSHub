@@ -1,29 +1,7 @@
+import { Route, type DataItem } from '@/types';
+import got from '@/utils/got';
 import { load } from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
-
-interface AuthorData {
-    fullname?: string;
-    name: string;
-}
-
-interface BlogItem {
-    slug: string;
-    title: string;
-    publishedAt: string;
-    authorsData: AuthorData[];
-    upvotes: number;
-    thumbnail: string;
-    tags: string[];
-    url: string;
-}
-
-interface BlogApiResponse {
-    allBlogs: BlogItem[];
-}
 
 export const route: Route = {
     path: '/blog',
@@ -49,36 +27,57 @@ export const route: Route = {
     url: 'huggingface.co/blog',
 };
 
+interface Author {
+    user: string;
+    guest: boolean;
+    org?: string;
+}
+
+interface Blog {
+    authors: Author[];
+    canonical: boolean;
+    isUpvotedByUser: boolean;
+    publishedAt: string;
+    slug: string;
+    title: string;
+    upvotes: number;
+    thumbnail: string;
+    guest: boolean;
+}
+
+interface BlogData {
+    blog: Blog;
+    blogUrl: string;
+    lang: string;
+    loggedInUser: string;
+}
+
 async function handler() {
-    const response = await ofetch<BlogApiResponse>('https://huggingface.co/api/blog');
+    const { body: response } = await got('https://huggingface.co/blog');
+    const $ = load(response);
 
-    const { allBlogs } = response;
+    /** @type {Array<{blog: {local: string, title: string, author: string, thumbnail: string, date: string, tags: Array<string>}, blogUrl: string, lang: 'zh', link: string}>} */
+    const papers = $('div[data-target="BlogThumbnail"]')
+        .toArray()
+        .map((item) => {
+            const props = $(item).data('props') as BlogData;
+            const link = $(item).find('a').attr('href');
+            return {
+                ...props,
+                link,
+            };
+        });
 
-    const lists = allBlogs.map((blog) => ({
-        title: blog.title,
-        link: `https://huggingface.co${blog.url}`,
-        pubDate: parseDate(blog.publishedAt),
-        author: blog.authorsData.map((author) => ({
-            name: author.fullname || author.name,
+    const items: DataItem[] = papers.map((item) => ({
+        title: item.blog.title,
+        link: `https://huggingface.co${item.link}`,
+        pubDate: parseDate(item.blog.publishedAt),
+        author: item.blog.authors.map((author) => ({
+            name: author.user,
         })),
-        upvotes: blog.upvotes,
-        image: blog.thumbnail ? new URL(blog.thumbnail, 'https://huggingface.co').toString() : undefined,
-        category: blog.tags,
+        upvotes: item.blog.upvotes,
+        image: new URL(item.blog.thumbnail, 'https://huggingface.co').toString(),
     }));
-
-    const items: DataItem[] = await Promise.all(
-        lists.map((item) =>
-            cache.tryGet(item.link, async () => {
-                const response = await ofetch(item.link);
-                const $ = load(response);
-                $('.mb-4, .mb-6, .not-prose, h1').remove();
-                return {
-                    ...item,
-                    description: $('.blog-content').html() ?? undefined,
-                };
-            })
-        )
-    );
 
     return {
         title: 'Huggingface 英文博客',

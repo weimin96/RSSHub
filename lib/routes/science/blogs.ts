@@ -1,12 +1,10 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-import puppeteer from '@/utils/puppeteer';
-
 import { baseUrl } from './utils';
+import { config } from '@/config';
+import puppeteer from '@/utils/puppeteer';
 
 export const route: Route = {
     path: '/blogs/:name?',

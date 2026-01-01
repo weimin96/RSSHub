@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-import pMap from 'p-map';
-
-import type { DataItem, Route } from '@/types';
-import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
+import cache from '@/utils/cache';
+import { DataItem, Route } from '@/types';
+import pMap from 'p-map';
 
 export const route: Route = {
     path: '/news',

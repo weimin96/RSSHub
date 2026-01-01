@@ -1,8 +1,6 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import got from '@/utils/got';
-
+import { config } from '@/config';
 import { filterEvents } from './eventapi';
 
 export const route: Route = {

@@ -1,13 +1,12 @@
-import { load } from 'cheerio';
-
 import got from '@/utils/got';
-
-import { renderDescription } from './templates/desc';
+import { load } from 'cheerio';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const ProcessItem = async (item) => {
     const detailResponse = await got(item.link);
     const $ = load(detailResponse.data);
-    item.description = renderDescription({
+    item.description = art(path.join(__dirname, 'templates/desc.art'), {
         author: $('h3.author > span')
             .toArray()
             .map((item) => $(item).text())

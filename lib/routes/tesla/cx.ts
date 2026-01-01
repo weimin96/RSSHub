@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/cx/:category?/:city?',
@@ -116,6 +116,9 @@ async function handler(ctx) {
     const categoryToUrl = (category) => new URL(`user-right/list/${category}`, rootUrl).href;
     const mediaToUrl = (media) => new URL(`community-media/${media}`, rootMediaApi).href;
 
+    art.defaults.imports.categoryToUrl = categoryToUrl;
+    art.defaults.imports.mediaToUrl = mediaToUrl;
+
     const { data: categoryResponse } = await got(apiCategoryUrl, {
         searchParams: {
             type: 2,
@@ -137,7 +140,7 @@ async function handler(ctx) {
     let items = response.data.pageDatas.slice(0, limit).map((item) => ({
         title: item.venueName ?? item.title,
         link: new URL(`user-right/detail/${item.id}`, rootUrl).href,
-        description: renderDescription({
+        description: art(path.join(__dirname, 'templates/description.art'), {
             image: item.coverImage
                 ? {
                       src: item.coverImage,
@@ -152,8 +155,6 @@ async function handler(ctx) {
                       description: `充电停车减免${item.parkingVoucherValue}小时`,
                   }
                 : undefined,
-            categoryToUrl,
-            mediaToUrl,
         }),
         category: item.categories,
         guid: item.id,
@@ -179,10 +180,8 @@ async function handler(ctx) {
                 const data = detailResponse.data;
 
                 item.title = data.title ?? item.title;
-                item.description = renderDescription({
+                item.description = art(path.join(__dirname, 'templates/description.art'), {
                     data,
-                    categoryToUrl,
-                    mediaToUrl,
                 });
                 item.author = data.merchants ? data.merchants.map((a) => a.name).join('/') : undefined;
                 item.category = [...new Set([...item.category, ...data.categories])].filter(Boolean);

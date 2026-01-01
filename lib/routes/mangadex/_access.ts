@@ -1,11 +1,10 @@
-import { FetchError } from 'ofetch';
-
+import got from '@/utils/got';
+import cache from '@/utils/cache';
 import { config } from '@/config';
 import ConfigNotFoundError from '@/errors/types/config-not-found';
-import cache from '@/utils/cache';
-import got from '@/utils/got';
 
 import constants from './_constants';
+import { FetchError } from 'ofetch';
 
 /**
  * Retrieves an access token.

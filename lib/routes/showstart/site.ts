@@ -1,9 +1,7 @@
-import type { Context } from 'hono';
-
-import type { Data, Route } from '@/types';
-
-import { HOST, TITLE } from './const';
+import { Data, Route } from '@/types';
+import { TITLE, HOST } from './const';
 import { fetchActivityList, fetchSiteInfo } from './service';
+import { Context } from 'hono';
 
 export const route: Route = {
     path: '/site/:siteId',

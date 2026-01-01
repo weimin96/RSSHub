@@ -1,5 +1,4 @@
-import type { Route } from '@/types';
-
+import { Route } from '@/types';
 import { getNoticeList } from './utils';
 
 const url = 'https://lib.njxzc.edu.cn/pxyhd/list.htm';

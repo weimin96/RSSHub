@@ -11,4 +11,4 @@ const getCookie = async () => {
     return cookieStr;
 };
 
-export { getCookie, rootUrl };
+export { rootUrl, getCookie };

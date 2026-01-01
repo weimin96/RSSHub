@@ -1,8 +1,6 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 
 const categoryList = {
     'combined-print-and-e-book-nonfiction': 'Combined Print & E-Book Nonfiction',

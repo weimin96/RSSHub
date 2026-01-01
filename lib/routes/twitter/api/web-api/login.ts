@@ -1,10 +1,9 @@
 import { authenticator } from 'otplib';
-import { RateLimiterMemory, RateLimiterQueue, RateLimiterRedis } from 'rate-limiter-flexible';
-import { CookieJar } from 'tough-cookie';
-
-import cache from '@/utils/cache';
 import logger from '@/utils/logger';
+import cache from '@/utils/cache';
+import { RateLimiterMemory, RateLimiterRedis, RateLimiterQueue } from 'rate-limiter-flexible';
 import puppeteer from '@/utils/puppeteer';
+import { CookieJar } from 'tough-cookie';
 
 const loginLimiter = cache.clients.redisClient
     ? new RateLimiterRedis({

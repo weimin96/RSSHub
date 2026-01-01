@@ -1,16 +1,15 @@
-import MarkdownIt from 'markdown-it';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/desc';
-
+import MarkdownIt from 'markdown-it';
 const md = MarkdownIt({
     html: true,
     linkify: true,
 });
+import path from 'node:path';
+import { art } from '@/utils/render';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/datasets',
@@ -65,7 +64,7 @@ async function handler(ctx) {
                 const { data } = await got(`${baseUrl}/api/v1/datasets${item.slug}`);
 
                 const content = data.Data.ReadmeContent.replaceAll(/img src="(?!http)(.*?)"/g, `img src="${baseUrl}/api/v1/datasets${item.slug}/repo?Revision=master&FilePath=$1&View=true"`);
-                item.description = renderDescription({
+                item.description = art(path.join(__dirname, 'templates/desc.art'), {
                     description: item.description,
                     md: md.render(content),
                 });

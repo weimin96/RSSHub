@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
+import cache from '@/utils/cache';
 import { parseDate } from '@/utils/parse-date';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/news',

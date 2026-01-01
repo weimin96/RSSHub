@@ -1,10 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
+import { load } from 'cheerio';
 import { getArticleDetails } from './utils';
-
 export const route: Route = {
     path: '/:category',
     categories: ['traditional-media'],

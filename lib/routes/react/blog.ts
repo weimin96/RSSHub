@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
 import type { DataItem, Route } from '@/types';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
+import cache from '@/utils/cache';
+import { load } from 'cheerio';
+import ofetch from '@/utils/ofetch';
 
 const handler: Route['handler'] = async () => {
     const data = await ofetch('https://react.dev/blog');

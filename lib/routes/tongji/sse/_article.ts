@@ -1,6 +1,5 @@
-import { load } from 'cheerio'; // html parser
-
 import got from '@/utils/got'; // get web content
+import { load } from 'cheerio'; // html parser
 
 export default async function getArticle(item) {
     const response = await got({

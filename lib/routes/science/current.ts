@@ -1,3 +1,5 @@
+import { Route } from '@/types';
+import cache from '@/utils/cache';
 // journals form AAAS publishing group
 //
 // science:        Science
@@ -6,14 +8,11 @@
 // scirobotics:    Science Robotics
 // signaling:      Science Signaling
 // stm:            Science Translational Medicine
+
 import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
 import got from '@/utils/got';
-import puppeteer from '@/utils/puppeteer';
-
 import { baseUrl, fetchDesc, getItem } from './utils';
+import puppeteer from '@/utils/puppeteer';
 
 export const route: Route = {
     path: '/current/:journal?',

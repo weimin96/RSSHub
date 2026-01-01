@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
-import { baseUrl, parseItems, parseList } from './utils';
+import { baseUrl, parseList, parseItems } from './utils';
 
 export const route: Route = {
     path: '/today/:edition/publisher/:id',

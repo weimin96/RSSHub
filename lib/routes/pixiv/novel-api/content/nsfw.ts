@@ -1,13 +1,11 @@
 import { JSDOM, VirtualConsole } from 'jsdom';
-import queryString from 'query-string';
-
 import cache from '@/utils/cache';
-import { parseDate } from '@/utils/parse-date';
-
-import { maskHeader } from '../../constants';
 import got from '../../pixiv-got';
-import type { NovelContent, NSFWNovelDetail } from './types';
+import { maskHeader } from '../../constants';
+import queryString from 'query-string';
 import { parseNovelContent } from './utils';
+import type { NovelContent, NSFWNovelDetail } from './types';
+import { parseDate } from '@/utils/parse-date';
 
 export async function getNSFWNovelContent(novelId: string, token: string): Promise<NovelContent> {
     return (await cache.tryGet(`https://app-api.pixiv.net/webview/v2/novel:${novelId}`, async () => {

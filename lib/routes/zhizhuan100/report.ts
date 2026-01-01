@@ -1,9 +1,7 @@
-import * as cheerio from 'cheerio';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
-import ofetch from '@/utils/ofetch';
+import { Route, ViewType } from '@/types';
 import { parseRelativeDate } from '@/utils/parse-date';
+import ofetch from '@/utils/ofetch';
+import * as cheerio from 'cheerio';
 
 export const route: Route = {
     path: '/analytic',

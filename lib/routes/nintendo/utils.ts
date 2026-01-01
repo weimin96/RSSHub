@@ -1,15 +1,12 @@
-import 'dayjs/locale/zh-cn.js';
-
+import got from '@/utils/got';
 import { load } from 'cheerio';
+import { JSDOM } from 'jsdom';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat.js';
-import { JSDOM } from 'jsdom';
-
-import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-
-import { renderEshopCnDescription } from './templates/eshop-cn';
-
+import 'dayjs/locale/zh-cn.js';
 dayjs.extend(localizedFormat);
 
 function nuxtReader(data) {
@@ -141,7 +138,7 @@ const ProcessItemChina = (list, cache) =>
             return {
                 ...item,
                 category: [...software.supportLanguages, ...software.genre, ...software.playMode],
-                description: renderEshopCnDescription({
+                description: art(path.join(__dirname, 'templates/eshop_cn.art'), {
                     item,
                     software,
                     releaseDatetime: dayjs(software.releaseDatetime).locale('zh-cn').format('lll'),

@@ -1,5 +1,4 @@
 import type { Data, Route } from '@/types';
-
 import { fetchItems, hyphen2Pascal } from './utils';
 
 export const route: Route = {

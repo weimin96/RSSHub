@@ -1,11 +1,9 @@
-import { load } from 'cheerio';
-
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { isValidHost } from '@/utils/valid-host';
-
 import { headers, parseItems } from './utils';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 
 export const route: Route = {
     path: '/category_url/:url?/:language?',

@@ -1,11 +1,9 @@
-import * as cheerio from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
-
+import * as cheerio from 'cheerio';
 import { getUserInfoFromUID } from './utils';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/user/article/:uid',

@@ -1,6 +1,5 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import buildData from '@/utils/common-config';
-
 const baseUrl = 'https://www.iiilab.com/';
 
 export const route: Route = {

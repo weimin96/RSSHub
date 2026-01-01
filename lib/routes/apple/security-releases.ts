@@ -1,15 +1,14 @@
-import type { Cheerio, CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-import type { Element } from 'domhandler';
-import type { Context } from 'hono';
+import { type Data, type DataItem, type Route, ViewType } from '@/types';
 
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
+import { art } from '@/utils/render';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 
-import { renderDescription } from './templates/security-releases';
+import { type CheerioAPI, type Cheerio, load } from 'cheerio';
+import type { Element } from 'domhandler';
+import { type Context } from 'hono';
+import path from 'node:path';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const { language = 'en-us' } = ctx.req.param();
@@ -37,7 +36,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
 
             const titleEl: Cheerio<Element> = $el.find('td').first();
             const title: string = titleEl.contents().first().text();
-            const description: string | undefined = renderDescription({
+            const description: string | undefined = art(path.join(__dirname, 'templates/security-releases.art'), {
                 headers,
                 infos: $el
                     .find('td')
@@ -82,7 +81,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
 
                 const description: string | undefined =
                     item.description +
-                    renderDescription({
+                    art(path.join(__dirname, 'templates/security-releases.art'), {
                         description: $$('div#sections').html(),
                     });
                 const pubDateStr: string | undefined = detailResponse.match(/publish_date:\s"(\d{8})",/, '')?.[1];

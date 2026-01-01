@@ -1,8 +1,8 @@
-import { renderItemActionToHTML } from '@rss3/sdk';
+import { Route, type DataItem } from '@/types';
 
-import type { DataItem, Route } from '@/types';
 import { camelcaseKeys } from '@/utils/camelcase-keys';
 import ofetch from '@/utils/ofetch';
+import { renderItemActionToHTML } from '@rss3/sdk';
 
 export const route: Route = {
     path: '/:account/:network?/:tag?',

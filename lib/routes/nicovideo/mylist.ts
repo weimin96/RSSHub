@@ -1,7 +1,7 @@
-import type { DataItem, Route } from '@/types';
-import { parseDate } from '@/utils/parse-date';
+import { DataItem, Route } from '@/types';
 
 import { getMylist, renderVideo } from './utils';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     name: 'Mylist',

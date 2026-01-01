@@ -1,6 +1,5 @@
-import type { MiddlewareHandler } from 'hono';
+import { MiddlewareHandler } from 'hono';
 import { routePath } from 'hono/route';
-
 import { getDebugInfo, setDebugInfo } from '@/utils/debug-info';
 
 const middleware: MiddlewareHandler = async (ctx, next) => {

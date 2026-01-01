@@ -1,5 +1,4 @@
-import type { Route } from '@/types';
-
+import { Route } from '@/types';
 import { getItems } from './utils';
 
 const url = 'https://www.jou.edu.cn/index/tzgg.htm';

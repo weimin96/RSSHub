@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const handler = async (ctx) => {
     const { language = 'CN', category = 'paper' } = ctx.req.param();
@@ -25,7 +25,7 @@ export const handler = async (ctx) => {
             item = $(item);
 
             const title = item.find('h2').text();
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 intro: item.find('div.deheng_newscontent p').text(),
             });
 
@@ -46,7 +46,7 @@ export const handler = async (ctx) => {
 
                 const description =
                     item.description +
-                    renderDescription({
+                    art(path.join(__dirname, 'templates/description.art'), {
                         description: $$('div.news_content').html(),
                     });
                 const image = $$('div.news_content img').prop('src');

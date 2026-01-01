@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/:category{.+}?',
@@ -60,7 +60,7 @@ async function handler(ctx) {
             return {
                 title: item.find('div.base_tt').text(),
                 link: item.prop('href'),
-                description: renderDescription({
+                description: art(path.join(__dirname, 'templates/description.art'), {
                     images: image
                         ? [
                               {
@@ -87,7 +87,7 @@ async function handler(ctx) {
                 const content = load(detailResponse);
 
                 item.title = content('h1').first().text();
-                item.description = renderDescription({
+                item.description = art(path.join(__dirname, 'templates/description.art'), {
                     description: content('#metadata_qrcode').html(),
                     images: content('div.miniatura')
                         .toArray()

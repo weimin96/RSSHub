@@ -1,11 +1,10 @@
-import { config } from '@/config';
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
+import { config } from '@/config';
+import { getOriginAvatar } from './utils';
 import logger from '@/utils/logger';
 import puppeteer from '@/utils/puppeteer';
-
-import { getOriginAvatar } from './utils';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 
 export const route: Route = {
     path: '/live/:rid',

@@ -1,12 +1,11 @@
-import { load } from 'cheerio';
-import CryptoJS from 'crypto-js';
-
-import { config } from '@/config';
-import type { DataItem } from '@/types';
-import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
+import { DataItem } from '@/types';
+import CryptoJS from 'crypto-js';
+import cache from '@/utils/cache';
+import { config } from '@/config';
 
 function getCookie(url: string): Promise<string> {
     return cache.tryGet(

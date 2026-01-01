@@ -1,10 +1,9 @@
+import { Data, Route } from '@/types';
 import { config } from '@/config';
-import type { Data, Route } from '@/types';
-import got from '@/utils/got';
-
 import { getNSFWSeriesNovels } from './novel-api/series/nsfw';
 import { getSFWSeriesNovels } from './novel-api/series/sfw';
-import type { SeriesDetail } from './novel-api/series/types';
+import { SeriesDetail } from './novel-api/series/types';
+import got from '@/utils/got';
 
 const baseUrl = 'https://www.pixiv.net';
 

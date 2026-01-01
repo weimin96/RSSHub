@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import { finishArticleItem } from '@/utils/wechat-mp';
+import { parseDate } from '@/utils/parse-date';
 
 const baseUrl = 'https://nsd.pku.edu.cn/sylm/gd/';
 

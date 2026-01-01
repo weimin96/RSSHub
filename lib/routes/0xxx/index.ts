@@ -1,15 +1,14 @@
-import type { Cheerio, CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-import type { Element } from 'domhandler';
-import type { Context } from 'hono';
+import { type Data, type DataItem, type Route, ViewType } from '@/types';
 
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
+import { art } from '@/utils/render';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 
-import { renderDescription } from './templates/description';
+import { type CheerioAPI, type Cheerio, load } from 'cheerio';
+import type { Element } from 'domhandler';
+import { type Context } from 'hono';
+import path from 'node:path';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const { filter } = ctx.req.param();
@@ -37,7 +36,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
             const title: string = $el.find('td.title').text();
             const image: string | undefined = $el.find('a.screenshot').attr('rel');
 
-            const description: string | undefined = renderDescription({
+            const description: string | undefined = art(path.join(__dirname, 'templates/description.art'), {
                 images: image
                     ? [
                           {
@@ -87,7 +86,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
                 const $$: CheerioAPI = load(detailResponse);
 
                 const description: string | undefined =
-                    renderDescription({
+                    art(path.join(__dirname, 'templates/description.art'), {
                         images: $$('div.thumbs img')
                             .toArray()
                             .map((i) => {

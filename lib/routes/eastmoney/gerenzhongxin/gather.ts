@@ -1,6 +1,4 @@
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
-
+import { type Route, ViewType } from '@/types';
 import { handler as cfhHandler } from './cfh';
 import { handler as gubaHandler } from './guba';
 import { handler as trplHandler } from './trpl';

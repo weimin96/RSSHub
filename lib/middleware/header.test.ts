@@ -1,15 +1,9 @@
-import { afterAll, afterEach, describe, expect, it } from 'vitest';
-
-import wait from '@/utils/wait';
+import { describe, expect, it, afterAll } from 'vitest';
 
 process.env.NODE_NAME = 'mock';
 process.env.ALLOW_ORIGIN = 'rsshub.mock';
 
 let etag;
-
-afterEach(async () => {
-    await wait(1000);
-});
 
 afterAll(() => {
     delete process.env.NODE_NAME;

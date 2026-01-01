@@ -1,9 +1,7 @@
-import { load } from 'cheerio';
-import type { Context } from 'hono';
-
 import type { Data, DataItem, Route } from '@/types';
-
-import { bbsOrigin, fetchThread, generateDescription, getDate } from '../utils';
+import type { Context } from 'hono';
+import { load } from 'cheerio';
+import { fetchThread, generateDescription, getDate, bbsOrigin } from '../utils';
 
 export const route: Route = {
     name: 'BBS - 讨论串',

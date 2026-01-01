@@ -1,6 +1,5 @@
+import { Route } from '@/types';
 import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
-
 import { doGot, genSize } from './util';
 
 export const route: Route = {

@@ -1,7 +1,8 @@
-import type { Route } from '@/types';
-import got from '@/utils/got';
+import { Route } from '@/types';
 
-import { renderEshopUsDescription } from './templates/eshop-us';
+import { art } from '@/utils/render';
+import got from '@/utils/got';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/eshop/us',
@@ -39,7 +40,7 @@ async function handler(ctx) {
         description: `Nintendo eShop（美服）新上架的游戏`,
         item: data.map((item) => ({
             title: item.title,
-            description: renderEshopUsDescription(item),
+            description: art(path.join(__dirname, 'templates/eshop_us.art'), item),
             link: `https://www.nintendo.com${item.url}`,
         })),
     };

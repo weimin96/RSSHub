@@ -1,11 +1,10 @@
-import { load } from 'cheerio';
-import dayjs from 'dayjs';
-
-import type { Data, Route } from '@/types';
-import logger from '@/utils/logger';
-import ofetch from '@/utils/ofetch';
-
+import { Data, Route } from '@/types';
 import { baseUrl, extractNews } from './utils';
+import dayjs from 'dayjs';
+import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
+
+import logger from '@/utils/logger';
 
 export const route: Route = {
     path: '/newsToday/:filter?',

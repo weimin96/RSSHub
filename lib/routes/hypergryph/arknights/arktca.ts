@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import cache from '@/utils/cache';
 
 const rssDescription = '明日方舟期刊《回归线》 | 泰拉创作者联合会';
 const url = 'aneot.arktca.com';

@@ -1,4 +1,4 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
 
 export const route: Route = {

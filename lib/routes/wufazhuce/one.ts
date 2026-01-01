@@ -1,6 +1,5 @@
+import { Route, Data, DataItem } from '@/types';
 import { load } from 'cheerio';
-
-import type { Data, DataItem, Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 

@@ -1,6 +1,5 @@
-import type { Data, Route } from '@/types';
+import { Data, Route } from '@/types';
 import got from '@/utils/got';
-
 import { mapPostToItem } from './utils';
 
 const categories = [

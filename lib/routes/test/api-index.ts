@@ -1,4 +1,4 @@
-import type { APIRoute } from '@/types';
+import { APIRoute } from '@/types';
 
 export const apiRoute: APIRoute = {
     path: '/',

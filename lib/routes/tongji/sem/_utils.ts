@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import { config } from '@/config';
 
 export async function getNotifByPage(url): Promise<{ title: string; link: string; pubDate: Date }[]> {
     const pageUrl: string = url;

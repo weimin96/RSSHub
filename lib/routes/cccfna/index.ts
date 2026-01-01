@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
+import { Route, DataItem } from '@/types';
 import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
+import { load } from 'cheerio';
+import ofetch from '@/utils/ofetch';
 
 export const route: Route = {
     path: '/:category/:type?',

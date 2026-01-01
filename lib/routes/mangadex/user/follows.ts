@@ -1,9 +1,8 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
 import getToken from '../_access';
+import cache from '@/utils/cache';
+import { config } from '@/config';
 import { getMangaChapters, getMangaMetaByIds } from '../_feed';
 
 type FollowType = 'reading' | 'plan-to-read' | 'completed' | 'on-hold' | 're-reading' | 'dropped';

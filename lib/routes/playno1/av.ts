@@ -1,13 +1,10 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
 import { cookieJar, processArticle } from './utils';
-
 const baseUrl = 'http://www.playno1.com';
 
 export const route: Route = {

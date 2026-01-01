@@ -1,9 +1,7 @@
-import type { Context } from 'hono';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
+import { Context } from 'hono';
 
 export const route: Route = {
     name: 'Owner Repositories',

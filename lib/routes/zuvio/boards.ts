@@ -1,6 +1,5 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
 import { getBoards, rootUrl } from './utils';
 
 export const route: Route = {

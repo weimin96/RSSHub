@@ -1,6 +1,5 @@
-import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
+import path from 'node:path';
 import { stringifyQuery } from 'ufo';
 
 export const getRouteNameFromPath = (path: string) => {

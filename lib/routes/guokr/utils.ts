@@ -1,8 +1,7 @@
-import * as cheerio from 'cheerio';
-
+import { parseDate } from '@/utils/parse-date';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import * as cheerio from 'cheerio';
 
 export const parseList = (result) =>
     result.map((item) => ({

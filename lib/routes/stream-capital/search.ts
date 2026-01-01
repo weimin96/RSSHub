@@ -1,11 +1,10 @@
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
-import type { EncryptedResponse, WebBlog } from './types';
-import { decrypt, encrypt } from './utils';
+import { encrypt, decrypt } from './utils';
+import { EncryptedResponse, WebBlog } from './types';
+import cache from '@/utils/cache';
 
 export const route: Route = {
     path: '/search',

@@ -1,10 +1,6 @@
+import { Route, ViewType } from '@/types';
+import { rootUrl, parseNewsList, parseArticle } from './utils';
 import pMap from 'p-map';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
-
-import { parseArticle, parseNewsList, rootUrl } from './utils';
-
 const siteTitleMapping = {
     '/': 'News',
     bpol: 'Politics',

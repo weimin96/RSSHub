@@ -1,8 +1,6 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
+import { load } from 'cheerio';
 const host = 'https://www.sony.com';
 export const route: Route = {
     path: '/downloads/:productType/:productId',

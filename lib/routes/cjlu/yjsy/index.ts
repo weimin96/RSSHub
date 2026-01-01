@@ -1,11 +1,10 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-import { getPuppeteerPage } from '@/utils/puppeteer';
+import cache from '@/utils/cache';
 import timezone from '@/utils/timezone';
+import { getPuppeteerPage } from '@/utils/puppeteer';
 
 const host = 'https://yjsy.cjlu.edu.cn/';
 

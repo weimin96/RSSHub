@@ -25,14 +25,12 @@
  * For more details of these functions, please refer to the jsDoc in the source code.
  */
 
-import type { Cheerio, CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
+import ofetch from '@/utils/ofetch';
+import { type Cheerio, type CheerioAPI, load } from 'cheerio';
 import type { Element } from 'domhandler';
-
+import { parseDate } from '@/utils/parse-date';
 import cache from '@/utils/cache';
 import logger from '@/utils/logger';
-import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
 
 class WeChatMpError extends Error {
     constructor(message: string) {
@@ -184,7 +182,7 @@ class ExtractMetadata {
             $,
             (script) => {
                 const scriptText = $(script).text();
-                const metadataExtracted = <Record<string, string>>this.doExtract(this.commonMetadataToBeExtracted, scriptText);
+                const metadataExtracted = <Record<string, string>> this.doExtract(this.commonMetadataToBeExtracted, scriptText);
                 const showType = showTypeMapReverse[metadataExtracted.showType];
                 const realShowType = showTypeMapReverse[metadataExtracted.realShowType];
                 metadataExtracted.sourceUrl = metadataExtracted.sourceUrl && fixUrl(metadataExtracted.sourceUrl);
@@ -219,7 +217,7 @@ class ExtractMetadata {
             $,
             (script) => {
                 const scriptText = $(script).text();
-                const metadataExtracted = <Record<string, string>>this.doExtract(this.audioMetadataToBeExtracted, scriptText);
+                const metadataExtracted = <Record<string, string>> this.doExtract(this.audioMetadataToBeExtracted, scriptText);
                 throw new LoopReturn(metadataExtracted);
             },
             {},
@@ -235,7 +233,7 @@ class ExtractMetadata {
             $,
             (script) => {
                 const scriptText = $(script).text();
-                const metadataExtracted = <Record<string, string[]>>this.doExtract(this.imgMetadataToBeExtracted, scriptText);
+                const metadataExtracted = <Record<string, string[]>> this.doExtract(this.imgMetadataToBeExtracted, scriptText);
                 if (Array.isArray(metadataExtracted.imgUrls)) {
                     metadataExtracted.imgUrls = metadataExtracted.imgUrls.map((url) => fixUrl(url));
                 }
@@ -543,7 +541,6 @@ class PageParsers {
                 } else {
                     error('unknown page, probably due to WAF', pageTextShort, url);
                 }
-                /* v8 ignore next */
                 return {}; // just to make TypeScript happy, actually UNREACHABLE
             default:
                 warn('new showType, trying fallback method', `showType=${commonMetadata.showType}`, url);
@@ -648,4 +645,4 @@ const finishArticleItem = async (item, setMpNameAsAuthor = false, skipLink = fal
 };
 
 const exportedForTestingOnly = { toggleWerror, ExtractMetadata, showTypeMapReverse };
-export { exportedForTestingOnly, fetchArticle, finishArticleItem, fixArticleContent, normalizeUrl, WeChatMpError };
+export { exportedForTestingOnly, WeChatMpError, fixArticleContent, fetchArticle, finishArticleItem, normalizeUrl };

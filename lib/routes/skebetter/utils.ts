@@ -1,4 +1,4 @@
-import type { DataItem } from '@/types';
+import { DataItem } from '@/types';
 import ofetch from '@/utils/ofetch';
 
 export interface MediaUrl {

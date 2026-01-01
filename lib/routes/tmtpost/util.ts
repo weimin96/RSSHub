@@ -1,12 +1,12 @@
-import type { CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
+import { type Data, type DataItem } from '@/types';
 
-import type { Data, DataItem } from '@/types';
+import { art } from '@/utils/render';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 
-import { renderDescription } from './templates/description';
+import { type CheerioAPI, load } from 'cheerio';
+import path from 'node:path';
 
 const baseUrl: string = 'https://www.tmtpost.com';
 const apiBaseUrl: string = 'https://api.tmtpost.com';
@@ -33,7 +33,7 @@ const processItems = async (limit: number, query: Record<string, any>, apiUrl: s
 
     items = response.data.slice(0, limit).map((item): DataItem => {
         const title: string = item.title;
-        const description: string = renderDescription({
+        const description: string = art(path.join(__dirname, 'templates/description.art'), {
             intro: item.summary,
         });
         const pubDate: number | string = item.time_published;
@@ -85,7 +85,7 @@ const processItems = async (limit: number, query: Record<string, any>, apiUrl: s
                     }
 
                     const title: string = data.title;
-                    const description: string = renderDescription({
+                    const description: string = art(path.join(__dirname, 'templates/description.art'), {
                         intro: data.summary,
                         description: data.main,
                     });
@@ -201,4 +201,4 @@ const processItems = async (limit: number, query: Record<string, any>, apiUrl: s
     };
 };
 
-export { apiBaseUrl, baseUrl, processItems };
+export { baseUrl, apiBaseUrl, processItems };

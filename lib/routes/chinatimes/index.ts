@@ -1,12 +1,11 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import logger from '@/utils/logger';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-import puppeteer from '@/utils/puppeteer';
 import timezone from '@/utils/timezone';
+import puppeteer from '@/utils/puppeteer';
+import logger from '@/utils/logger';
 
 export const route: Route = {
     path: '/:category?',

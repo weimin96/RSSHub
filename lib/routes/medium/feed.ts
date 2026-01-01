@@ -1,8 +1,7 @@
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
-import { parseDate } from '@/utils/parse-date';
+import { Route, ViewType } from '@/types';
 import parser from '@/utils/rss-parser';
+import { parseDate } from '@/utils/parse-date';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 
 export const route: Route = {
     path: '/feed/:user',

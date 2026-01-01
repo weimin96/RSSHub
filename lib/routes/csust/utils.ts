@@ -1,8 +1,6 @@
-import type { CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-
-import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load, type CheerioAPI } from 'cheerio';
+import cache from '@/utils/cache';
 import { parseDate } from '@/utils/parse-date';
 
 // 抓取并清清理内容

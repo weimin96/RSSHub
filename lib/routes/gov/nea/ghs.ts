@@ -1,11 +1,9 @@
-import { URL } from 'node:url';
-
-import { load } from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
+import type { Route, DataItem } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import { URL } from 'node:url';
 import timezone from '@/utils/timezone';
 
 export const route: Route = {

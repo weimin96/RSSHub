@@ -1,6 +1,5 @@
-import Parser from 'rss-parser';
-
 import { config } from '@/config';
+import Parser from 'rss-parser';
 
 const parser = new Parser({
     customFields: {

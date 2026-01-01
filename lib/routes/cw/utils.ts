@@ -1,12 +1,10 @@
-import { load } from 'cheerio';
-
 import cache from '@/utils/cache';
-import logger from '@/utils/logger';
-import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 import { getCookies, setCookies } from '@/utils/puppeteer-utils';
-
+import logger from '@/utils/logger';
 let cookie;
+import ofetch from '@/utils/ofetch';
 
 const baseUrl = 'https://www.cw.com.tw';
 
@@ -120,6 +118,6 @@ const parseItems = (list, browser, tryGet) =>
         )
     );
 
-export { baseUrl, getCookie, parseItems, parseList, parsePage, pathMap };
+export { baseUrl, pathMap, getCookie, parsePage, parseList, parseItems };
 
 export { setCookies } from '@/utils/puppeteer-utils';

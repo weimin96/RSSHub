@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
 import type { DataItem, Route } from '@/types';
+import { config } from '@/config';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 // type id => display name
 type Mapping = Record<string, string>;

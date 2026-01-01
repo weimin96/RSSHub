@@ -1,12 +1,12 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from './templates/description';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const handler = async (ctx) => {
     const { id = '0' } = ctx.req.param();
@@ -32,7 +32,7 @@ export const handler = async (ctx) => {
             const src = item.find('img.item__img').first().prop('src') ?? undefined;
             const image = src ? new URL(src, rootUrl).href : undefined;
 
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 images: image
                     ? [
                           {
@@ -64,7 +64,7 @@ export const handler = async (ctx) => {
                 const $$ = load(detailResponse);
 
                 const title = $$('h1.newsTitle').text();
-                const description = renderDescription({
+                const description = art(path.join(__dirname, 'templates/description.art'), {
                     description: $$('div.article-content').html(),
                 });
 

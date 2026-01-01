@@ -1,14 +1,14 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 import { isValidHost } from '@/utils/valid-host';
-
-import { renderDescription } from './templates/description';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 
 export const route: Route = {
     path: '/devlog/:user/:id',
@@ -77,7 +77,7 @@ async function handler(ctx) {
                 const info = JSON.parse(content(infoJson).text());
                 item.author = info.author.name;
                 item.pubDate = info.datePublished;
-                item.description = renderDescription({
+                item.description = art(path.join(__dirname, 'templates/description.art'), {
                     images: content('.post_image')
                         .toArray()
                         .map((e) => content(e).attr('src')),

@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest';
-
 import md5 from '@/utils/md5';
 
 describe('md5', () => {

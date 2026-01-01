@@ -1,8 +1,7 @@
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { getList, parseItem, parseList } from './utils';
+import { getList, parseList, parseItem } from './utils';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 
 export const route: Route = {
     path: '/news/list/:region/:listId',

@@ -1,4 +1,4 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import { toTitleCase } from '@/utils/common-utils';
 import ofetch from '@/utils/ofetch';
 

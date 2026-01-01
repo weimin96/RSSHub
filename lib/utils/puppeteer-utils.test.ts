@@ -1,8 +1,7 @@
-import type { Browser } from 'rebrowser-puppeteer';
-import { afterEach, describe, expect, it, vi } from 'vitest';
-
+import { describe, expect, it, vi, afterEach } from 'vitest';
+import { parseCookieArray, constructCookieArray, setCookies, getCookies } from '@/utils/puppeteer-utils';
 import puppeteer from '@/utils/puppeteer';
-import { constructCookieArray, getCookies, parseCookieArray, setCookies } from '@/utils/puppeteer-utils';
+import type { Browser } from 'rebrowser-puppeteer';
 
 let browser: Browser | null = null;
 

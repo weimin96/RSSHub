@@ -1,8 +1,7 @@
 import { load } from 'cheerio';
-
-import type { DataItem } from '@/types';
-import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
+import cache from '@/utils/cache';
+import { DataItem } from '@/types';
 
 export const baseUrl = 'https://www.capitalmind.in';
 

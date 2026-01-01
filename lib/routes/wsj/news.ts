@@ -1,11 +1,8 @@
-import { load } from 'cheerio';
-import pMap from 'p-map';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
+import { load } from 'cheerio';
 import { parseArticle } from './utils';
-
+import pMap from 'p-map';
 const hostMap = {
     'en-us': 'https://www.wsj.com',
     'zh-cn': 'https://cn.wsj.com/zh-hans',

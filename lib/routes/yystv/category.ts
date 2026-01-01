@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
+import { DataItem, Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-import { parseDate, parseRelativeDate } from '@/utils/parse-date';
-
 import { fetchDataItemCached } from './fetcher';
+import { load } from 'cheerio';
+import { parseDate, parseRelativeDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/category/:category',

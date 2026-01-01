@@ -1,17 +1,15 @@
-import { HttpsProxyAgent } from 'https-proxy-agent';
+import { config } from '@/config';
 import { PacProxyAgent } from 'pac-proxy-agent';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 import { SocksProxyAgent } from 'socks-proxy-agent';
 import { ProxyAgent } from 'undici';
-
-import { config } from '@/config';
 import logger from '@/utils/logger';
 
-import type { MultiProxyResult, ProxyState } from './multi-proxy';
-import createMultiProxy from './multi-proxy';
+const proxyIsPAC = config.pacUri || config.pacScript;
+
 import pacProxy from './pac-proxy';
 import unifyProxy from './unify-proxy';
-
-const proxyIsPAC = config.pacUri || config.pacScript;
+import createMultiProxy, { type MultiProxyResult, type ProxyState } from './multi-proxy';
 
 interface ProxyExport {
     agent: PacProxyAgent<string> | HttpsProxyAgent<string> | SocksProxyAgent | null;

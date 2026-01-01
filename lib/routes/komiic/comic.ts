@@ -1,6 +1,6 @@
-import type { Route } from '@/types';
-import got from '@/utils/got';
+import { Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
+import got from '@/utils/got';
 
 export const route: Route = {
     path: '/comic/:id',

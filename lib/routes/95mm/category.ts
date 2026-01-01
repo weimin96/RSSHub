@@ -1,6 +1,5 @@
-import type { Route } from '@/types';
-
-import { ProcessItems, rootUrl } from './utils';
+import { Route } from '@/types';
+import { rootUrl, ProcessItems } from './utils';
 
 export const route: Route = {
     path: '/category/:category',

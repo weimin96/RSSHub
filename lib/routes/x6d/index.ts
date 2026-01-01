@@ -1,10 +1,10 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/:id?',

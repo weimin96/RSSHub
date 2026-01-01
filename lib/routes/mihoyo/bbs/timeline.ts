@@ -1,10 +1,9 @@
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
 import cache from './cache';
+import { config } from '@/config';
 import { post2item } from './utils';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 export const route: Route = {
     path: '/bbs/timeline',

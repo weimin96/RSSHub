@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
-import { parseItem, parseList } from './utils';
+import { load } from 'cheerio';
+import { parseList, parseItem } from './utils';
 
 export const route: Route = {
     path: '/:type',

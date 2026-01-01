@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
+import { DataItem, Route } from '@/types';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 
 export const route: Route = {
     name: 'ASR Articles',

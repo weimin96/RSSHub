@@ -1,13 +1,11 @@
+import { Route } from '@/types';
 import { load } from 'cheerio';
-import dayjs from 'dayjs';
-import duration from 'dayjs/plugin/duration.js';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch'; // 统一使用的请求库
+import cache from '@/utils/cache';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration.js';
 dayjs.extend(duration);
 
 export const route: Route = {

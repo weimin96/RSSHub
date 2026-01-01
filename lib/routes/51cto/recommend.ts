@@ -1,13 +1,11 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
-import got from '@/utils/got';
-import logger from '@/utils/logger';
-import ofetch from '@/utils/ofetch';
+import { Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
-
+import got from '@/utils/got';
 import { getToken, sign } from './utils';
+import { load } from 'cheerio';
+import cache from '@/utils/cache';
+import ofetch from '@/utils/ofetch';
+import logger from '@/utils/logger';
 
 export const route: Route = {
     path: '/index/recommend',

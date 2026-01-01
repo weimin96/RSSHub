@@ -1,10 +1,9 @@
-import * as cheerio from 'cheerio';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
+import * as cheerio from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import { config } from '@/config';
 
 type NewsItem = {
     cid: string;

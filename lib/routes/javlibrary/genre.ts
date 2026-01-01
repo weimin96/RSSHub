@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { defaultGenre, defaultLanguage, defaultMode, ProcessItems, rootUrl } from './utils';
+import { defaultMode, defaultGenre, defaultLanguage, rootUrl, ProcessItems } from './utils';
 
 export const route: Route = {
     path: ['/videos/genre/:genre?/:language?/:mode?', '/genre/:genre?/:language?/:mode?'],

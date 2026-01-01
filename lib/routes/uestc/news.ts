@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 
 const dateRegex = /(20\d{2}).(\d{2})-(\d{2})/;
 

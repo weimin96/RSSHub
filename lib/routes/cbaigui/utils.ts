@@ -11,4 +11,4 @@ const GetFilterId = async (type, name) => {
     return filterResponse.findLast((f) => f.name === name)?.id ?? undefined;
 };
 
-export { apiSlug, GetFilterId, rootUrl };
+export { rootUrl, apiSlug, GetFilterId };

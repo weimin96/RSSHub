@@ -1,15 +1,14 @@
-import type { CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-import type { Context } from 'hono';
+import { type Data, type DataItem, type Route, ViewType } from '@/types';
 
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
+import { art } from '@/utils/render';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
 
-import { renderDescription } from './templates/description';
+import { type CheerioAPI, load } from 'cheerio';
+import { type Context } from 'hono';
+import path from 'node:path';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const limit: number = Number.parseInt(ctx.req.query('limit') ?? '50', 10);
@@ -38,7 +37,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
 
     items = response.data.slice(0, limit).map((item): DataItem => {
         const title: string = item.title;
-        const description: string | undefined = renderDescription({
+        const description: string | undefined = art(path.join(__dirname, 'templates/description.art'), {
             intro: item.description,
             description: item.content,
         });
@@ -85,8 +84,8 @@ export const handler = async (ctx: Context): Promise<Data> => {
                 const title: string = $$('h1').first().text() || $$('h2.title').text() || item.title;
                 const description: string | undefined =
                     item.description +
-                    renderDescription({
-                        description: $$('div.xx_boxsing, div#mainBody').html() || undefined,
+                    art(path.join(__dirname, 'templates/description.art'), {
+                        description: $$('div.xx_boxsing, div#mainBody').html(),
                     });
                 const pubDateStr: string | undefined = $$('h1').next().find('span').first().text() || $$('div.from').text();
                 const authors: DataItem['author'] = $$('h1').next().contents().first().text() || $$('span.showMoreAuthor').text() || item.author;

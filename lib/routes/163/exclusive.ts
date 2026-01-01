@@ -1,12 +1,12 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
-
-import { renderExclusiveDescription } from './templates/exclusive';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const ids = {
     '': {
@@ -150,7 +150,7 @@ async function handler(ctx) {
 
                         const video = JSON.parse(detailResponse.data.match(/^videoList\((.*)\)$/)[1])?.mp4_url;
 
-                        item.description = renderExclusiveDescription({
+                        item.description = art(path.join(__dirname, 'templates/exclusive.art'), {
                             video,
                         });
                     } else {
@@ -165,7 +165,7 @@ async function handler(ctx) {
 
                         content('.m-photo').each(function () {
                             content(this).html(
-                                renderExclusiveDescription({
+                                art(path.join(__dirname, 'templates/exclusive.art'), {
                                     image: content(this).find('img').attr('data-src'),
                                 })
                             );

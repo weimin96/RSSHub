@@ -1,8 +1,6 @@
-import { load } from 'cheerio';
-
-import type { Data, Route } from '@/types';
+import { Data, Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
+import { load } from 'cheerio';
 import { parseItems } from './parser';
 
 export const handler = async (): Promise<Data | null> => {

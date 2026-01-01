@@ -1,5 +1,5 @@
-import puppeteer from '@/utils/puppeteer';
 import { getCookies } from '@/utils/puppeteer-utils';
+import puppeteer from '@/utils/puppeteer';
 
 /**
  * async function 获取cookie

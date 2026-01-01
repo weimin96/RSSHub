@@ -1,9 +1,8 @@
-import { load } from 'cheerio'; // 类似 jQuery 的 API HTML 解析器
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch'; // 统一使用的请求库
+import { load } from 'cheerio'; // 类似 jQuery 的 API HTML 解析器
 import { parseDate } from '@/utils/parse-date';
+import cache from '@/utils/cache';
 
 export const route: Route = {
     path: '/zh-Hans/docs/:type',

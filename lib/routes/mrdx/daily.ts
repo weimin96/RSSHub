@@ -1,15 +1,13 @@
+import { Route } from '@/types';
+import cache from '@/utils/cache';
 import { load } from 'cheerio';
+import { parseDate } from '@/utils/parse-date';
+import { getElementChildrenInnerText } from './utils';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc.js';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
-import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-
-import { getElementChildrenInnerText } from './utils';
-
 dayjs.extend(utc);
+
+import got from '@/utils/got';
 
 export const route: Route = {
     path: '/today',

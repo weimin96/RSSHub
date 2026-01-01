@@ -1,8 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
-import { apiUrl, baseUrl, ProcessFeed, processList } from './utils';
+import { processList, ProcessFeed, baseUrl, apiUrl } from './utils';
 
 export const route: Route = {
     path: '/user/:id',

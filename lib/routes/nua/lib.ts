@@ -1,8 +1,6 @@
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
-
+import { Route } from '@/types';
 import util from './utils';
-
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 const baseUrl = 'https://lib.nua.edu.cn';
 
 export const route: Route = {

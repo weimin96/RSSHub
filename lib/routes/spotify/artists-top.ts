@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
-import ofetch from '@/utils/ofetch';
-
+import { Route } from '@/types';
 import utils from './utils';
+import ofetch from '@/utils/ofetch';
 
 export const route: Route = {
     path: '/top/artists',

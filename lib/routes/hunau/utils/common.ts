@@ -1,12 +1,10 @@
+import cache from '@/utils/cache';
 // common.js
 import { load } from 'cheerio';
-
-import cache from '@/utils/cache';
 import got from '@/utils/got';
-
 import categoryTitle from './category-title';
-import indexPage from './index-page';
 import newsContent from './news-content';
+import indexPage from './index-page';
 
 async function getContent(ctx, { baseHost, baseCategory, baseType, baseTitle, baseDescription = '', baseDeparment = '', baseClass = 'div.article_list ul li:has(a)' }) {
     const { category = baseCategory, type = baseType, page = '1' } = ctx.req.param();

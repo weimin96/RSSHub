@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-
 import { baseUrl, fetchUserDate } from './utils';
 
 export const route: Route = {

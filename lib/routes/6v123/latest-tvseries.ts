@@ -1,5 +1,4 @@
-import type { Route } from '@/types';
-
+import { Route } from '@/types';
 import { processItems } from './utils';
 
 const baseURL = 'https://www.hao6v.tv/gvod/dsj.html';

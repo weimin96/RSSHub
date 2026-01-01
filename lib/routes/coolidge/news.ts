@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { type Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
-import { renderDescription } from './templates/description';
+import { load } from 'cheerio';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const handler = async () => {
     const link = 'https://coolidge.org/about-us/news-media';
@@ -25,7 +24,7 @@ const handler = async () => {
         const absoluteLink = href ? new URL(href, link).href : undefined;
         const absoluteImage = imageSrc ? new URL(imageSrc, link).href : undefined;
 
-        const rendered = renderDescription({
+        const rendered = art(path.join(__dirname, 'templates/description.art'), {
             image: absoluteImage,
             intro: descriptionText,
         });

@@ -1,8 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
-import type { Article } from './types';
 import { getCollection, parseList, ProcessFeed } from './utils';
+import { Article } from './types';
 
 export const route: Route = {
     path: '/collections/:userId',

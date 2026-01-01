@@ -1,8 +1,7 @@
+import { Route } from '@/types';
+import got from '@/utils/got';
 import { load } from 'cheerio';
 import iconv from 'iconv-lite';
-
-import type { Route } from '@/types';
-import got from '@/utils/got';
 
 export const route: Route = {
     path: '/xian',

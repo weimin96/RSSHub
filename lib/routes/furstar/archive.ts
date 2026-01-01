@@ -1,8 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
+import utils from './utils';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-
-import utils from './utils';
 
 export const route: Route = {
     path: '/archive/:lang?',

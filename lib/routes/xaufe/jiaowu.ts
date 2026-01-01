@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 
 // Yep http is bad, but I had no choice :(
 const rootMeta = {

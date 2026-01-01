@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const bakeTimestamp = (seconds) => {
     const hours = Math.floor(seconds / 3600);
@@ -62,7 +62,7 @@ async function handler(ctx) {
         title: item.episode_name,
         link: new URL(`${defaultLocale}/${item.channel_id}/${item.episode_id}`, rootUrl).href,
         detailUrl: new URL(`_next/data/${buildId}/${defaultLocale}/${item.channel_id}/${item.episode_id}.json`, rootUrl).href,
-        description: renderDescription({
+        description: art(path.join(__dirname, 'templates/description.art'), {
             texts: item.episode_description.split(/\n\n/).map((text) => ({
                 text,
             })),
@@ -84,7 +84,7 @@ async function handler(ctx) {
                 const { data: textResponse } = await got(detailResponse.pageProps.currentEpisode.ps4_url);
 
                 item.description =
-                    renderDescription({
+                    art(path.join(__dirname, 'templates/description.art'), {
                         audios: [
                             {
                                 src: detailResponse.pageProps.currentEpisode.media,
@@ -93,7 +93,7 @@ async function handler(ctx) {
                         ],
                     }) +
                     item.description +
-                    renderDescription({
+                    art(path.join(__dirname, 'templates/description.art'), {
                         texts: textResponse.map((t) => ({
                             startTime: bakeTimestamp(t.startTime),
                             endTime: bakeTimestamp(t.endTime),

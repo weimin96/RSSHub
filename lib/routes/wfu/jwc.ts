@@ -1,7 +1,6 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 
 // 参考 whu/news 武汉大学页面写成
 

@@ -1,7 +1,5 @@
 import { CookieJar } from 'tough-cookie';
-
 import got from '@/utils/got';
-
 const cookieJar = new CookieJar();
 
 async function doGot(num, host, link) {

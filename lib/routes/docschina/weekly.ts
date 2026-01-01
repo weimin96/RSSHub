@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-import markdownit from 'markdown-it';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
+import cache from '@/utils/cache';
+import markdownit from 'markdown-it';
 
 const md = markdownit({
     html: true,

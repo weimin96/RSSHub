@@ -1,10 +1,8 @@
-import type { Context } from 'hono';
-
 import type { Route } from '@/types';
-
-import { getPosts } from './api';
 import { INDEX_URL, LOGO_URL, POST_TYPE, REQUIRE_CONFIG, STRAT_PART } from './constant';
+import type { Context } from 'hono';
 import { checkConfig, generatePostFeeds } from './utils';
+import { getPosts } from './api';
 
 export const route: Route = {
     path: '/ff14risingstones/strats/:pid?/:type?',

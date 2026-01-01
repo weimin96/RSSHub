@@ -1,8 +1,7 @@
 import type { Data, Route } from '@/types';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
-
 import { CommonDataProperties, CommonRouteProperties, getPostItems } from './common';
+import ofetch from '@/utils/ofetch';
+import cache from '@/utils/cache';
 
 export const route: Route = {
     ...CommonRouteProperties,

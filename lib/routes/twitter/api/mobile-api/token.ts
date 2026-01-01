@@ -1,7 +1,6 @@
 import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-
 import login from './login';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 let tokenIndex = 0;
 

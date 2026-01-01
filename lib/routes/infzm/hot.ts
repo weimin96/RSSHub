@@ -1,7 +1,6 @@
 import type { Data, DataItem, Route } from '@/types';
-import got from '@/utils/got';
-
 import type { ContentsResponse } from './types';
+import got from '@/utils/got';
 import { fetchArticles } from './utils';
 
 export const route: Route = {

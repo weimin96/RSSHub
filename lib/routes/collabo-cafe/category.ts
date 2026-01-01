@@ -1,9 +1,7 @@
-import { load } from 'cheerio';
-import type { Context } from 'hono';
-
-import type { Data, Route } from '@/types';
+import { Data, Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
+import { load } from 'cheerio';
+import { Context } from 'hono';
 import { parseItems } from './parser';
 
 export const handler = async (ctx: Context): Promise<Data | null> => {

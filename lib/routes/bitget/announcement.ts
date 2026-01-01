@@ -1,13 +1,10 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
-import type { DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
-import cache from '@/utils/cache';
+import { DataItem, Route, ViewType } from '@/types';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
+import cache from '@/utils/cache';
+import { BitgetResponse } from './type';
 import { parseDate } from '@/utils/parse-date';
-
-import type { BitgetResponse } from './type';
+import { config } from '@/config';
 
 const handler: Route['handler'] = async (ctx) => {
     const baseUrl = 'https://www.bitget.com';

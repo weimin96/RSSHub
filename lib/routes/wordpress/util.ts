@@ -1,6 +1,5 @@
-import { load } from 'cheerio';
-
 import got from '@/utils/got';
+import { load } from 'cheerio';
 
 const apiSlug = 'wp-json/wp/v2';
 

@@ -1,4 +1,5 @@
-import type { DataItem } from '@/types';
+import { type DataItem } from '@/types';
+
 import { parseDate } from '@/utils/parse-date';
 
 const author: string = '趣集';
@@ -30,4 +31,4 @@ const processItems: (items: any[], limit: number) => DataItem[] = (items: any[],
         };
     });
 
-export { author, language, processItems, rootUrl };
+export { author, language, rootUrl, processItems };

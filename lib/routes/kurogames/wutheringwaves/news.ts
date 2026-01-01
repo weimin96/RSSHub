@@ -1,13 +1,10 @@
-import * as cheerio from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
+import { DataItem, Route } from '@/types';
 import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
-import type { Article } from './constants';
-import { Language, Parameter, SUPPORTED_LANGUAGES } from './constants';
+import * as cheerio from 'cheerio';
+import ofetch from '@/utils/ofetch';
+import { Article, Language, Parameter, SUPPORTED_LANGUAGES } from './constants';
 import { fetchArticles, getArticleContentLink, getArticleLink, getHandlerLanguage, isValidLanguage, parseInteger } from './utils';
 
 export const route: Route = {

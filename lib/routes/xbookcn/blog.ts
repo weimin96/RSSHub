@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
+import cache from '@/utils/cache';
 
 export const route: Route = {
     path: '/:label?', // 路由路径

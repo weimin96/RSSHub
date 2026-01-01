@@ -1,17 +1,15 @@
-import path from 'node:path';
-
-import { serveStatic } from '@hono/node-server/serve-static';
-import type { Handler } from 'hono';
-import { Hono } from 'hono';
-import { routePath } from 'hono/route';
-
-import { config } from '@/config';
-import healthz from '@/routes/healthz';
-import index from '@/routes/index';
-import metrics from '@/routes/metrics';
-import robotstxt from '@/routes/robots.txt';
 import type { APIRoute, Namespace, Route } from '@/types';
-import { directoryImport } from '@/utils/directory-import';
+import { directoryImport } from 'directory-import';
+import { Hono, type Handler } from 'hono';
+import { routePath } from 'hono/route';
+import path from 'node:path';
+import { serveStatic } from '@hono/node-server/serve-static';
+import { config } from '@/config';
+
+import index from '@/routes/index';
+import healthz from '@/routes/healthz';
+import robotstxt from '@/routes/robots.txt';
+import metrics from '@/routes/metrics';
 import logger from '@/utils/logger';
 
 const __dirname = import.meta.dirname;
@@ -55,27 +53,23 @@ export type NamespacesType = Record<
 
 let namespaces: NamespacesType = {};
 
-if (config.isPackage) {
-    namespaces = (await import('../assets/build/routes.js')).default;
-} else {
-    switch (process.env.NODE_ENV || process.env.VERCEL_ENV) {
-        case 'production':
-            namespaces = (await import('../assets/build/routes.js')).default;
-            break;
-        case 'test':
-            // @ts-expect-error
-            namespaces = await import('../assets/build/routes.json');
-            if (namespaces.default) {
-                // @ts-ignore
-                namespaces = namespaces.default;
-            }
-            break;
-        default:
-            modules = directoryImport({
-                targetDirectoryPath: path.join(__dirname, './routes'),
-                importPattern: /\.tsx?$/,
-            }) as typeof modules;
-    }
+switch (process.env.NODE_ENV || process.env.VERCEL_ENV) {
+    case 'production':
+        namespaces = (await import('../assets/build/routes.js')).default;
+        break;
+    case 'test':
+        // @ts-expect-error
+        namespaces = await import('../assets/build/routes.json');
+        if (namespaces.default) {
+            // @ts-ignore
+            namespaces = namespaces.default;
+        }
+        break;
+    default:
+        modules = directoryImport({
+            targetDirectoryPath: path.join(__dirname, './routes'),
+            importPattern: /\.ts$/,
+        }) as typeof modules;
 }
 
 if (config.feature.disable_nsfw) {
@@ -258,14 +252,12 @@ if (config.debugInfo) {
     // Only enable tracing in debug mode
     app.get('/metrics', metrics);
 }
-if (!config.isPackage && !process.env.VERCEL_ENV) {
-    app.use(
-        '/*',
-        serveStatic({
-            root: path.join(__dirname, 'assets'),
-            rewriteRequestPath: (path) => (path === '/favicon.ico' ? '/favicon.png' : path),
-        })
-    );
-}
+app.use(
+    '/*',
+    serveStatic({
+        root: path.join(__dirname, 'assets'),
+        rewriteRequestPath: (path) => (path === '/favicon.ico' ? '/favicon.png' : path),
+    })
+);
 
 export default app;

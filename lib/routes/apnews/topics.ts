@@ -1,12 +1,8 @@
-import { load } from 'cheerio';
-import pMap from 'p-map';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import got from '@/utils/got';
-
+import { load } from 'cheerio';
 import { fetchArticle, removeDuplicateByKey } from './utils';
-
+import pMap from 'p-map';
 const HOME_PAGE = 'https://apnews.com';
 
 export const route: Route = {

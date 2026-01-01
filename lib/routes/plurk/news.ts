@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
 import { baseUrl, fetchFriends, getPlurk } from './utils';
 
 export const route: Route = {

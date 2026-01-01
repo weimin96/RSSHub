@@ -1,12 +1,12 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from './templates/description';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const handler = async (ctx) => {
     const { category = 'zx/zxfb/' } = ctx.req.param();
@@ -31,7 +31,7 @@ export const handler = async (ctx) => {
 
             const title = a.text();
             const image = item.find('img').first().prop('src') ? new URL(item.find('img').first().prop('src'), rootUrl).href : undefined;
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 intro: item.find('p.con_text').text() || undefined,
                 images: image
                     ? [
@@ -66,8 +66,8 @@ export const handler = async (ctx) => {
                 const $$ = load(detailResponse);
 
                 const title = $$('div.detailCon_info_tit').text().trim();
-                const description = renderDescription({
-                    description: $$('div.content_body_box').html() || undefined,
+                const description = art(path.join(__dirname, 'templates/description.art'), {
+                    description: $$('div.content_body_box').html(),
                 });
 
                 item.title = title;

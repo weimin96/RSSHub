@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Data, DataItem, Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route, DataItem, Data } from '@/types';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import cache from '@/utils/cache';
 
 const ROOT_URL = 'https://bfl.ai'; // 根 URL 定义为常量
 

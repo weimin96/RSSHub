@@ -1,7 +1,6 @@
-import queryString from 'query-string';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import queryString from 'query-string';
 
 export const route: Route = {
     path: '/firmware/:device/:type?/:region?',

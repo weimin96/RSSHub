@@ -1,10 +1,9 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
-import { apiUrl, getBoards, renderDesc, rootUrl, token } from './utils';
+import { token, apiUrl, rootUrl, renderDesc, getBoards } from './utils';
 
 export const route: Route = {
     path: '/student5/:board?',

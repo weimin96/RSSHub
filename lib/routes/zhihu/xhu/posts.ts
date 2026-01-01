@@ -1,8 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-
 import auth from './auth';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/xhu/people/posts/:hexId',

@@ -1,8 +1,9 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
-import got from '@/utils/got';
+import { Route } from '@/types';
 
-import { renderPlaylistDescription } from '../templates/music/playlist';
+import got from '@/utils/got';
+import { config } from '@/config';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/music/playlist/:id',
@@ -58,7 +59,7 @@ async function handler(ctx) {
             const singer = thisSong.artists.length === 1 ? thisSong.artists[0].name : thisSong.artists.reduce((prev, cur) => (prev.name || prev) + '/' + cur.name);
             return {
                 title: `${thisSong.name} - ${singer}`,
-                description: renderPlaylistDescription({
+                description: art(path.join(__dirname, '../templates/music/playlist.art'), {
                     singer,
                     album: thisSong.album.name,
                     date: new Date(thisSong.album.publishTime).toLocaleDateString(),

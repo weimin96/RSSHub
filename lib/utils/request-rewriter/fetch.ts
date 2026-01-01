@@ -1,13 +1,9 @@
-import type { HeaderGeneratorOptions } from 'header-generator';
-import { useRegisterRequest } from 'node-network-devtools';
-import { RateLimiterMemory, RateLimiterQueue } from 'rate-limiter-flexible';
-import type { RequestInfo, RequestInit } from 'undici';
-import undici, { Request } from 'undici';
-
-import { config } from '@/config';
-import { generatedHeaders as HEADER_LIST, generateHeaders } from '@/utils/header-generator';
 import logger from '@/utils/logger';
+import { config } from '@/config';
+import undici, { Request, RequestInfo, RequestInit } from 'undici';
 import proxy from '@/utils/proxy';
+import { RateLimiterMemory, RateLimiterQueue } from 'rate-limiter-flexible';
+import { useRegisterRequest } from 'node-network-devtools';
 
 const limiter = new RateLimiterMemory({
     points: 10,
@@ -29,23 +25,20 @@ export const useCustomHeader = (headers: Headers) => {
         });
 };
 
-const wrappedFetch: typeof undici.fetch = async (input: RequestInfo, init?: RequestInit & { headerGeneratorOptions?: Partial<HeaderGeneratorOptions> }) => {
+const wrappedFetch: typeof undici.fetch = async (input: RequestInfo, init?: RequestInit) => {
     const request = new Request(input, init);
     const options: RequestInit = {};
 
     logger.debug(`Outgoing request: ${request.method} ${request.url}`);
 
-    const generatedHeaders = generateHeaders(init?.headerGeneratorOptions);
-
     // ua
-    if (!request.headers.has('user-agent')) {
+    if (!request.headers.get('user-agent')) {
         request.headers.set('user-agent', config.ua);
     }
 
-    for (const header of HEADER_LIST) {
-        if (!request.headers.has(header) && generatedHeaders[header]) {
-            request.headers.set(header, generatedHeaders[header]);
-        }
+    // accept
+    if (!request.headers.get('accept')) {
+        request.headers.set('accept', '*/*');
     }
 
     // referer

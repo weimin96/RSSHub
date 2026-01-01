@@ -1,9 +1,8 @@
-import type { CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-import type { Context } from 'hono';
+import { type CheerioAPI, load } from 'cheerio';
+import { type Context } from 'hono';
 
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
+import { type DataItem, type Route, type Data, ViewType } from '@/types';
+
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 

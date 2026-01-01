@@ -1,10 +1,8 @@
-import dayjs from 'dayjs';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
+import dayjs from 'dayjs';
 
 export const route: Route = {
     path: '/express',

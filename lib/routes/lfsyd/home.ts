@@ -1,9 +1,8 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-
-import { ProcessFeed, ProcessForm } from './utils';
+import { ProcessForm, ProcessFeed } from './utils';
 
 export const route: Route = {
     path: '/home',

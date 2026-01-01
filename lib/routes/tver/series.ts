@@ -1,9 +1,8 @@
-import type { Context } from 'hono';
-
-import type { Data, DataItem, Route } from '@/types';
+import { Route, Data, DataItem } from '@/types';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
+import { Context } from 'hono';
 
 export const route: Route = {
     path: '/series/:id',
@@ -44,7 +43,7 @@ async function handler(ctx: Context): Promise<Data> {
             ...commonHeaders,
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        referer: 'https://s.tver.jp/',
+        referrer: 'https://s.tver.jp/',
         credentials: 'omit',
         mode: 'cors',
     });
@@ -56,7 +55,7 @@ async function handler(ctx: Context): Promise<Data> {
         headers: {
             ...commonHeaders,
         },
-        referer: 'https://tver.jp/',
+        referrer: 'https://tver.jp/',
         credentials: 'omit',
         mode: 'cors',
     });
@@ -67,7 +66,7 @@ async function handler(ctx: Context): Promise<Data> {
             ...commonHeaders,
             'x-tver-platform-type': 'web',
         },
-        referer: 'https://tver.jp/',
+        referrer: 'https://tver.jp/',
         credentials: 'omit',
         mode: 'cors',
     });

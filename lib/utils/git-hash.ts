@@ -11,4 +11,4 @@ if (!gitHash) {
     }
 }
 
-export { gitDate, gitHash };
+export { gitHash, gitDate };

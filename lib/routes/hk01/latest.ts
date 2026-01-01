@@ -1,8 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
-import { apiRootUrl, ProcessItems, rootUrl } from './utils';
+import { rootUrl, apiRootUrl, ProcessItems } from './utils';
 
 export const route: Route = {
     path: '/latest',

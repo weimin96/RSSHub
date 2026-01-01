@@ -1,12 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
-import cache from '@/utils/cache';
+import { Route, ViewType } from '@/types';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
-
 import { categories } from './category-map';
+import { load } from 'cheerio';
+import cache from '@/utils/cache';
 
 const baseUrl = 'https://www.mckinsey.com.cn';
 

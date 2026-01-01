@@ -1,9 +1,7 @@
-import * as url from 'node:url';
-
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
+import * as url from 'node:url';
 
 const host = 'https://www.douban.com/explore/column/';
 export const route: Route = {

@@ -1,14 +1,14 @@
-import { config } from '@/config';
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import logger from '@/utils/logger';
 import { parseDate } from '@/utils/parse-date';
-import puppeteer from '@/utils/puppeteer';
+import { art } from '@/utils/render';
+import { config } from '@/config';
 import { fallback, queryToBoolean } from '@/utils/readable-social';
-
-import type { PostData } from './types';
-import { getOriginAvatar, proxyVideo, resolveUrl, templates } from './utils';
+import { templates, resolveUrl, proxyVideo, getOriginAvatar } from './utils';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
+import puppeteer from '@/utils/puppeteer';
+import logger from '@/utils/logger';
+import { PostData } from './types';
 
 export const route: Route = {
     path: '/user/:uid/:routeParams?',
@@ -109,9 +109,9 @@ async function handler(ctx) {
 
         // render description
         const desc = post.desc?.replaceAll('\n', '<br>');
-        let media = (embed && videoList ? templates.embed : templates.cover)({ img, videoList, duration });
-        media = embed && videoList && iframe ? templates.iframe({ content: media }) : media; // warp in iframe
-        const description = templates.desc({ desc, media });
+        let media = art(embed && videoList ? templates.embed : templates.cover, { img, videoList, duration });
+        media = embed && videoList && iframe ? art(templates.iframe, { content: media }) : media; // warp in iframe
+        const description = art(templates.desc, { desc, media });
 
         return {
             title: post.desc.split('\n')[0],
