@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import cache from '@/utils/cache';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/podcast/:id/:region?',

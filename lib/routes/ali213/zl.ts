@@ -1,15 +1,15 @@
-import type { Cheerio, CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-import type { Element } from 'domhandler';
-import type { Context } from 'hono';
+import path from 'node:path';
 
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
+import { type CheerioAPI, type Cheerio, load } from 'cheerio';
+import type { Element } from 'domhandler';
+import { type Context } from 'hono';
+
+import { type DataItem, type Route, type Data, ViewType } from '@/types';
+
+import { art } from '@/utils/render';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const { category } = ctx.req.param();
@@ -34,7 +34,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
         .data.slice(0, limit)
         .map((item): DataItem => {
             const title: string = item.Title;
-            const description: string = renderDescription({
+            const description: string = art(path.join(__dirname, 'templates/description.art'), {
                 intro: item.GuideRead ?? '',
             });
             const guid: string = `ali213-zl-${item.ID}`;
@@ -97,7 +97,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
 
                     description += pageContents.join('');
 
-                    description = renderDescription({
+                    description = art(path.join(__dirname, 'templates/description.art'), {
                         description,
                     });
 

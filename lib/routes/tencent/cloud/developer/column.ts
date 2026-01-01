@@ -1,7 +1,7 @@
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch'; // 统一使用的请求库
 import { parseDate } from '@/utils/parse-date';
+import cache from '@/utils/cache';
 
 const PAGE = 1;
 const PAGE_SIZE = 20;

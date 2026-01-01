@@ -1,18 +1,16 @@
+import { namespaces } from '../../lib/registry';
 import fs from 'node:fs';
 import path from 'node:path';
-
-import { config } from '../../lib/config';
-import { namespaces } from '../../lib/registry';
-import { getCurrentPath } from '../../lib/utils/helpers';
 import { categories } from './data';
+import { getCurrentPath } from '../../lib/utils/helpers';
 
 const fullTests = await (await fetch('https://cdn.jsdelivr.net/gh/DIYgod/RSSHub@gh-pages/build/test-full-routes.json')).json();
 const testResult = fullTests.testResults[0].assertionResults;
 
 const foloAnalysis = await (
-    await fetch('https://raw.githubusercontent.com/RSSNext/rsshub-docs/refs/heads/main/rsshub-analytics.json', {
+    await fetch('https://api.follow.is/discover/rsshub-analytics', {
         headers: {
-            'user-agent': config.trueUA,
+            'user-agent': 'RSSHub',
         },
     })
 ).json();

@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import got from '@/utils/got';
+import { Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
+import got from '@/utils/got';
+import { load } from 'cheerio';
 
 export const route: Route = {
     path: '/',

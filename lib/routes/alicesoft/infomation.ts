@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import cache from '@/utils/cache';
+import { load } from 'cheerio';
 
 const baseUrl = 'https://www.alicesoft.com';
 

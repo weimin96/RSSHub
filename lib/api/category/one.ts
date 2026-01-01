@@ -1,7 +1,5 @@
-import type { RouteHandler } from '@hono/zod-openapi';
-import { createRoute, z } from '@hono/zod-openapi';
-
 import { namespaces } from '@/registry';
+import { z, createRoute, RouteHandler } from '@hono/zod-openapi';
 
 const categoryList: Record<string, typeof namespaces> = {};
 
@@ -80,4 +78,4 @@ const handler: RouteHandler<typeof route> = (ctx) => {
     return ctx.json(result);
 };
 
-export { handler, route };
+export { route, handler };

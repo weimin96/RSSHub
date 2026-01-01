@@ -1,9 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
 const url = 'https://www.ieee-security.org/';
 // https://www.ieee-security.org/TC/SP2023/program-papers.html
 

@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
-import logger from '@/utils/logger';
-
+import { Route } from '@/types';
 import { fetchAutoNews } from './utils';
+import logger from '@/utils/logger';
 
 const typeMap = {
     notice: {

@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import logger from '@/utils/logger';
+import { Route } from '@/types';
 import puppeteer from '@/utils/puppeteer';
-
-import { BASE_URL, parseCompanyName, parseCompanyPosts } from './utils';
+import { load } from 'cheerio';
+import { parseCompanyName, parseCompanyPosts, BASE_URL } from './utils';
+import logger from '@/utils/logger';
 
 export const route: Route = {
     path: '/company/:company_id/posts',
@@ -14,7 +12,7 @@ export const route: Route = {
     description: "Get company's LinkedIn posts by company ID",
     features: {
         requireConfig: false,
-        requirePuppeteer: true,
+        requirePuppeteer: false,
         antiCrawler: false,
         supportRadar: false,
         supportBT: false,

@@ -1,8 +1,8 @@
-import { config } from '@/config';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
+import { City, District } from './types';
 
-import type { City, District } from './types';
+import ofetch from '@/utils/ofetch';
+import cache from '@/utils/cache';
+import { config } from '@/config';
 
 export const baseUrl = 'https://www.wellcee.com';
 export const getCitys = () =>

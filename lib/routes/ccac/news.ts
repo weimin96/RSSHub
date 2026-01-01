@@ -1,12 +1,10 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-import puppeteer from '@/utils/puppeteer';
-
 import utils from './utils';
+import { parseDate } from '@/utils/parse-date';
+import got from '@/utils/got';
+import { load } from 'cheerio';
+import puppeteer from '@/utils/puppeteer';
 
 export const route: Route = {
     path: '/news/:type/:lang?',

@@ -1,11 +1,10 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import logger from '@/utils/logger';
+import { load } from 'cheerio';
 import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
+import logger from '@/utils/logger';
 import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/topic/:id',

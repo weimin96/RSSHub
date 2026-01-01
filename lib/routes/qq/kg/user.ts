@@ -1,10 +1,8 @@
-import { JSDOM } from 'jsdom';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-
+import { JSDOM } from 'jsdom';
 import cache from './cache';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/kg/:userId',

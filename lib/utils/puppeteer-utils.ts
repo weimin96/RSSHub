@@ -55,4 +55,4 @@ const getCookies = async (page, domainFilter?: string) => {
     return parseCookieArray(cookies, domainFilter);
 };
 
-export { constructCookieArray, getCookies, parseCookieArray, setCookies };
+export { parseCookieArray, constructCookieArray, setCookies, getCookies };

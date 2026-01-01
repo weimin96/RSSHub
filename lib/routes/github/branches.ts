@@ -1,6 +1,6 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/branches/:user/:repo',

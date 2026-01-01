@@ -1,11 +1,12 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
+
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from '../templates/description';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
 import { parseArticle } from './utils';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/nfapp/reporter/:reporter',
@@ -34,7 +35,7 @@ async function handler(ctx) {
 
     const list = response.data.reportInfo.articleInfo.map((item) => ({
         title: '【' + item.releaseColName + '】' + item.title,
-        description: renderDescription({
+        description: art(path.join(__dirname, '../templates/description.art'), {
             thumb: item.picMiddle,
             description: item.attAbstract,
         }),

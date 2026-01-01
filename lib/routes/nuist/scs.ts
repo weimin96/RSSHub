@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
 const baseTitle = 'NUIST CS（南信大计软院）';
 const baseUrl = 'https://scs.nuist.edu.cn';
 

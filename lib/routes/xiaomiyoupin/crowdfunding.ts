@@ -1,7 +1,8 @@
-import type { Route } from '@/types';
-import got from '@/utils/got';
+import { Route } from '@/types';
 
-import { renderGoods } from './templates/goods';
+import got from '@/utils/got';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const base_url = 'https://m.xiaomiyoupin.com';
 export const route: Route = {
@@ -54,7 +55,7 @@ async function handler() {
         return {
             title: goods.name,
             guid: `xiaomiyoupin:${goods.gid}`,
-            description: renderGoods(goods),
+            description: art(path.join(__dirname, 'templates/goods.art'), goods),
             link: goods.jump_url,
             pubDate: new Date(goods.fist_release_time * 1000).toUTCString(),
         };

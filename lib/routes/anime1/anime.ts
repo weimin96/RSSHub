@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import ofetch from '@/utils/ofetch';
+import { Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
+import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 
 export const route: Route = {
     path: 'anime/:category/:name',

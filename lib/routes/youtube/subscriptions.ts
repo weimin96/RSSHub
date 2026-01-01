@@ -1,12 +1,10 @@
-import pMap from 'p-map';
-
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import { parseDate } from '@/utils/parse-date';
-
+import { config } from '@/config';
 import utils from './utils';
+import { parseDate } from '@/utils/parse-date';
+import pMap from 'p-map';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 export const route: Route = {
     path: '/subscriptions/:embed?',

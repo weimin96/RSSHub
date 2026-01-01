@@ -1,11 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
-import got from '@/utils/got';
+import { Route, ViewType } from '@/types';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import got from '@/utils/got';
+import { load } from 'cheerio';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/news/:language',
@@ -59,7 +57,7 @@ async function handler(ctx) {
             const itemdate = $$('a.news_card div.date').html() || '';
             const pubDate = convertHtmlDateToStandardFormat(itemdate.toString());
 
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 images: image
                     ? [
                           {

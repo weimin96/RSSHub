@@ -1,9 +1,7 @@
+import { Data, Route } from '@/types';
 import { load } from 'cheerio';
-
-import type { Data, Route } from '@/types';
-import ofetch from '@/utils/ofetch';
-
 import { processList, rootUrl } from './utils';
+import ofetch from '@/utils/ofetch';
 
 export const route: Route = {
     path: '/latest',

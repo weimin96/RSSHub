@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import logger from '@/utils/logger';
+import { load } from 'cheerio';
+import { config } from '@/config';
 import { parseDate } from '@/utils/parse-date';
+import logger from '@/utils/logger';
 import puppeteer from '@/utils/puppeteer';
 
 // /iqiyi/user/video/:uid

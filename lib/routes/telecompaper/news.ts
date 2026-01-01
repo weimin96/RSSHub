@@ -1,10 +1,10 @@
-import { load } from 'cheerio';
-import FormData from 'form-data';
-import tough from 'tough-cookie';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
+import tough from 'tough-cookie';
+
+import FormData from 'form-data';
 
 export const route: Route = {
     path: '/news/:caty/:year?/:country?/:type?',

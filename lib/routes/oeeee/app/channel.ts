@@ -1,11 +1,12 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
+
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from '../templates/description';
+import { parseDate } from '@/utils/parse-date';
 import { parseArticle } from '../utils';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/app/channel/:id',
@@ -24,7 +25,7 @@ async function handler(ctx) {
         .filter((i) => i.url) // Remove banner and sticky articles.
         .map((item) => ({
             title: item.title,
-            description: renderDescription({
+            description: art(path.join(__dirname, '../templates/description.art'), {
                 thumb: item.titleimg.replaceAll(/\?x-oss-process=.*/g, ''),
                 description: item.summary,
             }),

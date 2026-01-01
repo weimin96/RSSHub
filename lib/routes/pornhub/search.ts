@@ -1,8 +1,6 @@
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-
 import { defaultDomain, renderDescription } from './utils';
 
 export const route: Route = {

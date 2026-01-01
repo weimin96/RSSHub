@@ -1,5 +1,4 @@
 import type { Handler } from 'hono';
-
 import { config } from '@/config';
 
 const handler: Handler = (ctx) => {

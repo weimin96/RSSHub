@@ -1,9 +1,8 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
-
 import { baseUrl, getNextBuildId } from './utils';
+import { parseDate } from '@/utils/parse-date';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/trending',

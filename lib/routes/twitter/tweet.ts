@@ -1,9 +1,8 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
-import { fallback, queryToBoolean } from '@/utils/readable-social';
-
+import { Route } from '@/types';
 import api from './api';
 import utils from './utils';
+import { fallback, queryToBoolean } from '@/utils/readable-social';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/tweet/:id/status/:status/:original?',

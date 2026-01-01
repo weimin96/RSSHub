@@ -1,5 +1,4 @@
-import type { Route } from '@/types';
-
+import { Route } from '@/types';
 import { getCollection, parseList, ProcessFeed } from './utils';
 
 export const route: Route = {

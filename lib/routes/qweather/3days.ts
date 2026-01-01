@@ -1,12 +1,9 @@
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
-import type { WeatherForecastItem } from './util';
-import { render3DaysDescription } from './util';
-
+import { config } from '@/config';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
+import { render3DaysDescription, type WeatherForecastItem } from './util';
 const author = 'QWeather';
 
 export const route: Route = {

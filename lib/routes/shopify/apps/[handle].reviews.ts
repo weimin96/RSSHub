@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-import type { Context } from 'hono';
-
-import type { Data, DataItem, Route } from '@/types';
-import got from '@/utils/got';
-
+import { Data, DataItem, Route } from '@/types';
+import { Context } from 'hono';
 import { baseURL } from './const';
+import got from '@/utils/got';
+import { load } from 'cheerio';
 
 export const route: Route = {
     path: '/apps/:handle/reviews/:page?',

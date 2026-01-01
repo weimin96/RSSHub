@@ -1,12 +1,11 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
 
-import { fetchData, processItems, rootUrl } from './util';
+import { rootUrl, processItems, fetchData } from './util';
 
 export const route: Route = {
     path: '/chinamine-safety/xw/:category{.+}?',

@@ -1,7 +1,6 @@
-import type { Data, Route } from '@/types';
-import parser from '@/utils/rss-parser';
-
+import { Route, Data } from '@/types';
 import { processItems } from './utils';
+import parser from '@/utils/rss-parser';
 
 export const route: Route = {
     path: '/nipple-video-category/:keyword',

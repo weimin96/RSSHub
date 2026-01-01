@@ -1,8 +1,8 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 
-import { apiSearchRootUrl, fetchData, generateSignature, processItems, rootUrl } from './util';
+import { rootUrl, apiSearchRootUrl, generateSignature, processItems, fetchData } from './util';
 
 export const route: Route = {
     path: '/search/:keyword',

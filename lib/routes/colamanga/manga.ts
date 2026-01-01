@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
-import type { Context } from 'hono';
-
-import type { Route } from '@/types';
-import logger from '@/utils/logger';
-import { parseDate } from '@/utils/parse-date';
+import { Route } from '@/types';
 import puppeteer from '@/utils/puppeteer';
+
+import { load } from 'cheerio';
+import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
+import { Context } from 'hono';
+import logger from '@/utils/logger';
 
 const domain = 'www.colamanga.com';
 

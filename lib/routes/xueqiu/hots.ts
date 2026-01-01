@@ -1,10 +1,9 @@
-import queryString from 'query-string';
-import sanitizeHtml from 'sanitize-html';
-
-import { parseToken } from '@/routes/xueqiu/cookies';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import queryString from 'query-string';
 import { parseDate } from '@/utils/parse-date';
+import sanitizeHtml from 'sanitize-html';
+import { parseToken } from '@/routes/xueqiu/cookies';
 
 export const route: Route = {
     path: '/hots',

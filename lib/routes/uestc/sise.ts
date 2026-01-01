@@ -1,10 +1,9 @@
+import { Route } from '@/types';
 import { load } from 'cheerio';
-import dayjs from 'dayjs';
-
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
+import dayjs from 'dayjs';
 import puppeteer from '@/utils/puppeteer';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 
 const baseUrl = 'https://sise.uestc.edu.cn/';
 

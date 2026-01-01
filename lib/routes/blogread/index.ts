@@ -1,7 +1,6 @@
-import * as cheerio from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import * as cheerio from 'cheerio';
 
 export const route: Route = {
     path: '/newest',

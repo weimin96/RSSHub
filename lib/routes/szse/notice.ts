@@ -1,11 +1,8 @@
-import * as url from 'node:url';
-
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
+import { load } from 'cheerio';
+import * as url from 'node:url';
 const host = 'http://www.szse.cn/';
 export const route: Route = {
     path: '/notice',

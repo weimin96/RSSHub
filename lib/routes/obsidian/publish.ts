@@ -1,11 +1,9 @@
+import { Route, DataItem } from '@/types';
 import { load } from 'cheerio';
-
-import { config } from '@/config';
-import type { DataItem, Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
-
 import { getTitle } from './utils';
+import { config } from '@/config';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/publish/:id',

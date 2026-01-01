@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
-import { renderDescription } from './templates/description';
-
+import { load } from 'cheerio';
+import { art } from '@/utils/render';
+import path from 'node:path';
 const baseUrl = 'https://www.openrice.com';
 
 export const route: Route = {
@@ -54,7 +52,7 @@ async function handler(ctx) {
                 .find('.cover-photo')
                 .attr('style')
                 ?.match(/url\(['"]?(.*?)['"]?\)/)?.[1] ?? null;
-        const description = renderDescription({
+        const description = art(path.join(__dirname, 'templates/description.art'), {
             description: $item.find('.article-details .desc').text() ?? '',
             image: coverImg,
         });

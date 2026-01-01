@@ -1,5 +1,4 @@
-import type { Route } from '@/types';
-
+import { Route } from '@/types';
 export const route: Route = {
     path: '/itnews/:channel',
     name: 'Unknown',

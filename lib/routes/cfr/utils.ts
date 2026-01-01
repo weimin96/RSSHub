@@ -1,12 +1,9 @@
-import type { Cheerio, CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
+import { type Cheerio, type CheerioAPI, load } from 'cheerio';
 import type { Element } from 'domhandler';
-
-import type { DataItem } from '@/types';
-import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
+import type { DataItem } from '@/types';
 import { parseDate } from '@/utils/parse-date';
-
+import cache from '@/utils/cache';
 import type { LinkData, VideoSetup } from './types';
 
 export function getDataItem(href: string) {

@@ -1,4 +1,4 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got'; // 自订的 got
 import { parseDate } from '@/utils/parse-date';
 

@@ -1,10 +1,8 @@
+import { Route } from '@/types';
 import * as cheerio from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
 import got from '@/utils/got';
+import cache from '@/utils/cache';
 import { parseDate } from '@/utils/parse-date';
-
 import { baseUrl, parseContent } from './utils';
 
 export const route: Route = {

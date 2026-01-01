@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
 const baseUrl = 'https://www.fxiaoke.com/crm';
 const baseTitle = '纷享销客 CRM';
 const titleMap = new Map([

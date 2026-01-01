@@ -1,6 +1,5 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
 import { generateProductItem } from './utils';
 
 const familyPriceProductsRequest = ({ pageIndex = 1 }) =>

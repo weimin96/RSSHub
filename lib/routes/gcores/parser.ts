@@ -1,4 +1,6 @@
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+
+import path from 'node:path';
 
 interface Style {
     [key: string]: string;
@@ -92,7 +94,7 @@ const createEntityElement = (entity: Entity, text: string): string => {
         case 'EMBED':
             return entity.data.content.startsWith('http') ? `<a href="${entity.data.content}" target="_blank">${entity.data.content}</a>` : entity.data.content;
         case 'IMAGE':
-            return renderDescription({
+            return art(path.join(__dirname, 'templates/description.art'), {
                 images: entity.data.path
                     ? [
                           {
@@ -108,7 +110,7 @@ const createEntityElement = (entity: Entity, text: string): string => {
             if (!entity.data.images || !Array.isArray(entity.data.images)) {
                 return '';
             }
-            return renderDescription({
+            return art(path.join(__dirname, 'templates/description.art'), {
                 images: entity.data.images.map((image: any) => ({
                     src: new URL(image.path, imageBaseUrl).href,
                     alt: image.caption ?? entity.data.caption,

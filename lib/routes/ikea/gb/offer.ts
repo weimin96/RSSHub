@@ -1,9 +1,9 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import got from '@/utils/got';
-
-import { renderOffer } from '../templates/offer';
+import { load } from 'cheerio';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/gb/offer',
@@ -50,7 +50,7 @@ async function handler() {
             searchParams.delete('itm_campaign');
             return {
                 title: title.text(),
-                description: renderOffer({
+                description: art(path.join(__dirname, '../templates/offer.art'), {
                     img: img.parent().html(),
                     desc: title.next().parent().html(),
                 }),
@@ -77,7 +77,7 @@ async function handler() {
             searchParams.delete('itm_campaign');
             return {
                 title: title.text(),
-                description: renderOffer({
+                description: art(path.join(__dirname, '../templates/offer.art'), {
                     img: img.parent().html(),
                     desc: title.parent().html(),
                 }),

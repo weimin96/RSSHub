@@ -1,7 +1,6 @@
-import type { Data, DataItem, Route } from '@/types';
+import { Route, Data, DataItem } from '@/types';
 import cache from '@/utils/cache';
 import parser from '@/utils/rss-parser';
-
 import { parseItem } from './utils';
 
 export const route: Route = {

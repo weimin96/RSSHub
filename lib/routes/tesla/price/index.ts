@@ -1,5 +1,4 @@
-import type { Route } from '@/types';
-
+import { Route } from '@/types';
 import { getTeslaPrice } from './get-price';
 
 export const route: Route = {

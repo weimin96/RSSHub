@@ -1,11 +1,10 @@
+import got from '@/utils/got';
 import { config } from '@/config';
 import cache from '@/utils/cache';
-import got from '@/utils/got';
 import md5 from '@/utils/md5';
-
-import constants from './_constants';
 import { getFilteredLanguages } from './_profile';
-import { firstMatch, toQueryString } from './_utils';
+import { toQueryString, firstMatch } from './_utils';
+import constants from './_constants';
 
 /**
  * Retrieves the title, description, and cover of a manga.
@@ -182,4 +181,4 @@ const getMangaDetails = async (id: string, needCover: boolean = true, lang?: str
     return { ...meta, chapters };
 };
 
-export { getMangaChapters, getMangaDetails, getMangaMeta };
+export { getMangaMeta, getMangaChapters, getMangaDetails };

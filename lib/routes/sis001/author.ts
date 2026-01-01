@@ -1,11 +1,9 @@
-import { load } from 'cheerio';
-import type { Context } from 'hono';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
+import { config } from '@/config';
+import { load } from 'cheerio';
+import type { Context } from 'hono';
 import { getCookie, getThread } from './common';
 
 export const route: Route = {

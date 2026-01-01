@@ -1,12 +1,13 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
-import { renderDescription } from './templates/description';
-import { domain, getMeta, processItems, processMeta } from './util';
+import { domain, processMeta, getMeta, processItems } from './util';
 
 export const route: Route = {
     path: '/news/:category{.+}?',
@@ -68,7 +69,7 @@ async function handler(ctx) {
                 title: item.prop('title') ?? item.find('h4.eclips').text(),
                 link: new URL(item.prop('href'), rootUrl).href,
                 pubDate: parseDate(item.find('time').text(), ['YYYY.MM.DD', 'DDYYYY.MM']),
-                description: renderDescription({
+                description: art(path.join(__dirname, 'templates/description.art'), {
                     description: item.find('div.txt p').html(),
                     image: image.prop('src')
                         ? {

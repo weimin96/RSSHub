@@ -1,7 +1,6 @@
-import { JSDOM } from 'jsdom';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { JSDOM } from 'jsdom';
 import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {

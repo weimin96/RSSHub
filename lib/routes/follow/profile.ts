@@ -1,11 +1,8 @@
+import { ViewType, type Data, type Route } from '@/types';
 import type { Context } from 'hono';
-import { parse } from 'tldts';
-
-import type { Data, Route } from '@/types';
-import { ViewType } from '@/types';
 import ofetch from '@/utils/ofetch';
-
 import type { FeedSubscription, FollowResponse, InboxSubscription, ListSubscription, Profile, Subscription } from './types';
+import { parse } from 'tldts';
 
 export const route: Route = {
     name: 'User subscriptions',

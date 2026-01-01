@@ -1,9 +1,8 @@
+import { Route } from '@/types';
 import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
 import parser from '@/utils/rss-parser';
+import ofetch from '@/utils/ofetch';
+import cache from '@/utils/cache';
 
 const rootUrl = 'https://tech.meituan.com/';
 

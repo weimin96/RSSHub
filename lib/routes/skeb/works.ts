@@ -1,11 +1,10 @@
+import { Data, DataItem, Route } from '@/types';
 import { config } from '@/config';
 import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Data, DataItem, Route } from '@/types';
-import cache from '@/utils/cache';
-import logger from '@/utils/logger';
-import ofetch from '@/utils/ofetch';
-
 import { baseUrl, processWork } from './utils';
+import cache from '@/utils/cache';
+import ofetch from '@/utils/ofetch';
+import logger from '@/utils/logger';
 
 export const route: Route = {
     path: '/works/:username',

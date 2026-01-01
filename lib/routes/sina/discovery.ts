@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { getRollNewsList, parseArticle, parseRollNewsList } from './utils';
+import { getRollNewsList, parseRollNewsList, parseArticle } from './utils';
 
 const link = 'https://tech.sina.com.cn/discovery/';
 const map = new Map([

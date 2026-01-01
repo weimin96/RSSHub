@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const host = 'https://techcrunch.com';
 export const route: Route = {
@@ -39,7 +38,7 @@ async function handler() {
         $('.wp-block-techcrunch-inline-cta').remove();
         return {
             title: item.title.rendered,
-            description: renderDescription({
+            description: art(path.join(__dirname, 'templates/description.art'), {
                 head,
                 rendered: $.html(),
             }),

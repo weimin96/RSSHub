@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
 
 const rootUrl = 'https://www.tgb.cn';
 
@@ -46,4 +45,4 @@ const renderPostDetail = async (item) =>
         return item;
     });
 
-export { renderPostDetail, rootUrl };
+export { rootUrl, renderPostDetail };

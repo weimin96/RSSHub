@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Data, DataItem, Route } from '@/types';
-import cache from '@/utils/cache';
+import { Data, DataItem, Route } from '@/types';
 import ofetch from '@/utils/ofetch';
+import cache from '@/utils/cache';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 
 const base = 'https://www.jpmorganchase.com';

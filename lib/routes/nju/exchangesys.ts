@@ -1,7 +1,6 @@
-import dayjs from 'dayjs';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import dayjs from 'dayjs';
 
 export const route: Route = {
     path: '/exchangesys/:type',

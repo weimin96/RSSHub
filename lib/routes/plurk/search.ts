@@ -1,9 +1,7 @@
-import dayjs from 'dayjs';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
+import dayjs from 'dayjs';
 import { baseUrl, getPlurk } from './utils';
 
 export const route: Route = {

@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
+import got from '@/utils/got';
+import { load } from 'cheerio';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/:keywords/:security_key?',

@@ -1,4 +1,4 @@
-import type { Data, Route } from '@/types';
+import { Data, Route } from '@/types';
 import parser from '@/utils/rss-parser';
 
 export const route: Route = {

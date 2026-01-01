@@ -1,6 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
+
 import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {

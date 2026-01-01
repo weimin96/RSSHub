@@ -1,12 +1,10 @@
-import type { Context } from 'hono';
-
 import InvalidParameterError from '@/errors/types/invalid-parameter';
 import type { Data, Route } from '@/types';
-import ofetch from '@/utils/ofetch';
 import { isValidHost } from '@/utils/valid-host';
-
-import type { PostListResponse, UserInfoResponse } from './types';
+import type { Context } from 'hono';
 import { getHeaders, parseItem } from './utils';
+import type { PostListResponse, UserInfoResponse } from './types';
+import ofetch from '@/utils/ofetch';
 
 export const route: Route = {
     path: '/:creator',

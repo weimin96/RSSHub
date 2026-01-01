@@ -1,9 +1,8 @@
+import { Route } from '@/types';
+import got from '@/utils/got';
 import { load } from 'cheerio';
 import queryString from 'query-string';
-
 import { config } from '@/config';
-import type { Route } from '@/types';
-import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
 

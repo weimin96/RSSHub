@@ -1,16 +1,15 @@
-import type { Cheerio, CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-import type { Element } from 'domhandler';
-import type { Context } from 'hono';
+import { type Data, type DataItem, type Route, ViewType } from '@/types';
 
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
+import { art } from '@/utils/render';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
 
-import { renderDescription } from './templates/description';
+import { type CheerioAPI, type Cheerio, load } from 'cheerio';
+import type { Element } from 'domhandler';
+import { type Context } from 'hono';
+import path from 'node:path';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const limit: number = Number.parseInt(ctx.req.query('limit') ?? '30', 10);
@@ -31,7 +30,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
             const $el: Cheerio<Element> = $(el);
 
             const title: string = $el.find('p.article_2_p').text();
-            const description: string | undefined = renderDescription({
+            const description: string | undefined = art(path.join(__dirname, 'templates/description.art'), {
                 intro: $el.find('div.article_1_fu p').first().text(),
             });
             const pubDateStr: string | undefined = $el.find('div.article_1_fu p').last().text();
@@ -71,8 +70,8 @@ export const handler = async (ctx: Context): Promise<Data> => {
                     const $$: CheerioAPI = load(detailResponse);
 
                     const title: string = $$('p.infoTitle_left').text();
-                    const description: string | undefined = renderDescription({
-                        description: $$('div.articleContent').html() ?? undefined,
+                    const description: string | undefined = art(path.join(__dirname, 'templates/description.art'), {
+                        description: $$('div.articleContent').html(),
                     });
                     const pubDateStr: string | undefined = $$('p.time').text().split(/：/).pop();
                     const categoryEls: Element[] = $$('span.article_5').toArray();

@@ -1,5 +1,4 @@
 import { load } from 'cheerio';
-
 import got from '@/utils/got';
 import { parseDate, parseRelativeDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';

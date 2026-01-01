@@ -1,11 +1,9 @@
-import { load } from 'cheerio';
-
 import NotFoundError from '@/errors/types/not-found';
-import type { DataItem, Route } from '@/types';
+import { DataItem, Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-
+import { load } from 'cheerio';
 import { processEmbedPDF } from '../lib/embed-resource';
 
 const WEBSITE_LOGO = 'https://jsj.nwnu.edu.cn/_upload/tpl/02/2e/558/template558/favicon.ico';

@@ -1,15 +1,14 @@
-import type { Cheerio, CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-import type { Element } from 'domhandler';
-import type { Context } from 'hono';
+import { type Data, type DataItem, type Route, ViewType } from '@/types';
 
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
+import { art } from '@/utils/render';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 
-import { renderDescription } from './templates/description';
+import { type CheerioAPI, type Cheerio, load } from 'cheerio';
+import type { Element } from 'domhandler';
+import { type Context } from 'hono';
+import path from 'node:path';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const { filter } = ctx.req.param();
@@ -31,7 +30,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
             const $el: Cheerio<Element> = $(el);
 
             const title: string = $el.find('figcaption section').text();
-            const description: string = renderDescription({
+            const description: string = art(path.join(__dirname, 'templates/description.art'), {
                 images: $el.find('a.picture img').attr('src')
                     ? [
                           {
@@ -74,7 +73,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
                     const $$: CheerioAPI = load(detailResponse);
 
                     const title: string = $$('h1').contents().first().text();
-                    const description: string = renderDescription({
+                    const description: string = art(path.join(__dirname, 'templates/description.art'), {
                         description: $$('div.pics').first().html(),
                     });
                     const pubDateStr: string | undefined = $$('meta[property="article:published_time"]').attr('content');

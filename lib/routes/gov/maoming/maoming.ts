@@ -1,6 +1,5 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import { getSubPath } from '@/utils/common-utils';
-
 import { gdgov } from '../general/general';
 
 export const route: Route = {

@@ -1,11 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
-
+import { Route } from '@/types';
 import { namespace } from './namespace';
+import ofetch from '@/utils/ofetch';
+import cache from '@/utils/cache';
+import { load } from 'cheerio';
+import { parseDate } from '@/utils/parse-date';
 
 const baseUrl = `https://${namespace.url}`;
 

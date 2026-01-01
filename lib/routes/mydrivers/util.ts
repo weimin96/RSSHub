@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
-import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
+import cache from '@/utils/cache';
 
 const domain = 'mydrivers.com';
 const rootUrl = `https://m.${domain}`;
@@ -111,4 +110,4 @@ const processItems = async (items) =>
         )
     );
 
-export { categories, convertToQueryString, getInfo, processItems, rootRSSUrl, rootUrl, title };
+export { rootUrl, rootRSSUrl, title, categories, convertToQueryString, getInfo, processItems };

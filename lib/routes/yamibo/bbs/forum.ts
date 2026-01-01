@@ -1,13 +1,11 @@
-import { load } from 'cheerio';
-import type { Context } from 'hono';
-import pMap from 'p-map';
-
-import { config } from '@/config';
 import type { Data, DataItem, Route } from '@/types';
-import cache from '@/utils/cache';
+import type { Context } from 'hono';
+import { config } from '@/config';
 import ofetch from '@/utils/ofetch';
-
-import { bbsOrigin, fetchThread, generateDescription, getDate } from '../utils';
+import { load } from 'cheerio';
+import { fetchThread, generateDescription, getDate, bbsOrigin } from '../utils';
+import pMap from 'p-map';
+import cache from '@/utils/cache';
 
 export const route: Route = {
     name: 'BBS - 板块',

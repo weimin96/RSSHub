@@ -1,8 +1,9 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
+
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/:id',
@@ -59,7 +60,7 @@ async function handler(ctx) {
             guid: item.id,
             title: item.name,
             link: item.streams[0].url,
-            description: renderDescription({
+            description: art(path.join(__dirname, 'templates/description.art'), {
                 description: item.description,
                 enclosure_url,
                 enclosure_type,

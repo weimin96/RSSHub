@@ -1,9 +1,7 @@
-import CryptoJS from 'crypto-js';
-
-import { config } from '@/config';
 import cache from '@/utils/cache';
+import CryptoJS from 'crypto-js';
 import got from '@/utils/got';
-
+import { config } from '@/config';
 const apiUrl = 'https://api.wfdata.club';
 const baseUrl = 'https://www.feng.com';
 const KEY = '2b7e151628aed2a6';
@@ -75,4 +73,4 @@ const getThread = (tid, topicId) => {
     });
 };
 
-export { baseUrl, getForumMeta, getThread, getThreads };
+export { baseUrl, getForumMeta, getThreads, getThread };

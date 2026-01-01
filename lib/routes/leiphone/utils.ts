@@ -1,9 +1,7 @@
-import * as url from 'node:url';
-
 import { load } from 'cheerio';
-
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
+import * as url from 'node:url';
 
 const ProcessFeed = async (list, cache) => {
     const host = 'https://www.leiphone.com';

@@ -1,8 +1,6 @@
-import currency from 'currency-symbol-map';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
+import currency from 'currency-symbol-map';
 export const route: Route = {
     path: '/price/:country/:type/:id',
     categories: ['program-update'],

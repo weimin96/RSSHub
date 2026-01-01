@@ -1,7 +1,6 @@
-import type { APIRoute } from '@/types';
-import ofetch from '@/utils/ofetch';
-
+import { APIRoute } from '@/types';
 import cacheIn from './cache';
+import ofetch from '@/utils/ofetch';
 
 export const apiRoute: APIRoute = {
     path: '/check-cookie',

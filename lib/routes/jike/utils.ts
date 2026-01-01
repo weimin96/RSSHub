@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
-import { config } from '@/config';
 import cache from '@/utils/cache';
-import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
+import got from '@/utils/got';
+import { load } from 'cheerio';
+import { config } from '@/config';
 
 const videoAPI = 'https://api.ruguoapp.com/1.0/mediaMeta/play?type=ORIGINAL_POST';
 const topicDataHanding = (data, ctx) =>
@@ -194,4 +193,4 @@ const constructTopicEntry = async (ctx, url) => {
     return data;
 };
 
-export { constructTopicEntry, topicDataHanding };
+export { topicDataHanding, constructTopicEntry };

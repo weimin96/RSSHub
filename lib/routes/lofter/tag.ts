@@ -1,11 +1,10 @@
-import { load } from 'cheerio';
-import { JSDOM } from 'jsdom';
-
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { config } from '@/config';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import { JSDOM } from 'jsdom';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 export const route: Route = {
     path: '/tag/:name?/:type?',

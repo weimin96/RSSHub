@@ -1,13 +1,11 @@
-import type { Context } from 'hono';
-import type { SearchParams } from 'narou';
-import { Genre, GenreNotation, NarouNovelFetch, SearchBuilder } from 'narou';
-
+import { Route, Data, DataItem } from '@/types';
+import { art } from '@/utils/render';
+import path from 'node:path';
+import { Context } from 'hono';
+import { Genre, SearchBuilder, SearchParams, NarouNovelFetch, GenreNotation } from 'narou';
 import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Data, DataItem, Route } from '@/types';
-
 import { handleIsekaiRanking } from './ranking-isekai';
-import { renderDescription } from './templates/description';
-import { IsekaiCategory, isekaiCategoryToJapanese, NovelType, novelTypeToJapanese, periodToJapanese, periodToOrder, RankingPeriod, RankingType } from './types/ranking';
+import { RankingPeriod, periodToJapanese, novelTypeToJapanese, periodToOrder, RankingType, NovelType, isekaiCategoryToJapanese, IsekaiCategory } from './types/ranking';
 
 const getParameters = () => {
     // Generate ranking type options
@@ -268,7 +266,9 @@ async function handler(ctx: Context): Promise<Data> {
     const items = result.values.map((novel, index) => ({
         title: `#${index + 1} ${novel.title}`,
         link: `https://ncode.syosetu.com/${String(novel.ncode).toLowerCase()}`,
-        description: renderDescription({ novel }),
+        description: art(path.join(__dirname, 'templates/description.art'), {
+            novel,
+        }),
         author: novel.writer,
         category: novel.keyword.split(/[\s/\uFF0F]/).filter(Boolean),
     }));

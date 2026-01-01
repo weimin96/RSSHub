@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import ofetch from '@/utils/ofetch';
-
-import { renderDescription } from './templates/description';
+import { load } from 'cheerio';
+import path from 'node:path';
+import { art } from '@/utils/render';
 
 const ieeeHost = 'https://ieeexplore.ieee.org';
 
@@ -50,7 +50,9 @@ async function handler(ctx) {
                 // 捕获等号右侧的 JSON（最小匹配直到紧随的分号）
                 const m = code.match(/xplGlobal\.document\.metadata\s*=\s*(\{[\s\S]*?\})\s*;/);
                 item.abstract = m ? ((JSON.parse(m[1]) as { abstract?: string }).abstract ?? ' ') : ' ';
-                item.description = renderDescription(item);
+                item.description = art(path.join(__dirname, 'templates/description.art'), {
+                    item,
+                });
 
                 return item;
             })

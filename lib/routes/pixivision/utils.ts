@@ -1,5 +1,4 @@
-import type { CheerioAPI } from 'cheerio';
-
+import { CheerioAPI } from 'cheerio';
 import { config } from '@/config';
 
 const multiImagePrompt = {

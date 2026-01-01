@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-import type { Context } from 'hono';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
+import type { Context } from 'hono';
 
 export const route: Route = {
     path: '/gr/:type',

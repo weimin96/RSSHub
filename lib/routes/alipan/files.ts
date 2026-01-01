@@ -1,8 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
-
-import type { AnonymousShareInfo, ShareList, TokenResponse } from './types';
+import { AnonymousShareInfo, ShareList, TokenResponse } from './types';
 
 export const route: Route = {
     path: '/files/:share_id/:parent_file_id?',

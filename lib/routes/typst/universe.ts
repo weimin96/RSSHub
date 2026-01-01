@@ -1,11 +1,9 @@
-import vm from 'node:vm';
-
-import { load } from 'cheerio';
-import markdownit from 'markdown-it';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
+import markdownit from 'markdown-it';
+import vm from 'node:vm';
 
 interface Package {
     name: string;

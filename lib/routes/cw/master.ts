@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
-import puppeteer from '@/utils/puppeteer';
-
+import { Route } from '@/types';
 import { baseUrl, parsePage } from './utils';
+import puppeteer from '@/utils/puppeteer';
 
 export const route: Route = {
     path: '/master/:channel',

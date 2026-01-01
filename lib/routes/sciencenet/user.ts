@@ -1,11 +1,10 @@
-import { load } from 'cheerio';
-import iconv from 'iconv-lite';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
+import iconv from 'iconv-lite';
 import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/user/:id',

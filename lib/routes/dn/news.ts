@@ -1,12 +1,12 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from './templates/description';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/:language/news/:category?',
@@ -62,7 +62,7 @@ async function handler(ctx) {
             return {
                 title: item.find('h2.ellipse2').text(),
                 link: new URL(item.prop('href'), rootUrl).href,
-                description: renderDescription({
+                description: art(path.join(__dirname, 'templates/description.art'), {
                     image: image
                         ? {
                               src: image.prop('src'),
@@ -87,7 +87,7 @@ async function handler(ctx) {
                 const content = load(detailResponse);
 
                 item.title = content('h1.tit').text();
-                item.description = renderDescription({
+                item.description = art(path.join(__dirname, 'templates/description.art'), {
                     abstracts: content('div.abstract').html(),
                     description: content('div.detail').html(),
                 });

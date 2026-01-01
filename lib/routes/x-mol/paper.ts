@@ -1,13 +1,11 @@
-import { load } from 'cheerio';
-import pMap from 'p-map';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
+import utils from './utils';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
-import utils from './utils';
+import pMap from 'p-map';
 
 export const route: Route = {
     path: '/paper/:type/:magazine',

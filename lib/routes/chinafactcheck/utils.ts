@@ -1,8 +1,7 @@
 import { load } from 'cheerio';
-
-import { config } from '@/config';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
+import { config } from '@/config';
 
 const siteLink = 'https://chinafactcheck.com';
 

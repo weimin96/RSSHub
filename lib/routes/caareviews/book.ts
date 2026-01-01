@@ -1,6 +1,5 @@
-import type { Route } from '@/types';
-
-import { getItems, getList, rootUrl } from './utils';
+import { Route } from '@/types';
+import { rootUrl, getList, getItems } from './utils';
 
 export const route: Route = {
     path: '/book',

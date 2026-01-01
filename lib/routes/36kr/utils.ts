@@ -1,7 +1,6 @@
+import got from '@/utils/got';
 import { load } from 'cheerio';
 import CryptoJS from 'crypto-js';
-
-import got from '@/utils/got';
 
 const rootUrl = 'https://www.36kr.com';
 
@@ -33,4 +32,4 @@ const ProcessItem = (item, tryGet) =>
         return item;
     });
 
-export { ProcessItem, rootUrl };
+export { rootUrl, ProcessItem };

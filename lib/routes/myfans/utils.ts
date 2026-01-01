@@ -1,8 +1,7 @@
+import ofetch from '@/utils/ofetch';
 import InvalidParameterError from '@/errors/types/invalid-parameter';
 import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
-
-import type { Post, UserProfile } from './types';
+import { Post, UserProfile } from './types';
 
 const apiBaseUrl = 'https://api.myfans.jp';
 export const baseUrl = 'https://myfans.jp';

@@ -1,8 +1,7 @@
-import { config } from '@/config';
 import ConfigNotFoundError from '@/errors/types/config-not-found';
-
 import mobileApi from './mobile-api/api';
 import webApi from './web-api/api';
+import { config } from '@/config';
 
 const enableThirdPartyApi = config.twitter.thirdPartyApi;
 const enableMobileApi = config.twitter.username && config.twitter.password;

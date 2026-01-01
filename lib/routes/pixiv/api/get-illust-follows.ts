@@ -1,7 +1,6 @@
-import queryString from 'query-string';
-
-import { maskHeader } from '../constants';
 import got from '../pixiv-got';
+import { maskHeader } from '../constants';
+import queryString from 'query-string';
 
 /**
  * 获取用户关注的画师们的最新插画

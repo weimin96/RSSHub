@@ -1,6 +1,4 @@
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
-
+import { Route, ViewType } from '@/types';
 import api from './api';
 import utils from './utils';
 

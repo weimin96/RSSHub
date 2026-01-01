@@ -1,7 +1,6 @@
-import type { Data, Route } from '@/types';
-import got from '@/utils/got';
-
+import { Route, Data } from '@/types';
 import { getPosts } from './utils';
+import got from '@/utils/got';
 
 export const route: Route = {
     path: '/search/:keyword',

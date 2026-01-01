@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route } from '@/types';
 import got from '@/utils/got';
-import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import ofetch from '@/utils/ofetch';
+import cache from '@/utils/cache';
 
 export const route: Route = {
     path: '/advisor/data/:type?/:category?',

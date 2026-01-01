@@ -1,9 +1,8 @@
+import { Route } from '@/types';
 import { load } from 'cheerio';
-import iconv from 'iconv-lite';
-
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
 import got from '@/utils/got';
+import iconv from 'iconv-lite';
+import cache from '@/utils/cache';
 
 const baseUrl = 'http://t.imop.com';
 

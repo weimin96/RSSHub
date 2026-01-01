@@ -1,9 +1,8 @@
+import { DataItem, Route } from '@/types';
 import { load } from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
+import ofetch from '@/utils/ofetch';
+import cache from '@/utils/cache';
 
 export const route: Route = {
     path: '/fd/:type',

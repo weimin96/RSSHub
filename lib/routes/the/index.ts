@@ -1,12 +1,13 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-import timezone from '@/utils/timezone';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
-import { renderDescription } from './templates/description';
 import { apiSlug, bakeFilterSearchParams, bakeFiltersWithPair, bakeUrl, fetchData, getFilterParamsForUrl, parseFilterStr } from './util';
+import timezone from '@/utils/timezone';
 
 export const handler = async (ctx) => {
     const { filter } = ctx.req.param();
@@ -44,7 +45,7 @@ export const handler = async (ctx) => {
             const imgEl = el.find('img');
 
             el.replaceWith(
-                renderDescription({
+                art(path.join(__dirname, 'templates/description.art'), {
                     images: imgEl
                         ? [
                               {
@@ -63,7 +64,7 @@ export const handler = async (ctx) => {
 
         $$('h1').parent().remove();
 
-        const description = renderDescription({
+        const description = art(path.join(__dirname, 'templates/description.art'), {
             images: image
                 ? [
                       {

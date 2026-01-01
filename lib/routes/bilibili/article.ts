@@ -1,11 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
-import cacheGeneral from '@/utils/cache';
+import { Route } from '@/types';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-
 import cache from './cache';
+import cacheGeneral from '@/utils/cache';
+import { load } from 'cheerio';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/user/article/:uid',

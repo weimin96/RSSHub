@@ -1,8 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
-import { baseUrl, getBuildId, parseItem, parseList } from './utils';
+import { baseUrl, getBuildId, parseList, parseItem } from './utils';
 
 export const route: Route = {
     path: '/topic/:topicId/:lang?',

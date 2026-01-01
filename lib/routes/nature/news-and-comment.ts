@@ -1,3 +1,4 @@
+import { Route } from '@/types';
 // example usage: `/nature/news-and-comment/ng`
 // The journals from NPG are run by different group of people,
 // and the website of may not be consitent for all the journals
@@ -11,12 +12,10 @@
 // nchem:            Nature Chemistry
 // nmat:             Nature Materials
 // natmachintell:    Nature Machine Intelligence
+
 import { load } from 'cheerio';
-
-import type { Route } from '@/types';
 import got from '@/utils/got';
-
-import { baseUrl, cookieJar, getArticle, getArticleList } from './utils';
+import { baseUrl, cookieJar, getArticleList, getArticle } from './utils';
 
 export const route: Route = {
     path: '/news-and-comment/:journal?',

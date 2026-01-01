@@ -1,8 +1,5 @@
-import type { Data, Route } from '@/types';
-import { ViewType } from '@/types';
-
+import { Data, Route, ViewType } from '@/types';
 import { extractMiniCards, processWithWp, rootUrl } from './utils';
-
 export const route: Route = {
     path: '/collections/:type',
     view: ViewType.Articles,

@@ -1,12 +1,10 @@
-import { load } from 'cheerio';
-
-import type { DataItem } from '@/types';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
+import { DataItem } from '@/types';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
-import { renderDescriptionSub } from './templates/description-sub';
+import { art } from '@/utils/render';
+import path from 'node:path';
+import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
+import cache from '@/utils/cache';
 
 export const baseUrl = 'https://visionias.in';
 
@@ -39,7 +37,7 @@ export async function extractNews(item, selector) {
                     ?.nextAll('li')
                     .toArray()
                     .map((tag) => $$(tag).text());
-                const description = renderDescription({
+                const description = art(path.join(__dirname, 'templates/description.art'), {
                     heading: title,
                     articleContent: htmlContent,
                 });
@@ -55,7 +53,7 @@ export async function extractNews(item, selector) {
             return items;
         } else if (sections.length === 0) {
             const htmlContent = extractArticle(mainGroup.html());
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 heading,
                 articleContent: htmlContent,
             });
@@ -73,13 +71,13 @@ export async function extractNews(item, selector) {
                 const mainDiv = $$(element);
                 const title = mainDiv.find('a > div > h2').text().trim();
                 const htmlContent = extractArticle(mainDiv.html(), 'div.ck-content');
-                const description = renderDescriptionSub({
+                const description = art(path.join(__dirname, 'templates/description-sub.art'), {
                     heading: title,
                     articleContent: htmlContent,
                 });
                 return { description };
             });
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 heading,
                 subItems: items,
             });

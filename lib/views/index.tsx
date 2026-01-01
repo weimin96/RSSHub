@@ -1,9 +1,9 @@
 import type { FC } from 'hono/jsx';
 
-import { config } from '@/config';
-import { getDebugInfo } from '@/utils/debug-info';
-import { gitDate, gitHash } from '@/utils/git-hash';
 import { Layout } from '@/views/layout';
+import { config } from '@/config';
+import { gitHash, gitDate } from '@/utils/git-hash';
+import { getDebugInfo } from '@/utils/debug-info';
 
 const startTime = Date.now();
 
@@ -194,7 +194,7 @@ const Index: FC<{ debugQuery: string | undefined }> = ({ debugQuery }) => {
                     <a target="_blank" href="https://github.com/DIYgod/RSSHub/graphs/contributors" className="text-[#F5712C]">
                         Contributors
                     </a>{' '}
-                    under AGPL-3.0 License.
+                    under MIT License.
                 </p>
             </div>
         </Layout>

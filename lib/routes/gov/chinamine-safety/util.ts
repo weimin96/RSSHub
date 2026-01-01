@@ -1,8 +1,7 @@
-import { load } from 'cheerio';
-
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
 
 const rootUrl = 'https://www.chinamine-safety.gov.cn';
 
@@ -70,4 +69,4 @@ const fetchData = ($, currentUrl) => {
     };
 };
 
-export { fetchData, processItems, rootUrl };
+export { rootUrl, processItems, fetchData };

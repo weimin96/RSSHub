@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import got from '@/utils/got';
-
 import utils from './utils';
+import got from '@/utils/got';
+import { load } from 'cheerio';
 
 export const route: Route = {
     path: '/tfbd/:caty/:id',

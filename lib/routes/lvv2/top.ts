@@ -1,12 +1,12 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
-
-import { renderOutlink } from './templates/outlink';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const rootUrl = 'https://lvv2.com';
 
@@ -87,7 +87,9 @@ async function handler(ctx) {
 
                               return description;
                           })
-                        : renderOutlink(link);
+                        : art(path.join(__dirname, 'templates/outlink.art'), {
+                              outlink: link,
+                          });
 
                 return item;
             })

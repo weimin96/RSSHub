@@ -1,11 +1,9 @@
-import CryptoJS from 'crypto-js';
-
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import CryptoJS from 'crypto-js';
 import { parseDate } from '@/utils/parse-date';
-
-import { getObjectFields, MIXCLOUD_CONFIG, TYPE_CONFIG, TYPE_NAMES } from './config';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
+import { MIXCLOUD_CONFIG, TYPE_CONFIG, TYPE_NAMES, getObjectFields } from './config';
 
 export const route: Route = {
     path: '/:username/:type?',

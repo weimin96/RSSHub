@@ -1,14 +1,13 @@
-import type { CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-import type { Context } from 'hono';
+import { type Data, type DataItem, type Route, ViewType } from '@/types';
 
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
+import { art } from '@/utils/render';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 
-import { renderDescription } from './templates/description';
+import { type CheerioAPI, load } from 'cheerio';
+import { type Context } from 'hono';
+import path from 'node:path';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const { id = 'all' } = ctx.req.param();
@@ -34,7 +33,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
     items = response.data.slice(0, limit).map((item): DataItem => {
         const title: string = item.title;
         const image: string | undefined = item.image;
-        const description: string | undefined = renderDescription({
+        const description: string | undefined = art(path.join(__dirname, 'templates/description.art'), {
             images: image
                 ? [
                       {
@@ -95,7 +94,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
                 const title: string = data.title;
                 const description: string | undefined =
                     item.description +
-                    renderDescription({
+                    art(path.join(__dirname, 'templates/description.art'), {
                         description: data.content,
                     });
                 const pubDate: number | string = data.date;

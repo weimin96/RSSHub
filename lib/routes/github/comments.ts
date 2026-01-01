@@ -1,16 +1,13 @@
-import MarkdownIt from 'markdown-it';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
-
+import MarkdownIt from 'markdown-it';
 const md = MarkdownIt({
     html: true,
 });
 const rootUrl = 'https://github.com';
 const apiUrl = 'https://api.github.com';
-
+import { config } from '@/config';
 const typeDict = {
     issue: {
         title: 'Issue',

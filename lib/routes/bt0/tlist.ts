@@ -1,8 +1,7 @@
+import { Route } from '@/types';
 import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
-import { parseRelativeDate } from '@/utils/parse-date';
-
 import { doGot, genSize } from './util';
+import { parseRelativeDate } from '@/utils/parse-date';
 
 const categoryDict = {
     1: '电影',

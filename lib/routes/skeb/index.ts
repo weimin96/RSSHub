@@ -1,9 +1,8 @@
-import { config } from '@/config';
-import type { Data, DataItem, Route } from '@/types';
-import cache from '@/utils/cache';
+import { Route, Data, DataItem } from '@/types';
 import ofetch from '@/utils/ofetch';
-
-import { baseUrl, processCreator, processWork } from './utils';
+import cache from '@/utils/cache';
+import { baseUrl, processWork, processCreator } from './utils';
+import { config } from '@/config';
 
 const categoryMap = {
     // Works categories

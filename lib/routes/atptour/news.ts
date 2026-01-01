@@ -1,7 +1,7 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
-import got from '@/utils/got';
+import { Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
+import got from '@/utils/got';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/news/:lang?',

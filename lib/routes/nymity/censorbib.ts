@@ -1,8 +1,6 @@
-import { load } from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
+import { DataItem, Route } from '@/types';
 import got from '@/utils/got';
-
+import { load } from 'cheerio';
 const url = 'https://censorbib.nymity.ch/';
 
 export const route: Route = {

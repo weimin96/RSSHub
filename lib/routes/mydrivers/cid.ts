@@ -1,8 +1,8 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
 import parser from '@/utils/rss-parser';
 
-import { categories, getInfo, processItems, rootRSSUrl, rootUrl, title } from './util';
+import { rootUrl, rootRSSUrl, title, categories, getInfo, processItems } from './util';
 
 export const route: Route = {
     path: '/cid/:id?',

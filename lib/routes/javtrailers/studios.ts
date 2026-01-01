@@ -1,7 +1,7 @@
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
-import ofetch from '@/utils/ofetch';
+import { Route } from '@/types';
 
+import ofetch from '@/utils/ofetch';
+import cache from '@/utils/cache';
 import { baseUrl, getItem, headers, parseList } from './utils';
 
 export const route: Route = {

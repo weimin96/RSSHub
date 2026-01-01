@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from './templates/description';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/cmse/fxrw',
@@ -51,7 +51,7 @@ async function handler() {
                 title: item.find('.title').text().split('：').pop().trim(),
                 link: new URL(item.attr('href'), currentUrl).href,
                 pubDate: timezone(parseDate(item.find('.infoR').first().text().trim(), 'YYYY年M月D日H时m分'), +8),
-                description: renderDescription({
+                description: art(path.join(__dirname, 'templates/description.art'), {
                     image: new URL(item.find('img').attr('src'), currentUrl).href,
                     description: item.find('.info').html(),
                 }),

@@ -1,15 +1,15 @@
-import type { Cheerio, CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-import type { Element } from 'domhandler';
-import type { Context } from 'hono';
+import path from 'node:path';
 
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
+import { type CheerioAPI, type Cheerio, load } from 'cheerio';
+import type { Element } from 'domhandler';
+import { type Context } from 'hono';
+
+import { type DataItem, type Route, type Data, ViewType } from '@/types';
+
+import { art } from '@/utils/render';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const { category = 'zxyw' } = ctx.req.param();
@@ -43,7 +43,7 @@ export const handler = async (ctx: Context): Promise<Data> => {
                 pubDate = spanText ? parseDate(spanText) : undefined;
             }
 
-            const description: string = renderDescription({
+            const description: string = art(path.join(__dirname, 'templates/description.art'), {
                 intro: $item.find('p.zy').text(),
             });
 
@@ -84,8 +84,8 @@ export const handler = async (ctx: Context): Promise<Data> => {
                     const $$: CheerioAPI = load(detailResponse);
 
                     const detailTitle: string = $$('h5').text();
-                    const description: string = renderDescription({
-                        description: $$('div.TRS_Editor').html() || undefined,
+                    const description: string = art(path.join(__dirname, 'templates/description.art'), {
+                        description: $$('div.TRS_Editor').html(),
                     });
 
                     const detailDate = $$('span.fb em').text().trim();

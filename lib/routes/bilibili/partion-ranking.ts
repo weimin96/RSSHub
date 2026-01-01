@@ -1,8 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
 import utils from './utils';
-
 const got_ins = got.extend({
     headers: {
         Referer: 'https://www.bilibili.com/',

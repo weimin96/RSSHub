@@ -1,6 +1,5 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-
 import { baseUrl, gqlEndpoint, parseItem } from './utils';
 
 const handler = async (ctx) => {

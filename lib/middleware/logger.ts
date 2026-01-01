@@ -1,8 +1,7 @@
-import type { MiddlewareHandler } from 'hono';
-
-import { getPath, time } from '@/utils/helpers';
-import logger from '@/utils/logger';
 import { requestMetric } from '@/utils/otel';
+import { MiddlewareHandler } from 'hono';
+import logger from '@/utils/logger';
+import { getPath, time } from '@/utils/helpers';
 
 enum LogPrefix {
     Outgoing = '-->',

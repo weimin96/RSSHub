@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { apiRootUrl, getInfo, processItems, rootUrl } from './util';
+import { rootUrl, apiRootUrl, processItems, getInfo } from './util';
 
 export const route: Route = {
     path: ['/channel/:id?', '/:id?'],

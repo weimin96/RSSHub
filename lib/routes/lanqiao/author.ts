@@ -1,10 +1,8 @@
-import MarkdownIt from 'markdown-it';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
 import utils from './utils';
+import MarkdownIt from 'markdown-it';
 
 async function getUserName(uid) {
     // 获取用户信息

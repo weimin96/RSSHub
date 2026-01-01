@@ -1,8 +1,6 @@
-import type { RouteHandler } from '@hono/zod-openapi';
-import { createRoute } from '@hono/zod-openapi';
-
 import { config } from '@/config';
-import { gitDate, gitHash } from '@/utils/git-hash';
+import { createRoute, RouteHandler } from '@hono/zod-openapi';
+import { gitHash, gitDate } from '@/utils/git-hash';
 
 const route = createRoute({
     method: 'get',
@@ -26,4 +24,4 @@ const handler: RouteHandler<typeof route> = (ctx) =>
         gitDate: gitDate?.getTime(),
     });
 
-export { handler, route };
+export { route, handler };

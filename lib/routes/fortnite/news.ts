@@ -1,7 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import logger from '@/utils/logger';
 import { parseDate } from '@/utils/parse-date';
+import logger from '@/utils/logger';
 import puppeteer from '@/utils/puppeteer';
 
 export const route: Route = {

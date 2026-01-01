@@ -1,6 +1,6 @@
-import type { Route } from '@/types';
-import ofetch from '@/utils/ofetch';
+import { Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
+import ofetch from '@/utils/ofetch';
 
 export const route: Route = {
     path: '/community/:communityUrl',

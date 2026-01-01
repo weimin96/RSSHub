@@ -1,9 +1,8 @@
-import etagCalculate from 'etag';
-import type { MiddlewareHandler } from 'hono';
+import { MiddlewareHandler } from 'hono';
 import { routePath } from 'hono/route';
-
+import etagCalculate from 'etag';
 import { config } from '@/config';
-import type { Data } from '@/types';
+import { Data } from '@/types';
 
 const headers: Record<string, string> = {
     'Access-Control-Allow-Methods': 'GET',
@@ -37,8 +36,9 @@ const middleware: MiddlewareHandler = async (ctx, next) => {
         return;
     }
 
-    const { lastBuildDate, ...etagData } = data;
-    const etag = etagCalculate(JSON.stringify(etagData));
+    const lastBuildDate = data.lastBuildDate;
+    delete data.lastBuildDate;
+    const etag = etagCalculate(JSON.stringify(data));
 
     ctx.header('ETag', etag);
 

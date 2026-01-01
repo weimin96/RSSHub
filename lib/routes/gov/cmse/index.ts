@@ -1,13 +1,12 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
 import { getSubPath } from '@/utils/common-utils';
+import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from './templates/description';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
 
 export const route: Route = {
     path: '/cmse/*',
@@ -60,7 +59,7 @@ async function handler(ctx) {
                 const detailPubTimeMatches = detailResponse.data.match(/__\$pubtime='(.*?)';var/);
 
                 item.pubDate = detailPubTimeMatches ? timezone(parseDate(detailPubTimeMatches[1]), +8) : item.pubDate;
-                item.description = renderDescription({
+                item.description = art(path.join(__dirname, 'templates/description.art'), {
                     video: content('#con_video').html(),
                     description: content('.TRS_Editor, #content').html(),
                 });

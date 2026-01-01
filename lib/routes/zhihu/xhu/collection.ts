@@ -1,9 +1,8 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-
-import { generateData } from '../pin/utils';
 import auth from './auth';
+import { generateData } from '../pin/utils';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/xhu/collection/:id',

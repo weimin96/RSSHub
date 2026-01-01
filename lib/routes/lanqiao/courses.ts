@@ -1,10 +1,8 @@
-import MarkdownIt from 'markdown-it';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-
 import utils from './utils';
+import MarkdownIt from 'markdown-it';
 
 export const route: Route = {
     path: '/courses/:sort/:tag',

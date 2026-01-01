@@ -1,8 +1,6 @@
-import queryString from 'query-string';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import got from '@/utils/got';
+import queryString from 'query-string';
 
 export const route: Route = {
     path: '/post/popular_recent/:period?',

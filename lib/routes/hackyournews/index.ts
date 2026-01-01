@@ -1,8 +1,7 @@
-import { load } from 'cheerio'; // an HTML parser with a jQuery-like API
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 // Require necessary modules
 import got from '@/utils/got'; // a customised got
+import { load } from 'cheerio'; // an HTML parser with a jQuery-like API
 import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {

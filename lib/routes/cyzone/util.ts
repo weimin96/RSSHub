@@ -1,6 +1,5 @@
-import { load } from 'cheerio';
-
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 
 const rootUrl = 'https://www.cyzone.cn';
@@ -115,4 +114,4 @@ const processItems = async (apiUrl, limit, tryGet, ...params) => {
     return items;
 };
 
-export { apiRootUrl, getInfo, processItems, rootUrl };
+export { rootUrl, apiRootUrl, getInfo, processItems };

@@ -1,11 +1,9 @@
-import { config } from '@/config';
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
-
-import cache from './cache';
 import utils, { getVideoUrl } from './utils';
+import { parseDate } from '@/utils/parse-date';
+import { config } from '@/config';
+import cache from './cache';
 
 // https://www.bilibili.com/v/popular/rank/all
 

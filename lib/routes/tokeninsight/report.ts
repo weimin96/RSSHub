@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
 const baseURL = 'https://www.tokeninsight.com/';
 const title = 'TokenInsight';
 const link = 'https://www.tokeninsight.com/';

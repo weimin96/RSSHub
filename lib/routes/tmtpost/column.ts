@@ -1,9 +1,8 @@
-import type { Context } from 'hono';
+import { type Data, type Route, ViewType } from '@/types';
 
-import type { Data, Route } from '@/types';
-import { ViewType } from '@/types';
+import { type Context } from 'hono';
 
-import { apiBaseUrl, baseUrl, processItems } from './util';
+import { baseUrl, apiBaseUrl, processItems } from './util';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const { id } = ctx.req.param();

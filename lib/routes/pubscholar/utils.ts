@@ -1,5 +1,4 @@
 import crypto from 'node:crypto';
-
 import CryptoJS from 'crypto-js';
 
 const salt = '6m6pingbinwaktg227gngifoocrfbo95';

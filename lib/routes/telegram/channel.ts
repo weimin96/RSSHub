@@ -1,16 +1,13 @@
-import querystring from 'node:querystring';
-
-import { load } from 'cheerio';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import cache from '@/utils/cache';
+import { config } from '@/config';
 import ofetch from '@/utils/ofetch';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
+import querystring from 'node:querystring';
 import { fallback, queryToBoolean } from '@/utils/readable-social';
-
-import { renderVideo } from './templates/video';
 import tglibchannel from './tglib/channel';
 
 /* message types */
@@ -420,7 +417,7 @@ async function handler(ctx) {
                             const thumbBackground = $node.find('.tgme_widget_message_video_thumb').css('background-image');
                             const thumbBackgroundUrl = thumbBackground && thumbBackground.match(/url\('(.*)'\)/);
                             const thumbBackgroundUrlSrc = thumbBackgroundUrl && thumbBackgroundUrl[1];
-                            tag_media += renderVideo({
+                            tag_media += art(path.join(__dirname, 'templates/video.art'), {
                                 source: videoLink,
                                 poster: thumbBackgroundUrlSrc,
                             });
@@ -437,7 +434,7 @@ async function handler(ctx) {
                         } else if (node.attribs && node.attribs.class && node.attribs.class.search(/(^|\s)tgme_widget_message_videosticker(\s|$)/) !== -1) {
                             // video sticker
                             const videoLink = $node.find('.js-videosticker_video').attr('src');
-                            tag_media += renderVideo({
+                            tag_media += art(path.join(__dirname, 'templates/video.art'), {
                                 source: videoLink,
                             });
                         } else if (node.name === 'img') {

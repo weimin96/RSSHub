@@ -1,8 +1,6 @@
-import type { Data } from '@/types';
 import ofetch from '@/utils/ofetch';
-
-import type { Article } from './constants';
-import { Language, SUPPORTED_LANGUAGES } from './constants';
+import { Data } from '@/types';
+import { Article, Language, SUPPORTED_LANGUAGES } from './constants';
 
 /**
  * Parse a number or a number as string.\

@@ -1,4 +1,5 @@
-import { renderVideo } from './templates/video';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const baseUrl = 'https://pikabu.ru';
 
@@ -23,12 +24,12 @@ const fixVideo = (element) => {
 
     if (dataType === 'video') {
         const videoId = element.attr('data-source').match(/\/embed\/(.+)$/)[1];
-        videoHtml = renderVideo({ videoId });
+        videoHtml = art(path.join(__dirname, 'templates/video.art'), { videoId });
     } else if (dataType === 'video-file') {
         const width = element.find('.player__svg-stretch').attr('width');
         const mp4 = `${element.attr('data-source')}.mp4`;
         const webm = element.attr('data-webm');
-        videoHtml = renderVideo({ preview, width, mp4, webm });
+        videoHtml = art(path.join(__dirname, 'templates/video.art'), { preview, width, mp4, webm });
     } else {
         throw new Error(`Unknown video type: ${dataType}`);
     }

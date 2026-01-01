@@ -1,8 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
-
 import { getBuildId, getData } from './utils';
+import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/:type',

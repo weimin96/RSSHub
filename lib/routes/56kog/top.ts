@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { fetchItems, rootUrl } from './util';
+import { rootUrl, fetchItems } from './util';
 
 export const route: Route = {
     path: '/top/:category?',

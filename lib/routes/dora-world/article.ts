@@ -1,9 +1,7 @@
-import { load } from 'cheerio';
-
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
-import cache from '@/utils/cache';
+import { Route, Data, DataItem, ViewType } from '@/types';
 import got from '@/utils/got';
+import { load } from 'cheerio';
+import cache from '@/utils/cache';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
 

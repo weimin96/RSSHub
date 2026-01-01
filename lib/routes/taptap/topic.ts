@@ -1,9 +1,8 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
-
-import { appDetail, getRootUrl, imagePost, topicPost, videoPost, X_UA } from './utils';
+import { getRootUrl, X_UA, appDetail, imagePost, topicPost, videoPost } from './utils';
 
 const typeMap = {
     feed: {

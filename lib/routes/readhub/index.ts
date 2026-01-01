@@ -1,12 +1,12 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
+import path from 'node:path';
 
-import { renderDescription } from './templates/description';
-import { apiTopicUrl, processItems, rootUrl } from './util';
+import { rootUrl, apiTopicUrl, art, processItems } from './util';
 
 export const route: Route = {
     path: '/:category?',
@@ -50,11 +50,10 @@ async function handler(ctx) {
     let items = response.data.items.slice(0, limit).map((item) => ({
         title: item.title,
         link: item.url ?? new URL(`topic/${item.uid}`, rootUrl).href,
-        description: renderDescription({
+        description: art(path.join(__dirname, 'templates/description.art'), {
             description: item.summary,
             news: item.newsAggList,
             timeline: item.timeline,
-            rootUrl,
         }),
         author: item.siteNameDisplay,
         category: [...(item.entityList.map((c) => c.name) ?? []), ...(item.tagList.map((c) => c.name) ?? [])],

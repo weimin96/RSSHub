@@ -1,9 +1,8 @@
-import { load } from 'cheerio'; // an HTML parser with a jQuery-like API
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 // Require necessary modules
 import got from '@/utils/got'; // a customised got
+import { load } from 'cheerio'; // an HTML parser with a jQuery-like API
 
 export const route: Route = {
     path: '/:channel?',

@@ -1,5 +1,5 @@
-import { config } from '@/config';
 import got from '@/utils/got';
+import { config } from '@/config';
 
 const getData = (tryGet) => {
     const bgmCalendarUrl = 'https://api.bgm.tv/calendar';

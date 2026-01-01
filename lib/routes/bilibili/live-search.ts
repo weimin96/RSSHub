@@ -1,8 +1,7 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
-import cache from './cache';
 import utils from './utils';
+import cache from './cache';
 
 export const route: Route = {
     path: '/live/search/:key/:order',

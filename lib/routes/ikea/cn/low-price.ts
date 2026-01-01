@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
-import { generateProductItem, generateRequestHeaders } from './utils';
+import { generateRequestHeaders, generateProductItem } from './utils';
 
 export const route: Route = {
     path: '/cn/low_price',

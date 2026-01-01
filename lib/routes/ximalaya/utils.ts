@@ -165,4 +165,4 @@ const decryptUrl = (encryptedUrl) => {
     }
     return Buffer.from(decryptedData).toString('utf8');
 };
-export { /* getUrl, */ decryptUrl, getRandom16 };
+export { /* getUrl, */ getRandom16, decryptUrl };

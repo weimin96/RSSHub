@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { baseUrl, getArticle, getSingleRecord } from './common';
+import { baseUrl, getSingleRecord, getArticle } from './common';
 
 const host = `${baseUrl}/newscenter/notice/`;
 

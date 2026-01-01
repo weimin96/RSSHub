@@ -1,14 +1,14 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-import timezone from '@/utils/timezone';
 import { isValidHost } from '@/utils/valid-host';
-
-import { renderDescription } from './templates/description';
+import { load } from 'cheerio';
+import timezone from '@/utils/timezone';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 
 export const route: Route = {
     path: '/:id?/:category{.+}?',
@@ -42,7 +42,7 @@ async function handler(ctx) {
             return {
                 title: a.text(),
                 link: a.prop('href'),
-                description: renderDescription({
+                description: art(path.join(__dirname, 'templates/description.art'), {
                     images: [
                         {
                             src: item.parent().find('div.aimg0 a img').prop('src'),
@@ -66,9 +66,9 @@ async function handler(ctx) {
                 const content = load(detailResponse);
 
                 item.title = content('h1').first().text();
-                item.description = renderDescription({
+                item.description = art(path.join(__dirname, 'templates/description.art'), {
                     intro: content('div.aintro1, p.cont-summary').text(),
-                    description: content('div.content0, div.cont-detail').html() ?? undefined,
+                    description: content('div.content0, div.cont-detail').html(),
                 });
                 item.category = content('span.dd0 a, a[rel="category"]')
                     .toArray()

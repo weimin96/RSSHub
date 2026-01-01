@@ -1,12 +1,11 @@
-import { load } from 'cheerio';
-import dayjs from 'dayjs';
-import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
+import dayjs from 'dayjs';
 import got from '@/utils/got';
+import { load } from 'cheerio';
+import { config } from '@/config';
 
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
 dayjs.extend(isSameOrBefore);
 
 export const route: Route = {

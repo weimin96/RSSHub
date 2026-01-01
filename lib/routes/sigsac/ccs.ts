@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import ofetch from '@/utils/ofetch';
-import { parseDate } from '@/utils/parse-date';
-
+import { load } from 'cheerio';
 const url = 'https://www.sigsac.org/';
+import { parseDate } from '@/utils/parse-date';
 // https://www.sigsac.org/ccs/CCS2022/program/accepted-papers.html
 
 export const route: Route = {

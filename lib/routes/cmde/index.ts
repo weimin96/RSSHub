@@ -1,10 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
+import { load } from 'cheerio';
+import timezone from '@/utils/timezone';
 import { parseDate } from '@/utils/parse-date';
 import puppeteer from '@/utils/puppeteer';
-import timezone from '@/utils/timezone';
 
 const rootURL = 'https://www.cmde.org.cn';
 

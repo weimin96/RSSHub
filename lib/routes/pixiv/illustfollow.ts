@@ -1,12 +1,11 @@
-import { config } from '@/config';
-import ConfigNotFoundError from '@/errors/types/config-not-found';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import { parseDate } from '@/utils/parse-date';
-
-import getIllustFollows from './api/get-illust-follows';
 import { getToken } from './token';
+import getIllustFollows from './api/get-illust-follows';
+import { config } from '@/config';
 import pixivUtils from './utils';
+import { parseDate } from '@/utils/parse-date';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 export const route: Route = {
     path: '/user/illustfollows',

@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate, parseRelativeDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
+import { parseRelativeDate, parseDate } from '@/utils/parse-date';
 
 const baseUrl = 'https://bbs.kanxue.com/';
 const categoryId = {

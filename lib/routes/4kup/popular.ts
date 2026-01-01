@@ -1,11 +1,9 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
-import loadArticle from './article';
+import { load } from 'cheerio';
 import { SUB_NAME_PREFIX, SUB_URL } from './const';
-import type { WPPost } from './types';
+import loadArticle from './article';
+import { WPPost } from './types';
 
 export const route: Route = {
     path: '/popular/:period',

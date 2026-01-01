@@ -1,7 +1,6 @@
-import { load } from 'cheerio';
-
-import { toTitleCase } from '@/utils/common-utils';
 import got from '@/utils/got';
+import { toTitleCase } from '@/utils/common-utils';
+import { load } from 'cheerio';
 
 const handler = async (ctx) => {
     let type = 'new-releases';

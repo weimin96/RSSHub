@@ -1,11 +1,8 @@
-import sanitizeHtml from 'sanitize-html';
-
-import type { Route } from '@/types';
-import { ViewType } from '@/types';
+import { Route, ViewType } from '@/types';
 import got from '@/utils/got';
+import { header, processImage, getSignedHeader } from './utils';
 import { parseDate } from '@/utils/parse-date';
-
-import { getSignedHeader, header, processImage } from './utils';
+import sanitizeHtml from 'sanitize-html';
 
 export const route: Route = {
     path: '/people/activities/:id',

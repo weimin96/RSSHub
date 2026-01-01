@@ -1,7 +1,7 @@
-import * as cheerio from 'cheerio';
-
 import type { Route } from '@/types';
+
 import ofetch from '@/utils/ofetch';
+import * as cheerio from 'cheerio';
 
 const handler = async () => {
     const url = 'https://www.psnine.com/psngame';

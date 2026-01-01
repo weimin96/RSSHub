@@ -1,8 +1,6 @@
-import type { Context } from 'hono';
-
-import type { Route } from '@/types';
-
-import { BASE_URL, fetchArticles } from './common';
+import { Route } from '@/types';
+import { fetchArticles, BASE_URL } from './common';
+import { Context } from 'hono';
 
 export const route: Route = {
     path: '/news',

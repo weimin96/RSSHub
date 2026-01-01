@@ -1,10 +1,8 @@
-import { load } from 'cheerio';
-
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
-
-import { renderEssay } from './templates/essay';
-import { renderVideo } from './templates/video';
+import { load } from 'cheerio';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const getImageById = async (id) => {
     const response = await ofetch('https://api.aeonmedia.co/graphql', {
@@ -31,7 +29,7 @@ function format(article) {
 
     switch (type) {
         case 'film':
-            block = renderVideo(article);
+            block = art(path.join(__dirname, 'templates/video.art'), { article });
 
             break;
 
@@ -50,7 +48,7 @@ function format(article) {
                 })
                 .join('');
 
-            block = renderEssay({ banner, authorsBio, content });
+            block = art(path.join(__dirname, 'templates/essay.art'), { banner, authorsBio, content });
 
             break;
         }
@@ -60,7 +58,7 @@ function format(article) {
 
             const capture = load(article.body);
             capture('p.pullquote').remove();
-            block = renderEssay({ banner, authorsBio, content: capture.html() });
+            block = art(path.join(__dirname, 'templates/essay.art'), { banner, authorsBio, content: capture.html() });
 
             break;
         }

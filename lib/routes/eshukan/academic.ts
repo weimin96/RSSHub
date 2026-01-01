@@ -1,12 +1,12 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
+import { load } from 'cheerio';
 import timezone from '@/utils/timezone';
-
-import { renderDescription } from './templates/description';
+import { parseDate } from '@/utils/parse-date';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const handler = async (ctx) => {
     const { id = '1' } = ctx.req.param();
@@ -35,7 +35,7 @@ export const handler = async (ctx) => {
 
             item.find('p span').remove();
 
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 intro: item.find('p').text(),
             });
 
@@ -59,7 +59,7 @@ export const handler = async (ctx) => {
                 const $$ = load(detailResponse);
 
                 const title = $$('h1').text();
-                const description = renderDescription({
+                const description = art(path.join(__dirname, 'templates/description.art'), {
                     intro: $$('div.summary').html(),
                     description: $$('div.detail').html(),
                 });

@@ -1,11 +1,9 @@
-import { config } from '@/config';
-import type { Collection, CollectionItem, Route } from '@/types';
-import { ViewType } from '@/types';
-import cache from '@/utils/cache';
+import { Route, ViewType, Collection, CollectionItem } from '@/types';
 import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
-
 import { header } from './utils';
+import { parseDate } from '@/utils/parse-date';
+import cache from '@/utils/cache';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/people/allCollections/:id',

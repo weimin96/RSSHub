@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const handler = async (ctx) => {
     const { category = '' } = ctx.req.param();
@@ -27,7 +27,7 @@ export const handler = async (ctx) => {
             item = $(item);
 
             const title = item.find('h3.entry-title').text();
-            const description = renderDescription({
+            const description = art(path.join(__dirname, 'templates/description.art'), {
                 intro: item.find('div.entry-content').text(),
             });
 
@@ -56,7 +56,7 @@ export const handler = async (ctx) => {
                     el = $$(el);
 
                     el.parent().replaceWith(
-                        renderDescription({
+                        art(path.join(__dirname, 'templates/description.art'), {
                             images: [
                                 {
                                     src: el.prop('href'),
@@ -70,8 +70,8 @@ export const handler = async (ctx) => {
                 const title = $$('h2.entry-title').text();
                 const description =
                     item.description +
-                    renderDescription({
-                        description: $$('div.entry-content').html() ?? undefined,
+                    art(path.join(__dirname, 'templates/description.art'), {
+                        description: $$('div.entry-content').html(),
                     });
                 const image = $$('meta[property="og:image"]').prop('content');
 

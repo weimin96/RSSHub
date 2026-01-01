@@ -1,9 +1,8 @@
-import { load } from 'cheerio';
+import { describe, expect, it, afterAll } from 'vitest';
 import supertest from 'supertest';
-import { afterAll, describe, expect, it } from 'vitest';
-
-import { config } from '@/config';
 import server from '@/index';
+import { load } from 'cheerio';
+import { config } from '@/config';
 
 const request = supertest(server);
 

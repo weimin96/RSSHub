@@ -1,12 +1,11 @@
-import type { CheerioAPI } from 'cheerio';
-import { load } from 'cheerio';
-import type { Context } from 'hono';
+import { type CheerioAPI, load } from 'cheerio';
+import { type Context } from 'hono';
 
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
+import { type DataItem, type Route, type Data, ViewType } from '@/types';
+
 import ofetch from '@/utils/ofetch';
 
-import { processItems, rootUrl } from './util';
+import { rootUrl, processItems } from './util';
 
 export const handler = async (ctx: Context): Promise<Data> => {
     const { filter } = ctx.req.param();

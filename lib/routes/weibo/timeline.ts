@@ -1,13 +1,11 @@
-import querystring from 'node:querystring';
-
-import { config } from '@/config';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
+import querystring from 'node:querystring';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-import { fallback, queryToBoolean } from '@/utils/readable-social';
-
+import { config } from '@/config';
 import weiboUtils from './utils';
+import { fallback, queryToBoolean } from '@/utils/readable-social';
 
 export const route: Route = {
     path: '/timeline/:uid/:feature?/:routeParams?',

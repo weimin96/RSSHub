@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest';
-
 import wait from '@/utils/wait';
 
 describe('wait', () => {

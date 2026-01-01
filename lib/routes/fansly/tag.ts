@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import { parseDate } from '@/utils/parse-date';
-
-import { baseUrl, findAccountById, getTagId, getTagSuggestion, icon, parseDescription } from './utils';
+import { getTagId, getTagSuggestion, findAccountById, parseDescription, baseUrl, icon } from './utils';
 
 export const route: Route = {
     path: '/tag/:tag',

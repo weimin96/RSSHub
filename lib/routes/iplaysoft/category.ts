@@ -1,7 +1,5 @@
-import type { Data, DataItem, Route } from '@/types';
-import { ViewType } from '@/types';
-
-import { fetchCategory, fetchNewsItems } from './utils';
+import { Data, DataItem, Route, ViewType } from '@/types';
+import { fetchNewsItems, fetchCategory } from './utils';
 
 export const handler = async (ctx): Promise<Data> => {
     const slug = ctx.req.param('slug');

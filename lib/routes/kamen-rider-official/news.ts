@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/news/:category?',
@@ -86,14 +86,14 @@ async function handler(ctx) {
     let items = response.news_articles.slice(0, limit).map((item) => ({
         title: item.list_title,
         link: new URL(item.path, rootUrl).href,
-        description: renderDescription(
-            item.list_image_path
+        description: art(path.join(__dirname, 'templates/description.art'), {
+            image: item.list_image_path
                 ? {
                       src: new URL(item.list_image_path, rootUrl).href,
                       alt: item.list_title,
                   }
-                : undefined
-        ),
+                : undefined,
+        }),
         author: item.author,
         category: [item.category_name, item.category_2_name].filter(Boolean),
         guid: `kamen-rider-official-${item.id}`,
@@ -113,8 +113,10 @@ async function handler(ctx) {
 
                 content('img').each(function () {
                     content(this).replaceWith(
-                        renderDescription({
-                            src: content(this).prop('src'),
+                        art(path.join(__dirname, 'templates/description.art'), {
+                            image: {
+                                src: content(this).prop('src'),
+                            },
                         })
                     );
                 });

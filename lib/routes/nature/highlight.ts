@@ -1,9 +1,7 @@
+import { Route } from '@/types';
 import { load } from 'cheerio';
-
-import type { Route } from '@/types';
 import got from '@/utils/got';
-
-import { baseUrl, cookieJar, getArticle, getArticleList } from './utils';
+import { baseUrl, cookieJar, getArticleList, getArticle } from './utils';
 
 export const route: Route = {
     path: '/highlight/:journal?',

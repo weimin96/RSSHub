@@ -1,8 +1,9 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
+
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/post';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const rootUrl = 'https://vcb-s.com';
 const postsAPIUrl = `${rootUrl}/wp-json/wp/v2/posts`;
@@ -32,7 +33,7 @@ async function handler(ctx) {
     const data = response.data;
 
     const items = data.map((item) => {
-        const description = renderDescription({
+        const description = art(path.join(__dirname, 'templates/post.art'), {
             post: item.content.rendered.replaceAll(/<pre class="js-medie-info-detail.*?>(.*?)<\/pre>/gs, '<pre><code>$1</code></pre>').replaceAll(/<div.+?dw-box-download.+?>(.*?)<\/div>/gs, '<pre>$1</pre>'),
             medias: item._embedded['wp:featuredmedia'],
         });

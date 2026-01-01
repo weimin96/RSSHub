@@ -1,8 +1,7 @@
-import { config } from '@/config';
-import type { Data, DataItem, Route } from '@/types';
+import { Data, DataItem, Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { fetchData, processItems } from './utils';
+import { processItems, fetchData } from './utils';
+import { config } from '@/config';
 
 export const route: Route = {
     path: '/manga/:order',

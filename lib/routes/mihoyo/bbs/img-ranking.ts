@@ -1,6 +1,5 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
 import { DATA_MAP, RANKING_TYPE_MAP } from './static-data';
 import { post2item } from './utils';
 

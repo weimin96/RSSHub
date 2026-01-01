@@ -1,14 +1,12 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import { config } from '@/config';
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
+import { config } from '@/config';
 import { parseDate } from '@/utils/parse-date';
-import puppeteer from '@/utils/puppeteer';
+import { art } from '@/utils/render';
+import path from 'node:path';
 import { queryToBoolean } from '@/utils/readable-social';
-
-import { renderUserEmbed } from './templates/user';
-import type { Item } from './types';
+import puppeteer from '@/utils/puppeteer';
 
 const baseUrl = 'https://www.tiktok.com';
 
@@ -46,53 +44,45 @@ async function handler(ctx) {
             const browser = await puppeteer();
             const page = await browser.newPage();
             await page.setRequestInterception(true);
-            let itemList = { itemList: [] };
             page.on('request', (request) => {
-                ['document', 'script', 'xhr', 'fetch'].includes(request.resourceType()) ? request.continue() : request.abort();
-            });
-            page.on('response', async (response) => {
-                const request = response.request();
-                if (request.url().startsWith('https://www.tiktok.com/api/post/item_list/')) {
-                    itemList = await response.json();
-                }
+                request.resourceType() === 'document' || request.resourceType() === 'script' ? request.continue() : request.abort();
             });
             await page.goto(`${baseUrl}/${user}`, {
                 waitUntil: 'networkidle0',
             });
-
-            const pageHtml = await page.content();
+            const SIGI_STATE = await page.evaluate(() => window.SIGI_STATE);
             await browser.close();
 
-            const $ = load(pageHtml);
-            const rehydrationData = JSON.parse($('script#__UNIVERSAL_DATA_FOR_REHYDRATION__').text());
-            const userDetail = rehydrationData.__DEFAULT_SCOPE__['webapp.user-detail'];
+            const lang = SIGI_STATE.AppContext.lang;
+            const SharingMetaState = SIGI_STATE.SharingMetaState;
+            const ItemModule = SIGI_STATE.ItemModule;
 
-            return { itemList, userDetail };
+            return { lang, SharingMetaState, ItemModule };
         },
         config.cache.routeExpire,
         false
     );
 
-    const { itemList, userDetail } = data;
-
-    const items = itemList.itemList.map((item: Item) => ({
+    const items = Object.values(data.ItemModule).map((item) => ({
         title: item.desc,
-        description: renderUserEmbed({
+        description: art(path.join(__dirname, 'templates/user.art'), {
             poster: item.video.cover,
             source: item.video.playAddr,
             useIframe,
             id: item.id,
         }),
-        author: item.author.nickname,
+        author: item.nickname,
         pubDate: parseDate(item.createTime, 'X'),
-        link: `${baseUrl}/@${item.author.uniqueId}/video/${item.id}`,
+        link: `${baseUrl}/@${item.author}/video/${item.id}`,
+        category: item.textExtra.map((t) => `#${t.hashtagName}`),
     }));
 
     return {
-        title: userDetail.shareMeta.title,
-        description: userDetail.shareMeta.desc,
-        image: userDetail.userInfo.user.avatarLarger,
+        title: data.SharingMetaState.value['og:title'],
+        description: data.SharingMetaState.value['og:description'],
+        image: data.SharingMetaState.value['og:image'],
         link: `${baseUrl}/${user}`,
         item: items,
+        language: data.lang,
     };
 }

@@ -1,11 +1,10 @@
-import { load } from 'cheerio';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-import got from '@/utils/got';
-import { parseDate } from '@/utils/parse-date';
 import parser from '@/utils/rss-parser';
+import got from '@/utils/got';
+import { load } from 'cheerio';
 import { fixArticleContent } from '@/utils/wechat-mp';
+import { parseDate } from '@/utils/parse-date';
 
 // any UA containing "RSS" can pass the check
 // mark the UA as a desktop UA with "(X11; Linux x86_64)"

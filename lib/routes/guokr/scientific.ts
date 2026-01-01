@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
-
-import { parseItem, parseList } from './utils';
+import { parseList, parseItem } from './utils';
 
 export const route: Route = {
     path: '/scientific',

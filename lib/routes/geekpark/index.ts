@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const handler = async (ctx) => {
     const { column } = ctx.req.param();
@@ -23,8 +23,8 @@ export const handler = async (ctx) => {
 
         const title = item.title;
         const image = item.cover_url;
-        const description = renderDescription({
-            images: image
+        const description = art(path.join(__dirname, 'templates/description.art'), {
+            image: image
                 ? [
                       {
                           src: image,
@@ -63,8 +63,8 @@ export const handler = async (ctx) => {
 
                 const title = data.title;
                 const image = data.cover_url;
-                const description = renderDescription({
-                    images: image
+                const description = art(path.join(__dirname, 'templates/description.art'), {
+                    image: image
                         ? [
                               {
                                   src: image,

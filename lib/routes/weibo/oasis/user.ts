@@ -1,6 +1,5 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import buildData from '@/utils/common-config';
-
 import weiboUtils from '../utils';
 
 export const route: Route = {

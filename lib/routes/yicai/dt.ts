@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const columns = {
     article: 2,
@@ -96,7 +96,7 @@ async function handler(ctx) {
         return {
             title: item.newstitle,
             link: new URL(item.url, rootUrl).href,
-            description: renderDescription({
+            description: art(path.join(__dirname, 'templates/description.art'), {
                 image: {
                     src: item.originPic,
                     alt: item.newstitle,
@@ -127,7 +127,7 @@ async function handler(ctx) {
                     e = content(e);
 
                     content(e).replaceWith(
-                        renderDescription({
+                        art(path.join(__dirname, 'templates/description.art'), {
                             image: {
                                 src: e.prop('data-original') ?? e.prop('src'),
                                 alt: e.prop('alt'),
@@ -138,8 +138,8 @@ async function handler(ctx) {
                     );
                 });
 
-                item.description += renderDescription({
-                    description: content('div.txt').html() ?? undefined,
+                item.description += art(path.join(__dirname, 'templates/description.art'), {
+                    description: content('div.txt').html(),
                 });
                 item.author = content('div.authortime h3').text();
 

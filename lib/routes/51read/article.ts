@@ -1,8 +1,7 @@
 import { load } from 'cheerio';
-
-import type { DataItem, Route } from '@/types';
 import cache from '@/utils/cache';
 import ofetch from '@/utils/ofetch';
+import type { Route, DataItem } from '@/types';
 
 export const route: Route = {
     path: '/article/:id',

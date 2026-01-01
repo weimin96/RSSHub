@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import { getSubPath } from '@/utils/common-utils';
-
-import { parseArticle, parseNewsList, rootUrl } from './utils';
+import { rootUrl, parseNewsList, parseArticle } from './utils';
 
 export const route: Route = {
     path: '/ccdi/*',

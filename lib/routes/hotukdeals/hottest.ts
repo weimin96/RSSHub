@@ -1,7 +1,6 @@
-import { JSDOM } from 'jsdom';
-
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import got from '@/utils/got';
+import { JSDOM } from 'jsdom';
 
 export const route: Route = {
     path: '/hottest',

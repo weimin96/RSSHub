@@ -1,11 +1,11 @@
-import { load } from 'cheerio';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const handler = async (ctx) => {
     const { category = 'latest/news' } = ctx.req.param();
@@ -37,7 +37,7 @@ export const handler = async (ctx) => {
     let items = response.slice(0, limit).map((item) => {
         const title = item.Article_Headline;
         const image = new URL(item.Image, rootUrl).href;
-        const description = renderDescription({
+        const description = art(path.join(__dirname, 'templates/description.art'), {
             images: image
                 ? [
                       {
@@ -78,7 +78,7 @@ export const handler = async (ctx) => {
                 const title = $$('h1.khl-article-page-title').text();
                 const description =
                     item.description +
-                    renderDescription({
+                    art(path.join(__dirname, 'templates/description.art'), {
                         description: $$('div.khl-article-page-storybody').html(),
                     });
 

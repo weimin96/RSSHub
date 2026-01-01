@@ -1,12 +1,12 @@
-import { load } from 'cheerio';
-import queryString from 'query-string';
+import { Route } from '@/types';
 
-import type { Route } from '@/types';
-import cache from '@/utils/cache';
 import got from '@/utils/got';
+import queryString from 'query-string';
+import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
-
-import { renderDescription } from './templates/description';
+import cache from '@/utils/cache';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/mmda/tags/:tags?',
@@ -76,7 +76,7 @@ async function handler(ctx) {
                 link: `${baseUrl}/${a.attr('href')}`,
                 image: imageSrc,
                 author: user,
-                description: renderDescription({
+                description: art(path.join(__dirname, 'templates/description.art'), {
                     title,
                     image: imageSrc,
                     by: user,
@@ -110,7 +110,7 @@ async function handler(ctx) {
                     item.pubDate = parseDate(result.posted);
                 }
 
-                item.description = renderDescription({
+                item.description = art(path.join(__dirname, 'templates/description.art'), {
                     title: item.title,
                     image: bigImage ?? item.image,
                     posted: item.pubDate ?? '',

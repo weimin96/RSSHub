@@ -1,13 +1,10 @@
-import { renderCover } from './templates/cover';
-import { renderDesc } from './templates/desc';
-import { renderEmbed } from './templates/embed';
-import { renderIframe } from './templates/iframe';
+import path from 'node:path';
 
 const templates = {
-    desc: renderDesc,
-    cover: renderCover,
-    embed: renderEmbed,
-    iframe: renderIframe,
+    desc: path.join(__dirname, 'templates/desc.art'),
+    cover: path.join(__dirname, 'templates/cover.art'),
+    embed: path.join(__dirname, 'templates/embed.art'),
+    iframe: path.join(__dirname, 'templates/iframe.art'),
 };
 
 const resolveUrl = (url, tls = true, forceResolve = false) => {
@@ -45,4 +42,4 @@ const getOriginAvatar = (url) =>
         .replace(/^(.*\.douyinpic\.com\/).*(\/aweme-avatar\/)([^?]*)(\?.*)?$/, '$1origin$2$3')
         .replaceAll(/~\w+_\d+x\d+/g, '');
 
-export { getOriginAvatar, proxyVideo, resolveUrl, templates };
+export { templates, resolveUrl, proxyVideo, getOriginAvatar };

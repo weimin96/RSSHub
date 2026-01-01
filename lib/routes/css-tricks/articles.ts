@@ -1,11 +1,7 @@
+import { Data, Route, ViewType } from '@/types';
 import { load } from 'cheerio';
-
-import type { Data, Route } from '@/types';
-import { ViewType } from '@/types';
 import ofetch from '@/utils/ofetch';
-
 import { processWithWp } from './utils';
-
 export const route: Route = {
     path: '/articles',
     view: ViewType.Articles,

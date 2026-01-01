@@ -1,7 +1,6 @@
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { apiRootUrl, ProcessThreads, rootUrl, types } from './utils';
+import { rootUrl, apiRootUrl, types, ProcessThreads } from './utils';
 
 const sections = {
     257: '留学申请',

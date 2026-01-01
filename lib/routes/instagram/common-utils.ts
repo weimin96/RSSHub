@@ -1,7 +1,6 @@
 import { parseDate } from '@/utils/parse-date';
-
-import { renderImages } from './templates/images';
-import { renderVideo } from './templates/video';
+import { art } from '@/utils/render';
+import path from 'node:path';
 
 const renderItems = (items) =>
     items.map((item) => {
@@ -16,7 +15,7 @@ const renderItems = (items) =>
                     ...i.image_versions2.candidates.toSorted((a, b) => b.width - a.width)[0],
                     alt: item.accessibility_caption,
                 }));
-                description = renderImages({
+                description = art(path.join(__dirname, 'templates/images.art'), {
                     summary,
                     images,
                 });
@@ -24,15 +23,15 @@ const renderItems = (items) =>
             }
             case 'clips':
             case 'igtv':
-                description = renderVideo({
+                description = art(path.join(__dirname, 'templates/video.art'), {
                     summary,
-                    image: item.image_versions2.candidates.toSorted((a, b) => b.width - a.width)[0].url,
+                    image: item.image_versions2.candidates.toSorted((a, b) => b.width - a.width)[0],
                     video: item.video_versions[0],
                 });
                 break;
             case 'feed': {
                 const images = [{ ...item.image_versions2.candidates.toSorted((a, b) => b.width - a.width)[0], alt: item.accessibility_caption }];
-                description = renderImages({
+                description = art(path.join(__dirname, 'templates/images.art'), {
                     summary,
                     images,
                 });

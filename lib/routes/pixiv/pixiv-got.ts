@@ -1,10 +1,8 @@
 import tls from 'node:tls';
-
 import ipRegex from 'ip-regex';
-
-import { config } from '@/config';
 import got from '@/utils/got';
 import logger from '@/utils/logger';
+import { config } from '@/config';
 
 async function dohResolve(name, jsonDohEndpoint) {
     try {

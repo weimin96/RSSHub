@@ -1,8 +1,7 @@
-import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Route } from '@/types';
+import { Route } from '@/types';
 import cache from '@/utils/cache';
-
-import { getDetails, getSimple, getTorrents } from './util';
+import { getSimple, getDetails, getTorrents } from './util';
+import InvalidParameterError from '@/errors/types/invalid-parameter';
 
 const supportedKeys = new Set(['parody', 'character', 'tag', 'artist', 'group', 'language', 'category']);
 
